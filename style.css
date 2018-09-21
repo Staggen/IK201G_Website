@@ -71,6 +71,17 @@ ul.menu li a{
     font-weight:400;
     font-size:12px;
 }
+.underline {
+    position: absolute;
+    display: block;
+    width: 20%;
+    height: 4px;
+    background: #ffffff;
+    transition: width 1s;
+    top: 38px;
+    transform: translateX(400%);
+    rotate:(-90deg);
+}
 /* Experimenting with colors below */
 #menu-one{
     background-color:#e63946;
