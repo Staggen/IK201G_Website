@@ -29,7 +29,7 @@ h1{
 #four{
     /* Queen Blue */
     background-color: #457b9d;
-    color: #f1faee;
+    color: #1d3557;
 }
 #five{
     /* Space Cadet */
@@ -76,7 +76,7 @@ ul.menu li a{
     display: block;
     width: 20%;
     height: 4px;
-    background: #ffffff;
+    background: #32cd32;
     transition: width 1s;
     top: 38px;
     transform: translateX(400%);

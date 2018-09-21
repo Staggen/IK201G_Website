@@ -11,7 +11,7 @@ $(document).ready(() => {
                 pageJump = false;
             }
         });
-        // Making the menu underline move
+        // Making the nav-bar underline move
         var menuChoice = $(this).closest("li").index();
         switch(menuChoice){
             case 0:
@@ -19,7 +19,7 @@ $(document).ready(() => {
                     "transform":"translate(400%,0)",
                     "-webkit-transform": "translate(400%, 0)",
                     "-moz-transform": "translate(400%, 0)",
-                    "background":"#f1faee",
+                    "background":"#32cd32",
                     "transition":"1s"
                 })
                 break;
@@ -28,7 +28,7 @@ $(document).ready(() => {
                     "transform":"translate(300%,0)",
                     "-webkit-transform": "translate(300%, 0)",
                     "-moz-transform": "translate(300%, 0)",
-                    "background":"#1d3557",
+                    "background":"#e63946",
                     "transition":"1s"
                 })
                 break;
@@ -37,7 +37,7 @@ $(document).ready(() => {
                     "transform":"translate(200%,0)",
                     "-webkit-transform": "translate(200%, 0)",
                     "-moz-transform": "translate(200%, 0)",
-                    "background":"#1d3557",
+                    "background":"#f1faee",
                     "transition":"1s"
                 })
                 break;
@@ -46,7 +46,7 @@ $(document).ready(() => {
                     "transform":"translate(100%,0)",
                     "-webkit-transform": "translate(100%, 0)",
                     "-moz-transform": "translate(100%, 0)",
-                    "background":"#1d3557",
+                    "background":"#a8dadc",
                     "transition":"1s"
                 })
                 break;
@@ -55,7 +55,7 @@ $(document).ready(() => {
                     "transform":"translate(0,0)",
                     "-webkit-transform": "translate(0, 0)",
                     "-moz-transform": "translate(0, 0)",
-                    "background":"#f1faee",
+                    "background":"#457b9d",
                     "transition":"1s"
             })
         }
@@ -76,7 +76,7 @@ $(document).ready(() => {
                     pageJump = false;
                 }
             });
-            // Making the menu underline move as you scroll
+            // Making the nav-bar underline move as you scroll
             // I ran a console.log(page) to see what format page was delivered in, and then just dove into the data deeper until I found what I wanted.
             switch(page[0].id){
                 case "one":
@@ -84,7 +84,7 @@ $(document).ready(() => {
                         "transform":"translate(400%,0)",
                         "-webkit-transform": "translate(400%, 0)",
                         "-moz-transform": "translate(400%, 0)",
-                        "background":"#f1faee",
+                        "background":"#32cd32",
                         "transition":"1s"
                     })
                     break;
@@ -93,7 +93,7 @@ $(document).ready(() => {
                         "transform":"translate(300%,0)",
                         "-webkit-transform": "translate(300%, 0)",
                         "-moz-transform": "translate(300%, 0)",
-                        "background":"#1d3557",
+                        "background":"#e63946",
                         "transition":"1s"
                     })
                     break;
@@ -102,7 +102,7 @@ $(document).ready(() => {
                         "transform":"translate(200%,0)",
                         "-webkit-transform": "translate(200%, 0)",
                         "-moz-transform": "translate(200%, 0)",
-                        "background":"#1d3557",
+                        "background":"#f1faee",
                         "transition":"1s"
                     })
                     break;
@@ -111,7 +111,7 @@ $(document).ready(() => {
                         "transform":"translate(100%,0)",
                         "-webkit-transform": "translate(100%, 0)",
                         "-moz-transform": "translate(100%, 0)",
-                        "background":"#1d3557",
+                        "background":"#a8dadc",
                         "transition":"1s"
                     })
                     break;
@@ -120,7 +120,7 @@ $(document).ready(() => {
                         "transform":"translate(0,0)",
                         "-webkit-transform": "translate(0, 0)",
                         "-moz-transform": "translate(0, 0)",
-                        "background":"#f1faee",
+                        "background":"#457b9d",
                         "transition":"1s"
                 })
             }
