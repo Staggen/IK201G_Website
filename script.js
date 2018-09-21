@@ -1,9 +1,21 @@
 $(document).ready(() => {
+    $('nav ul li a').click(function(evt){
+        var pageJump = true;
+        evt.preventDefault();
+        $('body,html').animate({
+            scrollTop: $(this.hash).offset().top
+        }, {
+            duration: 1000,
+            complete: () => {
+                pageJump = false;
+            }
+        });
+    });
     function scrollHandler(pageId) {
         var page = $('#' + pageId);
         var pageStart = page.offset().top;
         var pageJump = false;
-        
+
         function scrollToPage() {
             pageJump = true;
             $('html, body').animate({
@@ -39,7 +51,7 @@ $(document).ready(() => {
             }
         });
     }
-    // "Don't question why it works, but embrace the fact that it does" - Einstein, probably
+    // "Don't question why it works, just embrace the fact that it does" - Einstein, probably
     new scrollHandler('one'); 
     new scrollHandler('two');
     new scrollHandler('three');
