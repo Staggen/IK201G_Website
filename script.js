@@ -1,8 +1,13 @@
 $(document).ready(() => {
-    // Swapping page on nav click
-    $('nav ul li a').click(function(evt){
+    // Start of global variable(s)
+
+    // End of global variable(s)
+
+    // Start of event(s)
+    $('nav ul li a').click(function(evt){ // Swapping page on nav click
         var pageJump = true;
         evt.preventDefault();
+
         $('body,html').animate({
             scrollTop: $(this.hash).offset().top
         }, {
@@ -15,8 +20,10 @@ $(document).ready(() => {
         var menuChoice = $(this).closest("li").index();
         switchFunction(menuChoice);
     });
-    // Stopping normal scrolling and making it move entire pages
-    function scrollHandler(pageId) {
+    // End of event(s)
+
+    // Start of function(s)
+    function scrollHandler(pageId) { // Stopping normal scrolling and making it move entire pages
         var page = $('#' + pageId);
         var pageStart = page.offset().top;
         var pageJump = false;
@@ -32,9 +39,9 @@ $(document).ready(() => {
                 }
             });
             // Making the nav underline move as you scroll
-            // I ran a console.log(page) to see what format page was delivered in, and then just dove into the data deeper until I found what I wanted.
-            switchFunction(page[0].id);
+            switchFunction(page[0].id); // I ran a console.log(page) to see what format page was delivered in, and then just dove into the data deeper until I found what I wanted.
         }
+
         window.addEventListener('wheel', function(event) {
             var viewStart = $(window).scrollTop();
             if(!pageJump){
@@ -59,14 +66,15 @@ $(document).ready(() => {
             }
         });
     }
+
     function switchFunction(data){ // Moves the nav underline and changes it's colors respective to the pages
         switch(data){
             case 0:
             case "one":
                 $(".underline").css({
                     "transform":"translate(400%,0)",
-                    "-webkit-transform": "translate(400%, 0)",
-                    "-moz-transform": "translate(400%, 0)",
+                    "-webkit-transform":"translate(400%, 0)",
+                    "-moz-transform":"translate(400%, 0)",
                     "background":"#32cd32",
                     "transition":"1s"
                 })
@@ -75,8 +83,8 @@ $(document).ready(() => {
             case "two":
                 $(".underline").css({
                     "transform":"translate(300%,0)",
-                    "-webkit-transform": "translate(300%, 0)",
-                    "-moz-transform": "translate(300%, 0)",
+                    "-webkit-transform":"translate(300%, 0)",
+                    "-moz-transform":"translate(300%, 0)",
                     "background":"#e63946",
                     "transition":"1s"
                 })
@@ -85,8 +93,8 @@ $(document).ready(() => {
             case "three":
                 $(".underline").css({
                     "transform":"translate(200%,0)",
-                    "-webkit-transform": "translate(200%, 0)",
-                    "-moz-transform": "translate(200%, 0)",
+                    "-webkit-transform":"translate(200%, 0)",
+                    "-moz-transform":"translate(200%, 0)",
                     "background":"#f1faee",
                     "transition":"1s"
                 })
@@ -95,8 +103,8 @@ $(document).ready(() => {
             case "four":
                 $(".underline").css({
                     "transform":"translate(100%,0)",
-                    "-webkit-transform": "translate(100%, 0)",
-                    "-moz-transform": "translate(100%, 0)",
+                    "-webkit-transform":"translate(100%, 0)",
+                    "-moz-transform":"translate(100%, 0)",
                     "background":"#a8dadc",
                     "transition":"1s"
                 })
@@ -105,17 +113,20 @@ $(document).ready(() => {
             case "five":
                 $(".underline").css({
                     "transform":"translate(0,0)",
-                    "-webkit-transform": "translate(0, 0)",
-                    "-moz-transform": "translate(0, 0)",
+                    "-webkit-transform":"translate(0, 0)",
+                    "-moz-transform":"translate(0, 0)",
                     "background":"#457b9d",
                     "transition":"1s"
                 })
         }
     }
-    // "Don't question why it works, just embrace the fact that it does" - Einstein, probably
+    // End of function(s)
+
+    // Start of trigger(s)
     new scrollHandler('one');
     new scrollHandler('two');
     new scrollHandler('three');
     new scrollHandler('four');
     new scrollHandler('five');
-});
+    // End of trigger(s)
+}); // End of $(document).ready(){};

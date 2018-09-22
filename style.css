@@ -1,6 +1,6 @@
 *{
-    margin: 0;
-    padding: 0;
+    margin:0;
+    padding:0;
 }
 .page{
     width:100%;
@@ -13,28 +13,28 @@ h1{
 }
 #one{
     /* Desire */
-    background-color: #e63946;
-    color: #f1faee;
+    background-color:#e63946;
+    color:#f1faee;
 }
 #two{
     /* Honeydew */
-    background-color: #f1faee;
-    color: #1d3557;
+    background-color:#f1faee;
+    color:#1d3557;
 }
 #three{
     /* Light Blue */
-    background-color: #a8dadc;
-    color: #e63946;
+    background-color:#a8dadc;
+    color:#e63946;
 }
 #four{
     /* Queen Blue */
-    background-color: #457b9d;
-    color: #1d3557;
+    background-color:#457b9d;
+    color:#1d3557;
 }
 #five{
     /* Space Cadet */
-    background-color: #1d3557;
-    color: #f1faee;
+    background-color:#1d3557;
+    color:#f1faee;
 }
 /* SEXY MENU BAR OVERLOAD */
 nav{
@@ -47,7 +47,7 @@ nav{
     -moz-transform:rotate(-90deg) translateX(-100%);
     transform-origin:top left 0;
     -webkit-transform-origin:top left 0;
-    -moz-transform:top left 0;
+    -moz-transform-origin:top left 0;
     
 }
 nav ul.menu li{
@@ -64,22 +64,24 @@ nav ul.menu li:hover{
 ul.menu li a{
     text-decoration:none;
     color:#f1faee;
-    display: block;
+    display:block;
     letter-spacing:4px; /* Makes all the difference <3 */
     text-transform:uppercase;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight:400;
     font-size:12px;
 }
 .underline {
-    position: absolute;
-    display: block;
-    width: 20%;
-    height: 4px;
-    background: #32cd32;
-    transition: width 1s;
-    top: 38px;
-    transform: translateX(400%);
+    position:absolute;
+    display:block;
+    width:20%;
+    height:4px;
+    background:#32cd32;
+    transition:width 1s;
+    top:38px;
+    transform:translateX(400%);
+    -webkit-transform:translateX(400%);
+    -moz-transform:translateX(400%);
     rotate:(-90deg);
 }
 /* Experimenting with colors below */
