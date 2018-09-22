@@ -187,38 +187,78 @@ $(document).ready(() => {
                 $("#bar1").css({
                     "visibility":"visible",
                     "opacity":"1",
+                    "width":"75%",
                     "transition":"2s",
+                    "transition-timing-function":"linear",
                     "transition-delay":"2s"
+                });
+                $("#bar1 p").css({
+                    "visibility":"visible",
+                    "opacity":"1",
+                    "transition":"1s",
+                    "transition-delay":"4s"
                 });
                 $("#bar2").css({
                     "visibility":"visible",
                     "opacity":"1",
+                    "width":"100%",
                     "transition":"2s",
-                    "transition-delay":"2.5s"
+                    "transition-timing-function":"linear",
+                    "transition-delay":"2.2s"
+                });
+                $("#bar2 p").css({
+                    "visibility":"visible",
+                    "opacity":"1",
+                    "transition":"1s",
+                    "transition-delay":"4.2s"
                 });
                 $("#bar3").css({
                     "visibility":"visible",
                     "opacity":"1",
+                    "width":"50%",
                     "transition":"2s",
-                    "transition-delay":"3s"
+                    "transition-timing-function":"linear",
+                    "transition-delay":"2.4s"
+                });
+                $("#bar3 p").css({
+                    "visibility":"visible",
+                    "opacity":"1",
+                    "transition":"1s",
+                    "transition-delay":"4.4s"
                 });
                 $("#bar4").css({
                     "visibility":"visible",
                     "opacity":"1",
+                    "width":"125%",
                     "transition":"2s",
-                    "transition-delay":"3.5s"
+                    "transition-timing-function":"linear",
+                    "transition-delay":"2.6s"
+                });
+                $("#bar4 p").css({
+                    "visibility":"visible",
+                    "opacity":"1",
+                    "transition":"1s",
+                    "transition-delay":"4.6s"
                 });
                 $("#bar5").css({
                     "visibility":"visible",
                     "opacity":"1",
+                    "width":"75%",
                     "transition":"2s",
-                    "transition-delay":"4s"
+                    "transition-timing-function":"linear",
+                    "transition-delay":"2.8s"
+                });
+                $("#bar5 p").css({
+                    "visibility":"visible",
+                    "opacity":"1",
+                    "transition":"1s",
+                    "transition-delay":"4.8s"
                 });
                 $(".timer").css({
                     "visibility":"visible",
                     "opacity":"1",
-                    "transition":"1s",
-                    "transition-delay":"4.5s"
+                    "transition":"2s",
+                    "transition-delay":"5s"
                 });
                 break;
             case 3:
