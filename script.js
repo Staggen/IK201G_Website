@@ -181,7 +181,44 @@ $(document).ready(() => {
                 $(".avatar").css({
                     "visibility":"visible",
                     "opacity":"1",
-                    "transition":"3s"
+                    "transition":"2s",
+                    "transition-delay":"1s"
+                });
+                $("#bar1").css({
+                    "visibility":"visible",
+                    "opacity":"1",
+                    "transition":"2s",
+                    "transition-delay":"2s"
+                });
+                $("#bar2").css({
+                    "visibility":"visible",
+                    "opacity":"1",
+                    "transition":"2s",
+                    "transition-delay":"2.5s"
+                });
+                $("#bar3").css({
+                    "visibility":"visible",
+                    "opacity":"1",
+                    "transition":"2s",
+                    "transition-delay":"3s"
+                });
+                $("#bar4").css({
+                    "visibility":"visible",
+                    "opacity":"1",
+                    "transition":"2s",
+                    "transition-delay":"3.5s"
+                });
+                $("#bar5").css({
+                    "visibility":"visible",
+                    "opacity":"1",
+                    "transition":"2s",
+                    "transition-delay":"4s"
+                });
+                $(".timer").css({
+                    "visibility":"visible",
+                    "opacity":"1",
+                    "transition":"1s",
+                    "transition-delay":"4.5s"
                 });
                 break;
             case 3:

@@ -182,29 +182,39 @@ colourPalettes.push("baseline{
 #bar1 {
     top: 0;
     width: 75%;
+    visibility:hidden;
+    opacity:0;
 }
 
 #bar2 {
     top: 25%;
     width: 100%;
     transform: translateY(-25%);
+    visibility:hidden;
+    opacity:0;
 }
 
 #bar3 {
     top: 50%;
     width: 50%;
     transform: translateY(-50%);
+    visibility:hidden;
+    opacity:0;
 }
 
 #bar4 {
     bottom: 25%;
     width: 125%;
     transform: translateY(25%);
+    visibility:hidden;
+    opacity:0;
 }
 
 #bar5 {
     bottom: 0;
     width: 75%;
+    visibility:hidden;
+    opacity:0;
 }
 
 .timer {
@@ -215,6 +225,8 @@ colourPalettes.push("baseline{
     width: 100%;
     display: flex;
     justify-content: center;
+    visibility:hidden;
+    opacity:0;
 }
 
 .timer ul li {
