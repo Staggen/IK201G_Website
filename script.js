@@ -1,67 +1,64 @@
 $(document).ready(() => {
     // Start of global variable(s)
-
+    var pageJump=false; // Used for full page slide animations
     // End of global variable(s)
 
     // Start of event(s)
     $('nav ul li a').click(function(evt){ // Swapping page on nav click
-        var pageJump = true;
-        evt.preventDefault();
+        pageJump = true;
+        evt.preventDefault(); // Stop normal response to scrolling
 
-        $('body,html').animate({
-            scrollTop: $(this.hash).offset().top
+        $('body,html').animate({ // Full page slide animation
+            scrollTop: $(this.hash).offset().top // The offset() method set or returns the offset coordinates for the selected elements, relative to the document. The .top at the end makes it return the coordinates of the top of the selected element
         }, {
             duration: 1000,
-            complete: () => {
+            complete: () => { // When animation complete: => do function
                 pageJump = false;
             }
         });
-        // Making the nav underline move
         var menuChoice = $(this).closest("li").index();
-        switchFunction(menuChoice);
+        switchFunction(menuChoice); // Making the nav underline move
     });
     // End of event(s)
 
     // Start of function(s)
     function scrollHandler(pageId) { // Stopping normal scrolling and making it move entire pages
         var page = $('#' + pageId);
-        var pageStart = page.offset().top;
-        var pageJump = false;
+        var pageStart = page.offset().top; // The offset() method set or returns the offset coordinates for the selected elements, relative to the document. The .top at the end makes it return the coordinates of the top of the selected element
 
-        function scrollToPage() {
+        function scrollToPage(){ // Function for actual scrolling animation
             pageJump = true;
-            $('html, body').animate({
+            $('html, body').animate({ // Full page slide animation
                 scrollTop: pageStart
             }, {
                 duration: 1000,
-                complete: () => {
+                complete: () => { // When animation complete: => do function
                     pageJump = false;
                 }
             });
-            // Making the nav underline move as you scroll
-            switchFunction(page[0].id); // I ran a console.log(page) to see what format page was delivered in, and then just dove into the data deeper until I found what I wanted.
+            switchFunction(page[0].id); // Making the nav underline move as you scroll
         }
 
-        window.addEventListener('wheel', function(event) {
-            var viewStart = $(window).scrollTop();
-            if(!pageJump){
-                var pageHeight = page.height();
-                var pageStopPortion = pageHeight / 8;
-                var viewHeight = $(window).height();
-                var viewEnd = viewStart + viewHeight;
-                var pageStartPart = viewEnd - pageStart;
-                var pageEndPart = (pageStart + pageHeight) - viewStart;
-                var canJumpDown = pageStartPart >= 0;
-                var stopJumpDown = pageStartPart > pageStopPortion;
-                var canJumpUp = pageEndPart >= 0;
-                var stopJumpUp = pageEndPart > pageStopPortion;
-                var scrollingForward = event.deltaY > 0;
+        window.addEventListener('wheel', function(event) { // Window event listener for scrolling
+            var viewStart = $(window).scrollTop(); // The scrollTop() method sets or returns the vertical scrollbar position for the selected elements
+            if(!pageJump){ // If it's not already scrolling
+                var pageHeight = page.height(); // The height() method sets or returns the height of the selected elements.
+                var pageStopPortion = pageHeight / 2; // Animation stops an 8th of the page height
+                var viewHeight = $(window).height(); // Get full element height
+                var viewEnd = viewStart + viewHeight; // viewEnd = scrollbar-position + element height = exact coordinates for the end of the transition
+                var pageStartPart = viewEnd - pageStart; // pageStartPart = (scrollbar-position + element height) - (page element top coordinates) = exact coordinates for the top of the scroll animation
+                var pageEndPart = (pageStart + pageHeight) - viewStart; // pageEndPart = (coordinates of top of page-element + page height) - coordinates of vertical scrollbar for current page = ??? !{tired} || FIX
+                var canJumpDown = pageStartPart >= 0; // Can do full page slide animation if pageStartPart is larger than or equal to 0
+                var stopJumpDown = pageStartPart > pageStopPortion; // Stops jump down after one element
+                var canJumpUp = pageEndPart >= 0; // Can do full page slide animation of pageEndPart is larger than or equal to 0
+                var stopJumpUp = pageEndPart > pageStopPortion; // Stop jump up after one element
+                var scrollingForward = event.deltaY > 0; // The deltaY property returns a positive value when scrolling down, and a negative value when scrolling up, otherwise 0.
                 if((scrollingForward && canJumpDown && !stopJumpDown) 
                     ||(!scrollingForward && canJumpUp && !stopJumpUp)){
                     event.preventDefault();
                     scrollToPage();
                 }
-            } else {
+            } else { // If it is already scrolling
                 event.preventDefault();
             }
         });

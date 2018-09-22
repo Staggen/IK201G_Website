@@ -35,20 +35,21 @@ h1{
     /* Space Cadet */
     background-color:#1d3557;
     color:#f1faee;
+    position:relative;
 }
-/* SEXY MENU BAR OVERLOAD */
+/* Start of sexy vertical nav */
 nav{
     width:100vh;
     height:40px; /* Menu-bar width component 1/2 */
     position:fixed;
     background-color:#1d3557;
+    z-index:1;
     transform:rotate(-90deg) translateX(-100%);
     -webkit-transform:rotate(-90deg) translateX(-100%);
     -moz-transform:rotate(-90deg) translateX(-100%);
     transform-origin:top left 0;
     -webkit-transform-origin:top left 0;
     -moz-transform-origin:top left 0;
-    
 }
 nav ul.menu li{
     list-style:none;
@@ -58,9 +59,9 @@ nav ul.menu li{
     line-height:40px; /* Menu-bar width component 2/2 */
     text-align:center;
 }
-nav ul.menu li:hover{
+/* nav ul.menu li:hover{
     background-color:#457b9d;
-}
+} */
 ul.menu li a{
     text-decoration:none;
     color:#f1faee;
@@ -84,6 +85,7 @@ ul.menu li a{
     -moz-transform:translateX(400%);
     rotate:(-90deg);
 }
+/* End of sexy vertical nav */
 /* Experimenting with colors below */
 #menu-one{
     background-color:#e63946;
@@ -105,7 +107,6 @@ ul.menu li a{
     background-color:#1d3557;
     color:#f1faee;
 }
-
 /* 
 var colourPalettes=[];
 colourPalettes.push("baseline{
@@ -116,3 +117,38 @@ colourPalettes.push("baseline{
     spacecadet:"#1d3557"
 }");
 */
+/* Social media icons */
+.mediaIcons {
+    position: absolute;
+    left: 50%;
+    top: 90%;
+    transform: translate(-50%, -50%);
+}
+.mediaIcons ul li {
+    width: 80px;
+    height: 80px;
+    background: #1d3557;
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    border: 2px solid #f1faee;
+    margin: 0 10px;
+}
+.mediaIcons ul li a {
+    font-size: 30px;
+    text-decoration: none;
+    color: #f1faee;
+    line-height: 80px;
+    display: block;
+}
+.mediaIcons ul li:hover {
+    background: #f1faee;
+    transform: scale(1.1);
+    transition: .75s;
+}
+.mediaIcons ul li a:hover{
+    color: #1d3557;
+    transition: .5s;
+}
+/* End of social media icons */
