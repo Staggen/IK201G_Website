@@ -210,7 +210,7 @@ $(document).ready(() => {
                     "visibility":"visible",
                     "opacity":"1",
                     "transition":"1s",
-                    "transition-delay":"4.2s"
+                    "transition-delay":"4.3s"
                 });
                 $("#bar3").css({
                     "visibility":"visible",
@@ -224,7 +224,7 @@ $(document).ready(() => {
                     "visibility":"visible",
                     "opacity":"1",
                     "transition":"1s",
-                    "transition-delay":"4.4s"
+                    "transition-delay":"4.6s"
                 });
                 $("#bar4").css({
                     "visibility":"visible",
@@ -238,7 +238,7 @@ $(document).ready(() => {
                     "visibility":"visible",
                     "opacity":"1",
                     "transition":"1s",
-                    "transition-delay":"4.6s"
+                    "transition-delay":"4.9s"
                 });
                 $("#bar5").css({
                     "visibility":"visible",
@@ -252,13 +252,13 @@ $(document).ready(() => {
                     "visibility":"visible",
                     "opacity":"1",
                     "transition":"1s",
-                    "transition-delay":"4.8s"
+                    "transition-delay":"5.2s"
                 });
                 $(".timer").css({
                     "visibility":"visible",
                     "opacity":"1",
                     "transition":"2s",
-                    "transition-delay":"5s"
+                    "transition-delay":"5.5s"
                 });
                 break;
             case 3:

@@ -165,7 +165,6 @@ colourPalettes.push("baseline{
     width: 0;
     background: #1d3557;
 }
-
 .bar p {
     font-size: 1em;
     text-transform:uppercase;
@@ -216,7 +215,6 @@ colourPalettes.push("baseline{
     visibility:hidden;
     opacity:0;
 }
-
 #bar5{
     bottom: 0;
     visibility:hidden;
@@ -226,7 +224,6 @@ colourPalettes.push("baseline{
     visibility:hidden;
     opacity:0;
 }
-
 .timer {
     position: absolute;
     left: 50%;
