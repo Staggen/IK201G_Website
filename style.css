@@ -137,6 +137,8 @@ colourPalettes.push("baseline{
     padding-top: 25%; /* Keeps 1:1 aspect ratio with width */
     top: 33%;
     transform: translate(-75%, -50%);
+    visibility:hidden;
+    opacity:0;
 }
 
 .pic {

@@ -8,7 +8,8 @@ $(document).ready(() => {
 		evt.preventDefault();
 		$('html,body').animate({
 			scrollTop:$('.wrapper').offset().top
-		}, 10); // Make it short so it appears it's not an animation at all.
+        }, 10); // Make it short so it appears it's not an animation at all.
+        loadContent(0);
     });
     // End of page-to-top on load
 
@@ -40,6 +41,7 @@ $(document).ready(() => {
         });
         var menuChoice = $(this).closest("li").index();
         switchFunction(menuChoice); // Making the nav underline move
+        loadContent(menuChoice);
     });
     // End of event(s)
 
@@ -59,6 +61,7 @@ $(document).ready(() => {
                 }
             });
             switchFunction(page[0].id); // Making the nav underline move as you scroll
+            loadContent(page[0].id);
 		}
 		
         window.addEventListener('wheel', function(event) { // Window event listener for scrolling
@@ -160,6 +163,35 @@ $(document).ready(() => {
                     "background":"#457b9d",
                     "transition":"1s"
                 })
+        }
+    }
+
+    function loadContent(page){
+        switch(page){
+            case 0:
+            case "one":
+                // Code
+                break;
+            case 1:
+            case "two":
+                // Code
+                break;
+            case 2:
+            case "three":
+                $(".avatar").css({
+                    "visibility":"visible",
+                    "opacity":"1",
+                    "transition":"3s"
+                });
+                break;
+            case 3:
+            case "four":
+                // Code
+                break;
+            case 4:
+            case "five":
+                // Code
+                break;
         }
     }
     // End of function(s)
