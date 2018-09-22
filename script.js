@@ -43,7 +43,7 @@ $(document).ready(() => {
             var viewStart = $(window).scrollTop(); // The scrollTop() method sets or returns the vertical scrollbar position for the selected elements
             if(!pageJump){ // If it's not already scrolling
                 var pageHeight = page.height(); // The height() method sets or returns the height of the selected elements.
-                var pageStopPortion = pageHeight / 2; // Animation stops an 8th of the page height
+                var pageStopPortion = pageHeight / 8; // No idea what this one does. Division number does not seem to matter, as long as it is not 0, or 1.
                 var viewHeight = $(window).height(); // Get full element height
                 var viewEnd = viewStart + viewHeight; // viewEnd = scrollbar-position + element height = exact coordinates for the end of the transition
                 var pageStartPart = viewEnd - pageStart; // pageStartPart = (scrollbar-position + element height) - (page element top coordinates) = exact coordinates for the top of the scroll animation
