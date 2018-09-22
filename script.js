@@ -3,6 +3,19 @@ $(document).ready(() => {
     var pageJump=false; // Used for full page slide animations
     // End of global variable(s)
 
+    // Slide in nav on page load
+    $("nav").css({
+        "transform":"rotate(-90deg) translate(-100%, 0)",
+        "-webkit-transform":"rotate(-90deg) translate(-100%, 0)",
+        "-moz-transform":"rotate(-90deg) translate(-100%, 0)",
+        "transform-origin":"top left 0",
+        "-webkit-transform-origin":"top left 0",
+        "-moz-transform-origin":"top left 0",
+        "transition":"1.5s",
+        "transition-delay":"1s" // Waits one second before starting the transition
+    });
+    // End of nav slide
+
     // Start of event(s)
     $('nav ul li a').click(function(evt){ // Swapping page on nav click
         pageJump = true;
@@ -43,7 +56,7 @@ $(document).ready(() => {
             var viewStart = $(window).scrollTop(); // The scrollTop() method sets or returns the vertical scrollbar position for the selected elements
             if(!pageJump){ // If it's not already scrolling
                 var pageHeight = page.height(); // The height() method sets or returns the height of the selected elements.
-                var pageStopPortion = pageHeight / 8; // No idea what this one does. Division number does not seem to matter, as long as it is not 0, or 1.
+                var pageStopPortion = pageHeight/8; // No idea what this one does. Division number does not seem to matter, as long as it is not 0, or 1.
                 var viewHeight = $(window).height(); // Get full element height
                 var viewEnd = viewStart + viewHeight; // viewEnd = scrollbar-position + element height = exact coordinates for the end of the transition
                 var pageStartPart = viewEnd - pageStart; // pageStartPart = (scrollbar-position + element height) - (page element top coordinates) = exact coordinates for the top of the scroll animation
@@ -69,19 +82,19 @@ $(document).ready(() => {
             case 0:
             case "one":
                 $(".underline").css({
-                    "transform":"translate(400%,0)",
-                    "-webkit-transform":"translate(400%, 0)",
-                    "-moz-transform":"translate(400%, 0)",
-                    "background":"#32cd32",
+                    "transform":"translate(850%,0)",
+                    "-webkit-transform":"translate(850%, 0)",
+                    "-moz-transform":"translate(850%, 0)",
+                    "background":"#1d3557",
                     "transition":"1s"
                 })
                 break;
             case 1:
             case "two":
                 $(".underline").css({
-                    "transform":"translate(300%,0)",
-                    "-webkit-transform":"translate(300%, 0)",
-                    "-moz-transform":"translate(300%, 0)",
+                    "transform":"translate(650%,0)",
+                    "-webkit-transform":"translate(650%, 0)",
+                    "-moz-transform":"translate(650%, 0)",
                     "background":"#e63946",
                     "transition":"1s"
                 })
@@ -89,9 +102,9 @@ $(document).ready(() => {
             case 2:
             case "three":
                 $(".underline").css({
-                    "transform":"translate(200%,0)",
-                    "-webkit-transform":"translate(200%, 0)",
-                    "-moz-transform":"translate(200%, 0)",
+                    "transform":"translate(450%,0)",
+                    "-webkit-transform":"translate(450%, 0)",
+                    "-moz-transform":"translate(450%, 0)",
                     "background":"#f1faee",
                     "transition":"1s"
                 })
@@ -99,9 +112,9 @@ $(document).ready(() => {
             case 3:
             case "four":
                 $(".underline").css({
-                    "transform":"translate(100%,0)",
-                    "-webkit-transform":"translate(100%, 0)",
-                    "-moz-transform":"translate(100%, 0)",
+                    "transform":"translate(250%,0)",
+                    "-webkit-transform":"translate(250%, 0)",
+                    "-moz-transform":"translate(250%, 0)",
                     "background":"#a8dadc",
                     "transition":"1s"
                 })
@@ -109,9 +122,9 @@ $(document).ready(() => {
             case 4:
             case "five":
                 $(".underline").css({
-                    "transform":"translate(0,0)",
-                    "-webkit-transform":"translate(0, 0)",
-                    "-moz-transform":"translate(0, 0)",
+                    "transform":"translate(50%,0)",
+                    "-webkit-transform":"translate(50%, 0)",
+                    "-moz-transform":"translate(50%, 0)",
                     "background":"#457b9d",
                     "transition":"1s"
                 })
