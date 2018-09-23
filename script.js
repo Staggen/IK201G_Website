@@ -43,6 +43,11 @@ $(document).ready(() => {
         switchFunction(menuChoice); // Making the nav underline move
         loadContent(menuChoice);
     });
+
+    $(".dots ul li").click(function(){ // Flipping between team member previews
+        $(".dots ul li").removeClass("current");
+        $(this).addClass("current");
+    })
     // End of event(s)
 
     // Start of function(s)
@@ -117,52 +122,57 @@ $(document).ready(() => {
             case 0:
             case "one":
                 $("nav div").css({
-                    "transform":"translate(850%,0)",
-                    "-webkit-transform":"translate(850%, 0)",
-                    "-moz-transform":"translate(850%, 0)",
-                    "background":"#1d3557",
+                    "transform":"translateX(400%)",
+                    "-webkit-transform":"translateX(400%)",
+                    "-moz-transform":"translateX(400%)",
                     "transition":"1s"
-                })
+                });
+                $(".menu-item").removeClass("selected");
+                $("#menu-one").addClass("selected");
                 break;
             case 1:
             case "two":
                 $("nav div").css({
-                    "transform":"translate(650%,0)",
-                    "-webkit-transform":"translate(650%, 0)",
-                    "-moz-transform":"translate(650%, 0)",
-                    "background":"#e63946",
+                    "transform":"translateX(300%)",
+                    "-webkit-transform":"translateX(300%)",
+                    "-moz-transform":"translateX(300%)",
                     "transition":"1s"
                 })
+                $(".menu-item").removeClass("selected");
+                $("#menu-two").addClass("selected");
                 break;
             case 2:
             case "three":
                 $("nav div").css({
-                    "transform":"translate(450%,0)",
-                    "-webkit-transform":"translate(450%, 0)",
-                    "-moz-transform":"translate(450%, 0)",
-                    "background":"#f1faee",
+                    "transform":"translateX(200%)",
+                    "-webkit-transform":"translateX(200%)",
+                    "-moz-transform":"translateX(200%)",
                     "transition":"1s"
                 })
+                $(".menu-item").removeClass("selected");
+                $("#menu-three").addClass("selected");
                 break;
             case 3:
             case "four":
                 $("nav div").css({
-                    "transform":"translate(250%,0)",
-                    "-webkit-transform":"translate(250%, 0)",
-                    "-moz-transform":"translate(250%, 0)",
-                    "background":"#a8dadc",
+                    "transform":"translateX(100%)",
+                    "-webkit-transform":"translateX(100%)",
+                    "-moz-transform":"translateX(100%)",
                     "transition":"1s"
                 })
+                $(".menu-item").removeClass("selected");
+                $("#menu-four").addClass("selected");
                 break;
             case 4:
             case "five":
                 $("nav div").css({
-                    "transform":"translate(50%,0)",
-                    "-webkit-transform":"translate(50%, 0)",
-                    "-moz-transform":"translate(50%, 0)",
-                    "background":"#457b9d",
+                    "transform":"translateX(0)",
+                    "-webkit-transform":"translateX(0)",
+                    "-moz-transform":"translateX(0)",
                     "transition":"1s"
                 })
+                $(".menu-item").removeClass("selected");
+                $("#menu-five").addClass("selected");
         }
     }
 
@@ -210,7 +220,7 @@ $(document).ready(() => {
                     "visibility":"visible",
                     "opacity":"1",
                     "transition":"1s",
-                    "transition-delay":"4.3s"
+                    "transition-delay":"4.2s"
                 });
                 $("#bar3").css({
                     "visibility":"visible",
@@ -224,7 +234,7 @@ $(document).ready(() => {
                     "visibility":"visible",
                     "opacity":"1",
                     "transition":"1s",
-                    "transition-delay":"4.6s"
+                    "transition-delay":"4.4s"
                 });
                 $("#bar4").css({
                     "visibility":"visible",
@@ -238,7 +248,7 @@ $(document).ready(() => {
                     "visibility":"visible",
                     "opacity":"1",
                     "transition":"1s",
-                    "transition-delay":"4.9s"
+                    "transition-delay":"4.6s"
                 });
                 $("#bar5").css({
                     "visibility":"visible",
@@ -252,13 +262,19 @@ $(document).ready(() => {
                     "visibility":"visible",
                     "opacity":"1",
                     "transition":"1s",
-                    "transition-delay":"5.2s"
+                    "transition-delay":"4.8s"
                 });
                 $(".timer").css({
                     "visibility":"visible",
                     "opacity":"1",
                     "transition":"2s",
-                    "transition-delay":"5.5s"
+                    "transition-delay":"5s"
+                });
+                $(".dots").css({
+                    "visibility":"visible",
+                    "opacity":"1",
+                    "transition":"2s",
+                    "transition-delay":"6s"
                 });
                 break;
             case 3:
