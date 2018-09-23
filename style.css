@@ -129,6 +129,8 @@ colourPalettes.push("baseline{
     left:50%;
     top:50%;
     transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
 }
 .avatar{
     position:absolute;
@@ -136,6 +138,8 @@ colourPalettes.push("baseline{
     padding-top:25%; /* Keeps 1:1 aspect ratio with width */
     top:33%;
     transform:translate(-75%,-50%);
+    -webkit-transform:translate(-75%,-50%);
+    -moz-transform:translate(-75%,-50%);
     visibility:hidden;
     opacity:0;
 }
@@ -144,6 +148,8 @@ colourPalettes.push("baseline{
     left:50%;
     top:50%;
     transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
     max-width:100%;
     max-height:100%;
     border:10px solid #f1faee;
@@ -154,6 +160,8 @@ colourPalettes.push("baseline{
     padding-top:25%;
     top:33%;
     transform:translate(calc(25% + 10px),-50%);
+    -webkit-transform:translate(calc(25% + 10px),-50%);
+    -moz-transform:translate(calc(25% + 10px),-50%);
 }
 .bar{
     position:absolute;
@@ -225,6 +233,8 @@ colourPalettes.push("baseline{
     left:50%;
     top:80%;
     transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
     width:100%;
     display:flex;
     justify-content:center;
