@@ -1,6 +1,7 @@
 $(document).ready(() => {
     // Start of global variable(s)
     var pageJump=false; // Used for full page slide animations
+    var loadAvatars=true;
     // End of global variable(s)
 
     // Start of event(s)
@@ -31,7 +32,6 @@ $(document).ready(() => {
             pageJump = true;
             $('html, body').animate({ // Full page slide animation
                 scrollTop: pageStart
-
             }, {
                 duration: 1000,
                 speed:"ease-in",
@@ -89,7 +89,7 @@ $(document).ready(() => {
                 event.preventDefault();
             }
         });
-        window.addEventListener('resize', function(){ // Make the full page slide work properly even after resizing the window
+        window.addEventListener('resize', function(event){ // Make the full page slide work properly even after resizing the window
             pageStart = page.offset().top;
         })
     }
@@ -106,7 +106,7 @@ $(document).ready(() => {
                 break;
             case 2:
             case "three":
-                navUnderline("nav div","translate(450%","#f1faee");
+                navUnderline("nav div","translate(450%,0)","#f1faee");
                 break;
             case 3:
             case "four":
@@ -117,11 +117,11 @@ $(document).ready(() => {
                 navUnderline("nav div","translate(50%,0)","#457b9d");
                 break;
         }
-        function navUnderline(selector,position,color){
+        function navUnderline(selector,translation,color){
             $(selector).css({
-                "transform":position,
-                "-webkit-transform":position,
-                "-moz-transform":position,
+                "transform":translation,
+                "-webkit-transform":translation,
+                "-moz-transform":translation,
                 "background":color,
                 "transition":"1s"
             });
@@ -129,6 +129,7 @@ $(document).ready(() => {
     }
 
     function loadContent(page){
+        var checkVar=false;
         switch(page){
             case 0:
             case "one":
@@ -152,37 +153,17 @@ $(document).ready(() => {
                     "transition":"2s",
                     "transition-delay":"5.5s"
                 });
-                // Preview1
-                // function name(contentValue,width,transitionTime,transitionDelay);
-                barLoad(".preview1 .graph #bar1", "75%","2s","2.0s");
-                barLoad(".preview1 .graph #bar2","100%","2s","2.2s");
-                barLoad(".preview1 .graph #bar3", "50%","2s","2.4s");
-                barLoad(".preview1 .graph #bar4","125%","2s","2.6s");
-                barLoad(".preview1 .graph #bar5", "75%","2s","2.8s");
-                // function name(contentValue,transitionTime,transitionDelay);
-                barTextLoad(".preview1 .graph #bar1 p","1s","4.0s");
-                barTextLoad(".preview1 .graph #bar2 p","1s","4.3s");
-                barTextLoad(".preview1 .graph #bar3 p","1s","4.6s");
-                barTextLoad(".preview1 .graph #bar4 p","1s","4.9s");
-                barTextLoad(".preview1 .graph #bar5 p","1s","5.2s");
-                switchLeft(".preview1","1s","10s");
-                // End of preview1
-                // Preview2
-                switchCenter(".preview2","1s","10s");
-                // function name(contentValue,width,transitionTime,transitionDelay);
-                barLoad(".preview2 .graph #bar1", "75%","2s","12.0s");
-                barLoad(".preview2 .graph #bar2","100%","2s","12.2s");
-                barLoad(".preview2 .graph #bar3", "50%","2s","12.4s");
-                barLoad(".preview2 .graph #bar4","125%","2s","12.6s");
-                barLoad(".preview2 .graph #bar5", "80%","2s","12.8s");
-                // function name(contentValue,transitionTime,transitionDelay);
-                barTextLoad(".preview2 .graph #bar1 p","1s","14.0s");
-                barTextLoad(".preview2 .graph #bar2 p","1s","14.3s");
-                barTextLoad(".preview2 .graph #bar3 p","1s","14.6s");
-                barTextLoad(".preview2 .graph #bar4 p","1s","14.9s");
-                barTextLoad(".preview2 .graph #bar5 p","1s","15.2s");
-                // switchLeft(".preview2","1s","20s"); // If I add this it won't slide in in the first place
-                // End of preview2
+                if(loadAvatars){
+                    loadAvatars=false;
+                    memberOne();
+                    setTimeout(memberTwo,10000);
+                    setTimeout(memberThree,20000);
+                    var contentLoop = setInterval(() => {
+                        memberOne();
+                        setTimeout(memberTwo,10000);
+                        setTimeout(memberThree,20000);
+                    },30000);
+                }
                 break;
             case 3:
             case "four":
@@ -193,29 +174,98 @@ $(document).ready(() => {
                 // Code
                 break;
         }
-        function swicthRight(selector,transitionTime,transitionDelay){
-            $(selector).css({
-                "transform":"translate(200%,-50%)",
-                "transition":transitionTime,
-                "transition-delay":transitionDelay,
-                "transition-timing-function":"ease",
-            });
+        function memberOne(){
+            if(checkVar){ // If any content slide has been run before
+                $(".preview1").hide(); // Hide it
+                switchRight(".preview1",100); // Move it to the right
+                setTimeout(() => {
+                    $(".preview1").show(); // Show it again
+                },100);
+            }
+            switchCenter(".preview1",500); // Move right > center
+            // function barLoad(selector,width,transitionTime,transitionDelay);
+            barLoad(".preview1 .graph #bar1", "75%","2s","2.0s");
+            barLoad(".preview1 .graph #bar2","100%","2s","2.2s");
+            barLoad(".preview1 .graph #bar3", "50%","2s","2.4s");
+            barLoad(".preview1 .graph #bar4","125%","2s","2.6s");
+            barLoad(".preview1 .graph #bar5", "75%","2s","2.8s");
+            // function barTextLoad(selector,transitionTime,transitionDelay);
+            barTextLoad(".preview1 .graph #bar1 p","1s","4.0s");
+            barTextLoad(".preview1 .graph #bar2 p","1s","4.3s");
+            barTextLoad(".preview1 .graph #bar3 p","1s","4.6s");
+            barTextLoad(".preview1 .graph #bar4 p","1s","4.9s");
+            barTextLoad(".preview1 .graph #bar5 p","1s","5.2s");
+            switchLeft(".preview1",10000); // Move center > left
+            checkVar=true; // Confirm the function has been run
         }
-        function switchCenter(selector,transitionTime,transitionDelay){
-            $(selector).css({
-                "transform":"translate(-50%,-50%)",
-                "transition":transitionTime,
-                "transition-delay":transitionDelay,
-                "transition-timing-function":"ease",
-            });
+        function memberTwo(){ // ERROR | DOES NOT ANIMATE THE BARS!
+            if(checkVar){ // If any content slide has been run before
+                $(".preview2").hide(); // Hide it
+                switchRight(".preview2",100); // Move it to the right
+                setTimeout(() => {
+                    $(".preview2").show(); // Show it again
+                },100);
+            }
+            switchCenter(".preview2",500); // Move it right > center
+            // function barLoad(selector,width,transitionTime,transitionDelay);
+            barLoad(".preview2 .graph #bar1", "75%","2s","2.0s");
+            barLoad(".preview2 .graph #bar2","100%","2s","2.2s");
+            barLoad(".preview2 .graph #bar3", "50%","2s","2.4s");
+            barLoad(".preview2 .graph #bar4","125%","2s","2.6s");
+            barLoad(".preview2 .graph #bar5", "80%","2s","2.8s");
+            //function barTextLoad(selector,transitionTime,transitionDelay);
+            barTextLoad(".preview2 .graph #bar1 p","1s","4.0s");
+            barTextLoad(".preview2 .graph #bar2 p","1s","4.3s");
+            barTextLoad(".preview2 .graph #bar3 p","1s","4.6s");
+            barTextLoad(".preview2 .graph #bar4 p","1s","4.9s");
+            barTextLoad(".preview2 .graph #bar5 p","1s","5.2s");
+            switchLeft(".preview2",10000); // Move it center > left
+            checkVar=true; // Confirm that the function has been run
         }
-        function switchLeft(selector,transitionTime,transitionDelay){
-            $(selector).css({
-                "transform":"translate(-150%,-50%)",
-                "transition":transitionTime,
-                "transition-delay":transitionDelay,
-                "transition-timing-function":"ease",
-            });
+        function memberThree(){ // ERROR | DOES NOT ANIMATE THE BARS!
+            if(checkVar){ // If any content slide has been run before
+                $(".preview3").hide(); // Hide it
+                switchRight(".preview3",100); // Move it to the right
+                setTimeout(() => {
+                    $(".preview3").show(); // Show it again
+                },100);
+            }
+            switchCenter(".preview3",500); // Move it right > center
+            // function barLoad(selector,width,transitionTime,transitionDelay);
+            barLoad(".preview3 .graph #bar1", "90%","2s","2.0s");
+            barLoad(".preview3 .graph #bar2","110%","2s","2.2s");
+            barLoad(".preview3 .graph #bar3", "80%","2s","2.4s");
+            barLoad(".preview3 .graph #bar4", "40%","2s","2.6s");
+            barLoad(".preview3 .graph #bar5", "70%","2s","2.8s");
+            //function barTextLoad(selector,transitionTime,transitionDelay);
+            barTextLoad(".preview3 .graph #bar1 p","1s","4.0s");
+            barTextLoad(".preview3 .graph #bar2 p","1s","4.3s");
+            barTextLoad(".preview3 .graph #bar3 p","1s","4.6s");
+            barTextLoad(".preview3 .graph #bar4 p","1s","4.9s");
+            barTextLoad(".preview3 .graph #bar5 p","1s","5.2s");
+            switchLeft(".preview3",10000); // Move it center > left
+            checkVar=true; // Confirm that the function has been run
+        }
+        function switchRight(selector,transitionDelay){
+            setTimeout(() => {
+                $(selector).removeClass("switchLeft");
+                $(selector).removeClass("switchCenter");
+                $(selector).addClass("switchRight");
+            },transitionDelay);   
+        }
+        function switchCenter(selector,transitionDelay){
+            setTimeout(() => {
+                $(selector).removeClass("switchRight");
+                $(selector).removeClass("switchLeft");
+                $(selector).addClass("switchCenter");
+            },transitionDelay);
+        }
+        function switchLeft(selector,transitionDelay){
+            setTimeout(() => {
+                $(selector).removeClass("switchRight");
+                $(selector).removeClass("switchCenter");
+                $(selector).addClass("switchLeft");
+            },transitionDelay);
         }
         function barLoad(selector,width,transitionTime,transitionDelay){
             $(selector).css({
@@ -252,7 +302,7 @@ $(document).ready(() => {
         "transform-origin":"top left 0",
         "-webkit-transform-origin":"top left 0",
         "-moz-transform-origin":"top left 0",
-        "transition":"1.5s",
+        "transition":"transform 1.5s",
         "transition-delay":"1s" // Waits one second before starting the transition
     });
 

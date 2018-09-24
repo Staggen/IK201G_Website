@@ -146,9 +146,45 @@ colourPalettes.push("baseline{
     justify-content:center;
     left:50%;
     top:50%;
-    transform:translate(200%,-50%);
-    -webkit-transform:translate(200%,-50%);
-    -moz-transform:translate(200%,-50%);
+    transform:translate(50%,-50%);
+    -webkit-transform:translate(50%,-50%);
+    -moz-transform:translate(50%,-50%);
+}
+.preview3{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    left:50%;
+    top:50%;
+    transform:translate(50%,-50%);
+    -webkit-transform:translate(50%,-50%);
+    -moz-transform:translate(50%,-50%);
+}
+.switchRight{
+    transform:translate(50%,-50%);
+    -moz-transform:translate(50%,-50%);
+    -webkit-transform:translate(50%,-50%);
+    transition:1s;
+    -moz-transition:1s;
+    -webkit-transition:1s;
+}
+.switchCenter{
+    transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    transition:1s;
+    -moz-transition:1s;
+    -webkit-transition:1s;
+}
+.switchLeft{
+    transform:translate(-150%,-50%);
+    -moz-transform:translate(-150%,-50%);
+    -webkit-transform:translate(-150%,-50%);
+    transition:1s;
+    -moz-transition:1s;
+    -webkit-transition:1s;
 }
 .avatar{
     position:absolute;
