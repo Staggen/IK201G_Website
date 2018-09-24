@@ -21,7 +21,7 @@ $(document).ready(() => {
         "transform-origin":"top left 0",
         "-webkit-transform-origin":"top left 0",
         "-moz-transform-origin":"top left 0",
-        "transition":"1.5s",
+        "transition":"transform 1.5s",
         "transition-delay":"1s" // Waits one second before starting the transition
     });
     // End of nav slide
@@ -43,11 +43,6 @@ $(document).ready(() => {
         switchFunction(menuChoice); // Making the nav underline move
         loadContent(menuChoice);
     });
-
-    $(".dots ul li").click(function(){ // Flipping between team member previews
-        $(".dots ul li").removeClass("current");
-        $(this).addClass("current");
-    })
     // End of event(s)
 
     // Start of function(s)
@@ -114,7 +109,11 @@ $(document).ready(() => {
             }else{ // If it is already scrolling
                 event.preventDefault();
             }
-		});
+        });
+        
+        window.addEventListener("resize", function(){
+            pageStart = page.offset().top;
+          });
     }
 
     function switchFunction(data){ // Moves the nav underline and changes it's colors respective to the pages
@@ -122,57 +121,52 @@ $(document).ready(() => {
             case 0:
             case "one":
                 $("nav div").css({
-                    "transform":"translateX(400%)",
-                    "-webkit-transform":"translateX(400%)",
-                    "-moz-transform":"translateX(400%)",
+                    "transform":"translate(850%,0)",
+                    "-webkit-transform":"translate(850%, 0)",
+                    "-moz-transform":"translate(850%, 0)",
+                    "background":"#1d3557",
                     "transition":"1s"
-                });
-                $(".menu-item").removeClass("selected");
-                $("#menu-one").addClass("selected");
+                })
                 break;
             case 1:
             case "two":
                 $("nav div").css({
-                    "transform":"translateX(300%)",
-                    "-webkit-transform":"translateX(300%)",
-                    "-moz-transform":"translateX(300%)",
+                    "transform":"translate(650%,0)",
+                    "-webkit-transform":"translate(650%, 0)",
+                    "-moz-transform":"translate(650%, 0)",
+                    "background":"#e63946",
                     "transition":"1s"
                 })
-                $(".menu-item").removeClass("selected");
-                $("#menu-two").addClass("selected");
                 break;
             case 2:
             case "three":
                 $("nav div").css({
-                    "transform":"translateX(200%)",
-                    "-webkit-transform":"translateX(200%)",
-                    "-moz-transform":"translateX(200%)",
+                    "transform":"translate(450%,0)",
+                    "-webkit-transform":"translate(450%, 0)",
+                    "-moz-transform":"translate(450%, 0)",
+                    "background":"#f1faee",
                     "transition":"1s"
                 })
-                $(".menu-item").removeClass("selected");
-                $("#menu-three").addClass("selected");
                 break;
             case 3:
             case "four":
                 $("nav div").css({
-                    "transform":"translateX(100%)",
-                    "-webkit-transform":"translateX(100%)",
-                    "-moz-transform":"translateX(100%)",
+                    "transform":"translate(250%,0)",
+                    "-webkit-transform":"translate(250%, 0)",
+                    "-moz-transform":"translate(250%, 0)",
+                    "background":"#a8dadc",
                     "transition":"1s"
                 })
-                $(".menu-item").removeClass("selected");
-                $("#menu-four").addClass("selected");
                 break;
             case 4:
             case "five":
                 $("nav div").css({
-                    "transform":"translateX(0)",
-                    "-webkit-transform":"translateX(0)",
-                    "-moz-transform":"translateX(0)",
+                    "transform":"translate(50%,0)",
+                    "-webkit-transform":"translate(50%, 0)",
+                    "-moz-transform":"translate(50%, 0)",
+                    "background":"#457b9d",
                     "transition":"1s"
                 })
-                $(".menu-item").removeClass("selected");
-                $("#menu-five").addClass("selected");
         }
     }
 
@@ -220,7 +214,7 @@ $(document).ready(() => {
                     "visibility":"visible",
                     "opacity":"1",
                     "transition":"1s",
-                    "transition-delay":"4.2s"
+                    "transition-delay":"4.3s"
                 });
                 $("#bar3").css({
                     "visibility":"visible",
@@ -234,7 +228,7 @@ $(document).ready(() => {
                     "visibility":"visible",
                     "opacity":"1",
                     "transition":"1s",
-                    "transition-delay":"4.4s"
+                    "transition-delay":"4.6s"
                 });
                 $("#bar4").css({
                     "visibility":"visible",
@@ -248,7 +242,7 @@ $(document).ready(() => {
                     "visibility":"visible",
                     "opacity":"1",
                     "transition":"1s",
-                    "transition-delay":"4.6s"
+                    "transition-delay":"4.9s"
                 });
                 $("#bar5").css({
                     "visibility":"visible",
@@ -262,20 +256,26 @@ $(document).ready(() => {
                     "visibility":"visible",
                     "opacity":"1",
                     "transition":"1s",
-                    "transition-delay":"4.8s"
+                    "transition-delay":"5.2s"
                 });
-                $(".timer").css({
-                    "visibility":"visible",
-                    "opacity":"1",
-                    "transition":"2s",
-                    "transition-delay":"5s"
-                });
-                $(".dots").css({
-                    "visibility":"visible",
-                    "opacity":"1",
-                    "transition":"2s",
-                    "transition-delay":"6s"
-                });
+                // $(".timer").css({
+                //     "visibility":"visible",
+                //     "opacity":"1",
+                //     "transition":"2s",
+                //     "transition-delay":"5.5s"
+                // });
+                // $(".dots").css({
+                //     "visibility":"visible",
+                //     "opacity":"1",
+                //     "transition":"2s",
+                //     "transition-delay":"6s"
+                // });
+                // $(".preview").css({
+                //     "transform":"translate(-150%, -50%)",
+                //     "transition":"1s",
+                //     "transition-delay":"9.5s",
+                //     "transition-timing-function":"ease"
+                // });
                 break;
             case 3:
             case "four":
@@ -287,6 +287,7 @@ $(document).ready(() => {
                 break;
         }
     }
+    
     // End of function(s)
 
     // Start of trigger(s)

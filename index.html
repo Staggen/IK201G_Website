@@ -2,6 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Scrolling plz?</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
@@ -9,16 +11,16 @@
     <body>
         <nav>
             <ul class="menu">
-                <li><a class="menu-item selected" id="menu-one" href="#one">Home</a></li>
-                <li><a class="menu-item" id="menu-two" href="#two">About</a></li>
-                <li><a class="menu-item" id="menu-three" href="#three">Team</a></li>
-                <li><a class="menu-item" id="menu-four" href="#four">Portfolio</a></li>
-                <li><a class="menu-item" id="menu-five" href="#five">Contact</a></li>
+                <li><a id="menu-one" href="#one">Home</a></li>
+                <li><a id="menu-two" href="#two">About</a></li>
+                <li><a id="menu-three" href="#three">Team</a></li>
+                <li><a id="menu-four" href="#four">Portfolio</a></li>
+                <li><a id="menu-five" href="#five">Contact</a></li>
             </ul>
             <div class="underline"></div> <!-- nav underline div -->
         </nav>
         <div class="wrapper">
-            <!-- Main body wrapper div -->
+            <!-- Main body wrapper div -->  
             <div class="page" id="one">
                 <!-- Home -->
                 <h1>jQuery</h1>
@@ -29,9 +31,21 @@
             </div>
             <div class="page" id="three">
                 <!-- Team -->
+                <div class="timer">
+                    <ul>
+                        <li><a href="#">Indulge</a></li>
+                    </ul>
+                </div>
+                <div class="dots">
+                    <ul>
+                        <li class="dot" id="dot1"><a href="#"></a></li>
+                        <li class="dot" id="dot2"><a href="#"></a></li>
+                        <li class="dot" id="dot3"><a href="#"></a></li>
+                    </ul>
+                </div>
                 <div class="preview">
                     <div class="avatar">
-                        <img src="sweets.jpg" alt="" class="pic">
+                        <img src="white.jpg" alt="" class="pic">
                     </div>
                     <div class="graph">
                         <div class="bar" id="bar1"><p>Skill 1</p></div>
@@ -40,25 +54,27 @@
                         <div class="bar" id="bar4"><p>Skill 4</p></div>
                         <div class="bar" id="bar5"><p>Skill 5</p></div>
                     </div>
-                    <div class="timer">
-                        <ul>
-                            <li><a href="#">Indulge</a></li>
-                        </ul>
-                    </div>
-                    <div class="dots">
-                        <ul>
-                            <li class="dot current" id="dot1"><a href="#"></a></li>
-                            <li class="dot" id="dot2"><a href="#"></a></li>
-                            <li class="dot" id="dot3"><a href="#"></a></li>
-                        </ul>
-                    </div>
                 </div>
+
             </div>
             <div class="page" id="four">
                 <h1>Don't question why it works,</h1>
             </div>
             <div class="page" id="five">
-                <h1>just embrace the fact that it does</h1>
+                <div class="text">
+                    <p>CONTACT</p>
+                </div>
+                <div class="forms">
+                    <form action="" method="post">
+                            <input type="text" name="Name" placeholder="Name" id="name">
+                            <input type="email" name="e-mail" placeholder="e-mail" id="email">
+                            <textarea cols="50" id="main" placeholder="What's on your mind?"></textarea>
+                            <input type="submit" name="submit" id="submit">
+                    </form>
+                </div>
+                <div id="map">
+
+                </div>
                 <div class="mediaIcons">
                     <ul>
                         <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -70,7 +86,21 @@
                 </div>
             </div>
         </div>
+        <script>
+        function initMap() {
+            // The location of Uluru
+            var uluru = {lat: -25.344, lng: 131.036};
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 4, center: uluru});
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({position: uluru, map: map});
+          }
+        </script>
         <script src="https://code.jquery.com/jquery-latest.js"></script>
         <script src="script.js"></script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6fRj75Slc2keJ34O0Zpfu-wKOZzx8iY0&callback=initMap">
+        </script>
     </body>
 </html>
