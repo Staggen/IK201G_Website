@@ -3,29 +3,6 @@ $(document).ready(() => {
     var pageJump=false; // Used for full page slide animations
     // End of global variable(s)
 
-    // Setting page-to-top on load
-    window.addEventListener("load",function(evt){
-		evt.preventDefault();
-		$('html,body').animate({
-			scrollTop:$('.wrapper').offset().top
-        }, 10); // Make it short so it appears it's not an animation at all.
-        loadContent(0);
-    });
-    // End of page-to-top on load
-
-    // Slide in nav on page load
-    $("nav").css({
-        "transform":"rotate(-90deg) translate(-100%, 0)",
-        "-webkit-transform":"rotate(-90deg) translate(-100%, 0)",
-        "-moz-transform":"rotate(-90deg) translate(-100%, 0)",
-        "transform-origin":"top left 0",
-        "-webkit-transform-origin":"top left 0",
-        "-moz-transform-origin":"top left 0",
-        "transition":"1.5s",
-        "transition-delay":"1s" // Waits one second before starting the transition
-    });
-    // End of nav slide
-
     // Start of event(s)
     $('nav ul li a').click(function(evt){ // Swapping page on nav click
         pageJump = true;
@@ -54,8 +31,10 @@ $(document).ready(() => {
             pageJump = true;
             $('html, body').animate({ // Full page slide animation
                 scrollTop: pageStart
+
             }, {
                 duration: 1000,
+                speed:"ease-in",
                 complete: () => { // When animation complete: => do function
                     pageJump = false;
                 }
@@ -109,60 +88,43 @@ $(document).ready(() => {
             }else{ // If it is already scrolling
                 event.preventDefault();
             }
-		});
+        });
+        window.addEventListener('resize', function(){ // Make the full page slide work properly even after resizing the window
+            pageStart = page.offset().top;
+        })
     }
 
     function switchFunction(data){ // Moves the nav underline and changes it's colors respective to the pages
         switch(data){
             case 0:
             case "one":
-                $("nav div").css({
-                    "transform":"translate(850%,0)",
-                    "-webkit-transform":"translate(850%, 0)",
-                    "-moz-transform":"translate(850%, 0)",
-                    "background":"#1d3557",
-                    "transition":"1s"
-                })
+                navUnderline("nav div","translate(850%,0)","#1d3557");
                 break;
             case 1:
             case "two":
-                $("nav div").css({
-                    "transform":"translate(650%,0)",
-                    "-webkit-transform":"translate(650%, 0)",
-                    "-moz-transform":"translate(650%, 0)",
-                    "background":"#e63946",
-                    "transition":"1s"
-                })
+                navUnderline("nav div","translate(650%,0)","#e63946");
                 break;
             case 2:
             case "three":
-                $("nav div").css({
-                    "transform":"translate(450%,0)",
-                    "-webkit-transform":"translate(450%, 0)",
-                    "-moz-transform":"translate(450%, 0)",
-                    "background":"#f1faee",
-                    "transition":"1s"
-                })
+                navUnderline("nav div","translate(450%","#f1faee");
                 break;
             case 3:
             case "four":
-                $("nav div").css({
-                    "transform":"translate(250%,0)",
-                    "-webkit-transform":"translate(250%, 0)",
-                    "-moz-transform":"translate(250%, 0)",
-                    "background":"#a8dadc",
-                    "transition":"1s"
-                })
+                navUnderline("nav div","translate(250%,0)","#a8dadc");
                 break;
             case 4:
             case "five":
-                $("nav div").css({
-                    "transform":"translate(50%,0)",
-                    "-webkit-transform":"translate(50%, 0)",
-                    "-moz-transform":"translate(50%, 0)",
-                    "background":"#457b9d",
-                    "transition":"1s"
-                })
+                navUnderline("nav div","translate(50%,0)","#457b9d");
+                break;
+        }
+        function navUnderline(selector,position,color){
+            $(selector).css({
+                "transform":position,
+                "-webkit-transform":position,
+                "-moz-transform":position,
+                "background":color,
+                "transition":"1s"
+            });
         }
     }
 
@@ -178,88 +140,49 @@ $(document).ready(() => {
                 break;
             case 2:
             case "three":
-                $(".avatar").css({
+                $(".avatar").css({ // Load all avatars
                     "visibility":"visible",
                     "opacity":"1",
                     "transition":"2s",
                     "transition-delay":"1s"
                 });
-                $("#bar1").css({
-                    "visibility":"visible",
-                    "opacity":"1",
-                    "width":"75%",
-                    "transition":"2s",
-                    "transition-timing-function":"linear",
-                    "transition-delay":"2s"
-                });
-                $("#bar1 p").css({
-                    "visibility":"visible",
-                    "opacity":"1",
-                    "transition":"1s",
-                    "transition-delay":"4s"
-                });
-                $("#bar2").css({
-                    "visibility":"visible",
-                    "opacity":"1",
-                    "width":"100%",
-                    "transition":"2s",
-                    "transition-timing-function":"linear",
-                    "transition-delay":"2.2s"
-                });
-                $("#bar2 p").css({
-                    "visibility":"visible",
-                    "opacity":"1",
-                    "transition":"1s",
-                    "transition-delay":"4.3s"
-                });
-                $("#bar3").css({
-                    "visibility":"visible",
-                    "opacity":"1",
-                    "width":"50%",
-                    "transition":"2s",
-                    "transition-timing-function":"linear",
-                    "transition-delay":"2.4s"
-                });
-                $("#bar3 p").css({
-                    "visibility":"visible",
-                    "opacity":"1",
-                    "transition":"1s",
-                    "transition-delay":"4.6s"
-                });
-                $("#bar4").css({
-                    "visibility":"visible",
-                    "opacity":"1",
-                    "width":"125%",
-                    "transition":"2s",
-                    "transition-timing-function":"linear",
-                    "transition-delay":"2.6s"
-                });
-                $("#bar4 p").css({
-                    "visibility":"visible",
-                    "opacity":"1",
-                    "transition":"1s",
-                    "transition-delay":"4.9s"
-                });
-                $("#bar5").css({
-                    "visibility":"visible",
-                    "opacity":"1",
-                    "width":"75%",
-                    "transition":"2s",
-                    "transition-timing-function":"linear",
-                    "transition-delay":"2.8s"
-                });
-                $("#bar5 p").css({
-                    "visibility":"visible",
-                    "opacity":"1",
-                    "transition":"1s",
-                    "transition-delay":"5.2s"
-                });
-                $(".timer").css({
+                $(".timer").css({ // Load the timer button
                     "visibility":"visible",
                     "opacity":"1",
                     "transition":"2s",
                     "transition-delay":"5.5s"
                 });
+                // Preview1
+                // function name(contentValue,width,transitionTime,transitionDelay);
+                barLoad(".preview1 .graph #bar1", "75%","2s","2.0s");
+                barLoad(".preview1 .graph #bar2","100%","2s","2.2s");
+                barLoad(".preview1 .graph #bar3", "50%","2s","2.4s");
+                barLoad(".preview1 .graph #bar4","125%","2s","2.6s");
+                barLoad(".preview1 .graph #bar5", "75%","2s","2.8s");
+                // function name(contentValue,transitionTime,transitionDelay);
+                barTextLoad(".preview1 .graph #bar1 p","1s","4.0s");
+                barTextLoad(".preview1 .graph #bar2 p","1s","4.3s");
+                barTextLoad(".preview1 .graph #bar3 p","1s","4.6s");
+                barTextLoad(".preview1 .graph #bar4 p","1s","4.9s");
+                barTextLoad(".preview1 .graph #bar5 p","1s","5.2s");
+                switchLeft(".preview1","1s","10s");
+                // End of preview1
+                // Preview2
+                switchCenter(".preview2","1s","10s");
+                // function name(contentValue,width,transitionTime,transitionDelay);
+                barLoad(".preview2 .graph #bar1", "75%","2s","12.0s");
+                barLoad(".preview2 .graph #bar2","100%","2s","12.2s");
+                barLoad(".preview2 .graph #bar3", "50%","2s","12.4s");
+                barLoad(".preview2 .graph #bar4","125%","2s","12.6s");
+                barLoad(".preview2 .graph #bar5", "80%","2s","12.8s");
+                // function name(contentValue,transitionTime,transitionDelay);
+                barTextLoad(".preview2 .graph #bar1 p","1s","14.0s");
+                barTextLoad(".preview2 .graph #bar2 p","1s","14.3s");
+                barTextLoad(".preview2 .graph #bar3 p","1s","14.6s");
+                barTextLoad(".preview2 .graph #bar4 p","1s","14.9s");
+                barTextLoad(".preview2 .graph #bar5 p","1s","15.2s");
+                // switchLeft(".preview2","1s","20s"); // If I add this it won't slide in in the first place
+                // End of preview2
                 break;
             case 3:
             case "four":
@@ -270,14 +193,74 @@ $(document).ready(() => {
                 // Code
                 break;
         }
+        function swicthRight(selector,transitionTime,transitionDelay){
+            $(selector).css({
+                "transform":"translate(200%,-50%)",
+                "transition":transitionTime,
+                "transition-delay":transitionDelay,
+                "transition-timing-function":"ease",
+            });
+        }
+        function switchCenter(selector,transitionTime,transitionDelay){
+            $(selector).css({
+                "transform":"translate(-50%,-50%)",
+                "transition":transitionTime,
+                "transition-delay":transitionDelay,
+                "transition-timing-function":"ease",
+            });
+        }
+        function switchLeft(selector,transitionTime,transitionDelay){
+            $(selector).css({
+                "transform":"translate(-150%,-50%)",
+                "transition":transitionTime,
+                "transition-delay":transitionDelay,
+                "transition-timing-function":"ease",
+            });
+        }
+        function barLoad(selector,width,transitionTime,transitionDelay){
+            $(selector).css({
+                "visibility":"visible",
+                "opacity":"1",
+                "width":width,
+                "transition":transitionTime,
+                "transition-timing-function":"linear",
+                "transition-delay":transitionDelay
+            });
+        }
+        function barTextLoad(selector,transitionTime,transitionDelay){
+            $(selector).css({
+                "visibility":"visible",
+                "opacity":"1",
+                "transition":transitionTime,
+                "transition-delay":transitionDelay
+            });
+        }
     }
     // End of function(s)
 
-    // Start of trigger(s)
+    // Start of on-load trigger(s)
     new scrollHandler('one');
     new scrollHandler('two');
     new scrollHandler('three');
     new scrollHandler('four');
     new scrollHandler('five');
+
+    $("nav").css({ // Make the nav slide in on pageload
+        "transform":"rotate(-90deg) translate(-100%, 0)",
+        "-webkit-transform":"rotate(-90deg) translate(-100%, 0)",
+        "-moz-transform":"rotate(-90deg) translate(-100%, 0)",
+        "transform-origin":"top left 0",
+        "-webkit-transform-origin":"top left 0",
+        "-moz-transform-origin":"top left 0",
+        "transition":"1.5s",
+        "transition-delay":"1s" // Waits one second before starting the transition
+    });
+
+    window.addEventListener("load",function(){ // Scroll to top on pageload
+		$('html,body').animate({
+			scrollTop:$('.wrapper').offset().top
+        }, 10); // Make it short so it appears it's not an animation at all.
+        loadContent(0);
+    });
     // End of trigger(s)
 }); // End of $(document).ready(){};
