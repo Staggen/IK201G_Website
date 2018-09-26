@@ -137,7 +137,21 @@ $(document).ready(() => {
                 break;
             case 1:
             case "about":
-                // Code
+                var url=`https://api.github.com/search/repositories?q=language:javascript&sort=stars&order=desc`;
+                fetch(url,{
+                    method:'get',
+                    headers:{
+                        // 'Access-Control-Allow-Origin':'*',
+                        'Content-Type':'application/vnd.github.v3+json'
+                    }
+                })
+                .then((response) => {
+                    return response.json();
+                })
+                .then((myJSON) => {
+                    console.log(JSON.stringify(myJSON));
+                })
+                .catch(error => console.log(error));
                 break;
             case 2:
             case "team":

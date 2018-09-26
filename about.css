@@ -3,3 +3,31 @@
     background-color:#f1faee;
     color:#1d3557;
 }
+/* Page two: about the group and trending on github */
+.blurb{
+    position: absolute;
+    top: 0;
+    left: 40px;
+    height: 100%;
+    width: calc(50% - 20px);
+    /* background: #e63946; */
+}
+.blurb h2{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0.5em;
+    color: #32292F;
+    text-align: center;
+}
+.blurb p{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 1em;
+    color: #32292F;
+}
+.github{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: calc(50% - 20px);
+    background: #dce4d9;
+}
