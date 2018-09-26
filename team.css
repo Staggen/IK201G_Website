@@ -1,0 +1,296 @@
+#team{
+    /* Light Blue */
+    background-color:#a8dadc;
+    color:#e63946;
+    overflow-x:hidden;
+}
+/* Team page carousel */
+.content-container{
+    position:absolute;
+    height:100%;
+    width:100%;
+}
+.preview1{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+}
+.preview2{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    left:50%;
+    top:50%;
+    transform:translate(50%,-50%);
+    -webkit-transform:translate(50%,-50%);
+    -moz-transform:translate(50%,-50%);
+}
+.preview3{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    left:50%;
+    top:50%;
+    transform:translate(50%,-50%);
+    -webkit-transform:translate(50%,-50%);
+    -moz-transform:translate(50%,-50%);
+}
+.switchRight{
+    transform:translate(50%,-50%);
+    -moz-transform:translate(50%,-50%);
+    -webkit-transform:translate(50%,-50%);
+    transition:1s;
+    -moz-transition:1s;
+    -webkit-transition:1s;
+}
+.switchCenter{
+    transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    transition:1s;
+    -moz-transition:1s;
+    -webkit-transition:1s;
+}
+.switchLeft{
+    transform:translate(-150%,-50%);
+    -moz-transform:translate(-150%,-50%);
+    -webkit-transform:translate(-150%,-50%);
+    transition:1s;
+    -moz-transition:1s;
+    -webkit-transition:1s;
+}
+.avatar{
+    position:absolute;
+    width:25%;
+    padding-top:25%; /* Keeps 1:1 aspect ratio with width */
+    top:33%;
+    transform:translate(-75%,-50%);
+    -webkit-transform:translate(-75%,-50%);
+    -moz-transform:translate(-75%,-50%);
+    visibility:hidden;
+    opacity:0;
+}
+.pic{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    max-width:100%;
+    max-height:100%;
+    border:10px solid #f1faee;
+}
+.graph{
+    position:absolute;
+    width:25%;
+    padding-top:25%;
+    top:33%;
+    transform:translate(calc(25% + 10px),-50%);
+    -webkit-transform:translate(calc(25% + 10px),-50%);
+    -moz-transform:translate(calc(25% + 10px),-50%);
+}
+.bar{
+    position:absolute;
+    height:15%;
+    width:0;
+    background:#1d3557;
+}
+.bar p{
+    font-size:1em;
+    text-transform:uppercase;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight:400;
+    font:size 4vw; /* RELATIVE VIEW WIDTH, FIX IT PROPERLY */
+    letter-spacing:2px;
+    color:#f1faee;
+    margin-left:2em;
+    line-height:3em;
+}
+#bar1{
+    top:0;
+    visibility:hidden;
+    opacity:0;
+}
+#bar1 p{
+    visibility:hidden;
+    opacity:0;
+}
+#bar2{
+    top:25%;
+    transform:translateY(-25%);
+    visibility:hidden;
+    opacity:0;
+}
+#bar2 p{
+    visibility:hidden;
+    opacity:0;
+}
+#bar3{
+    top:50%;
+    transform:translateY(-50%);
+    visibility:hidden;
+    opacity:0;
+}
+#bar3 p{
+    visibility:hidden;
+    opacity:0;
+}
+#bar4{
+    bottom:25%;
+    transform:translateY(25%);
+    visibility:hidden;
+    opacity:0;
+}
+#bar4 p{
+    visibility:hidden;
+    opacity:0;
+}
+#bar5{
+    bottom: 0;
+    visibility:hidden;
+    opacity:0;
+}
+#bar5 p{
+    visibility:hidden;
+    opacity:0;
+}
+#bar6{
+    top:0;
+    visibility:hidden;
+    opacity:0;
+}
+#bar6 p{
+    visibility:hidden;
+    opacity:0;
+}
+#bar7{
+    top:25%;
+    transform:translateY(-25%);
+    visibility:hidden;
+    opacity:0;
+}
+#bar7 p{
+    visibility:hidden;
+    opacity:0;
+}
+#bar8{
+    top:50%;
+    transform:translateY(-50%);
+    visibility:hidden;
+    opacity:0;
+}
+#bar8 p{
+    visibility:hidden;
+    opacity:0;
+}
+#bar9{
+    bottom:25%;
+    transform:translateY(25%);
+    visibility:hidden;
+    opacity:0;
+}
+#bar9 p{
+    visibility:hidden;
+    opacity:0;
+}
+#bar10{
+    bottom: 0;
+    visibility:hidden;
+    opacity:0;
+}
+#bar10 p{
+    visibility:hidden;
+    opacity:0;
+}
+#bar11{
+    top:0;
+    visibility:hidden;
+    opacity:0;
+}
+#bar11 p{
+    visibility:hidden;
+    opacity:0;
+}
+#bar12{
+    top:25%;
+    transform:translateY(-25%);
+    visibility:hidden;
+    opacity:0;
+}
+#bar12 p{
+    visibility:hidden;
+    opacity:0;
+}
+#bar13{
+    top:50%;
+    transform:translateY(-50%);
+    visibility:hidden;
+    opacity:0;
+}
+#bar13 p{
+    visibility:hidden;
+    opacity:0;
+}
+#bar14{
+    bottom:25%;
+    transform:translateY(25%);
+    visibility:hidden;
+    opacity:0;
+}
+#bar14 p{
+    visibility:hidden;
+    opacity:0;
+}
+#bar15{
+    bottom: 0;
+    visibility:hidden;
+    opacity:0;
+}
+#bar15 p{
+    visibility:hidden;
+    opacity:0;
+}
+.timer{
+    position:absolute;
+    left:50%;
+    top:80%;
+    transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    width:100%;
+    display:flex;
+    justify-content:center;
+    visibility:hidden;
+    opacity:0;
+}
+.timer ul li{
+    width:100px;
+    height:100px;
+    background:#a8dadc;
+    list-style:none;
+    display:inline-block;
+    text-align:center;
+    border-radius:50%;
+    border:2px solid #f1faee;
+    margin:0 10px;
+}
+.timer ul li a{
+    font-size:20px;
+    text-decoration:none;
+    color:#f1faee;
+    line-height:100px;
+    display:block;
+}
+/* End of Team page carousel */

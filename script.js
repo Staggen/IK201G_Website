@@ -97,23 +97,23 @@ $(document).ready(() => {
     function switchFunction(data){ // Moves the nav underline and changes it's colors respective to the pages
         switch(data){
             case 0:
-            case "one":
+            case "home":
                 navUnderline("nav div","translate(850%,0)","#1d3557");
                 break;
             case 1:
-            case "two":
+            case "about":
                 navUnderline("nav div","translate(650%,0)","#e63946");
                 break;
             case 2:
-            case "three":
+            case "team":
                 navUnderline("nav div","translate(450%,0)","#f1faee");
                 break;
             case 3:
-            case "four":
+            case "portfolio":
                 navUnderline("nav div","translate(250%,0)","#a8dadc");
                 break;
             case 4:
-            case "five":
+            case "contact":
                 navUnderline("nav div","translate(50%,0)","#457b9d");
                 break;
         }
@@ -132,21 +132,22 @@ $(document).ready(() => {
         var checkVar=false;
         switch(page){
             case 0:
-            case "one":
+            case "home":
                 // Code
                 break;
             case 1:
-            case "two":
+            case "about":
                 // Code
                 break;
             case 2:
-            case "three":
-                $(".avatar").css({ // Load all avatars
-                    "visibility":"visible",
-                    "opacity":"1",
-                    "transition":"2s",
-                    "transition-delay":"1s"
-                });
+            case "team":
+            /*
+            ERROR | Only on the initial call of memberOne(); do we get the avatar and bars
+                    to load at all, or in order. For the rest of the calls (memberTwo,
+                    memberThree initial calls + all secondary calls for all functions) the
+                    bars refuse to animate/load in. They just appear as if they would always
+                    have been there.
+            */
                 $(".timer").css({ // Load the timer button
                     "visibility":"visible",
                     "opacity":"1",
@@ -154,24 +155,39 @@ $(document).ready(() => {
                     "transition-delay":"5.5s"
                 });
                 if(loadAvatars){
-                    loadAvatars=false;
+                    loadAvatars=false; // Confirm initial load of avatars
                     memberOne();
                     setTimeout(memberTwo,10000);
                     setTimeout(memberThree,20000);
-                    var contentLoop = setInterval(() => {
+                    var firstContent=setInterval(() => {
                         memberOne();
+                    },30000);
+                    var secondContent=setInterval(() => {
                         setTimeout(memberTwo,10000);
+                    },30000);
+                    var thirdContent=setInterval(() => {
                         setTimeout(memberThree,20000);
                     },30000);
                 }
                 break;
             case 3:
-            case "four":
+            case "portfolio":
                 // Code
                 break;
             case 4:
-            case "five":
-                // Code
+            case "contact":
+                // function itemLoad(selector,transitionTime,transitionDelay);
+                itemLoad("#contact .text p",            "1s","1.0s");
+                itemLoad("#contact .forms #name",       "2s","1.4s");
+                itemLoad("#contact .forms #email",      "2s","1.8s");
+                itemLoad("#contact .forms #main",       "2s","2.2s");
+                itemLoad("#contact .forms #submit",     "2s","2.6s");
+                itemLoad("#contact #map",               "2s","3.0s");
+                itemLoad("#contact ul li:nth-child(1)", "2s","3.5s");
+                itemLoad("#contact ul li:nth-child(2)", "2s","3.7s");
+                itemLoad("#contact ul li:nth-child(3)", "2s","3.9s");
+                itemLoad("#contact ul li:nth-child(4)", "2s","4.1s");
+                itemLoad("#contact ul li:nth-child(5)", "2s","4.3s");
                 break;
         }
         function memberOne(){
@@ -183,68 +199,65 @@ $(document).ready(() => {
                 },100);
             }
             switchCenter(".preview1",500); // Move right > center
+            itemLoad("#avatar1",    "2s","1.0s"); // Load the avatar
             // function barLoad(selector,width,transitionTime,transitionDelay);
-            barLoad(".preview1 .graph #bar1", "75%","2s","2.0s");
-            barLoad(".preview1 .graph #bar2","100%","2s","2.2s");
-            barLoad(".preview1 .graph #bar3", "50%","2s","2.4s");
-            barLoad(".preview1 .graph #bar4","125%","2s","2.6s");
-            barLoad(".preview1 .graph #bar5", "75%","2s","2.8s");
-            // function barTextLoad(selector,transitionTime,transitionDelay);
-            barTextLoad(".preview1 .graph #bar1 p","1s","4.0s");
-            barTextLoad(".preview1 .graph #bar2 p","1s","4.3s");
-            barTextLoad(".preview1 .graph #bar3 p","1s","4.6s");
-            barTextLoad(".preview1 .graph #bar4 p","1s","4.9s");
-            barTextLoad(".preview1 .graph #bar5 p","1s","5.2s");
+            barLoad("#bar1", "75%", "2s","2.0s");
+            barLoad("#bar2","100%", "2s","2.2s");
+            barLoad("#bar3", "50%", "2s","2.4s");
+            barLoad("#bar4","125%", "2s","2.6s");
+            barLoad("#bar5", "75%", "2s","2.8s");
+            // function itemLoad(selector,transitionTime,transitionDelay);
+            itemLoad("#bar1 p",     "1s","4.0s");
+            itemLoad("#bar2 p",     "1s","4.3s");
+            itemLoad("#bar3 p",     "1s","4.6s");
+            itemLoad("#bar4 p",     "1s","4.9s");
+            itemLoad("#bar5 p",     "1s","5.2s");
             switchLeft(".preview1",10000); // Move center > left
             checkVar=true; // Confirm the function has been run
         }
-        function memberTwo(){ // ERROR | DOES NOT ANIMATE THE BARS!
-            if(checkVar){ // If any content slide has been run before
-                $(".preview2").hide(); // Hide it
-                switchRight(".preview2",100); // Move it to the right
-                setTimeout(() => {
-                    $(".preview2").show(); // Show it again
-                },100);
-            }
+        function memberTwo(){
+            $(".preview2").hide(); // Hide it
+            switchRight(".preview2",100); // Move it to the right
+            setTimeout(() => {
+                $(".preview2").show(); // Show it again
+            },100);
             switchCenter(".preview2",500); // Move it right > center
+            itemLoad("#avatar2",    "2s","1.0s"); // Load the avatar
             // function barLoad(selector,width,transitionTime,transitionDelay);
-            barLoad(".preview2 .graph #bar1", "75%","2s","2.0s");
-            barLoad(".preview2 .graph #bar2","100%","2s","2.2s");
-            barLoad(".preview2 .graph #bar3", "50%","2s","2.4s");
-            barLoad(".preview2 .graph #bar4","125%","2s","2.6s");
-            barLoad(".preview2 .graph #bar5", "80%","2s","2.8s");
-            //function barTextLoad(selector,transitionTime,transitionDelay);
-            barTextLoad(".preview2 .graph #bar1 p","1s","4.0s");
-            barTextLoad(".preview2 .graph #bar2 p","1s","4.3s");
-            barTextLoad(".preview2 .graph #bar3 p","1s","4.6s");
-            barTextLoad(".preview2 .graph #bar4 p","1s","4.9s");
-            barTextLoad(".preview2 .graph #bar5 p","1s","5.2s");
+            barLoad("#bar6","75%",  "2s","2.0s");
+            barLoad("#bar7","100%", "2s","2.2s");
+            barLoad("#bar8","50%",  "2s","2.4s");
+            barLoad("#bar9","125%", "2s","2.6s");
+            barLoad("#bar10","80%", "2s","2.8s");
+            //function itemLoad(selector,transitionTime,transitionDelay);
+            itemLoad("#bar6 p",     "1s","4.0s");
+            itemLoad("#bar7 p",     "1s","4.3s");
+            itemLoad("#bar8 p",     "1s","4.6s");
+            itemLoad("#bar9 p",     "1s","4.9s");
+            itemLoad("#bar10 p",    "1s","5.2s");
             switchLeft(".preview2",10000); // Move it center > left
-            checkVar=true; // Confirm that the function has been run
         }
-        function memberThree(){ // ERROR | DOES NOT ANIMATE THE BARS!
-            if(checkVar){ // If any content slide has been run before
-                $(".preview3").hide(); // Hide it
-                switchRight(".preview3",100); // Move it to the right
-                setTimeout(() => {
-                    $(".preview3").show(); // Show it again
-                },100);
-            }
+        function memberThree(){
+            $(".preview3").hide(); // Hide it
+            switchRight(".preview3",100); // Move it to the right
+            setTimeout(() => {
+                $(".preview3").show(); // Show it again
+            },100);
             switchCenter(".preview3",500); // Move it right > center
+            itemLoad("#avatar3",    "2s","1.0s"); // Load the avatar
             // function barLoad(selector,width,transitionTime,transitionDelay);
-            barLoad(".preview3 .graph #bar1", "90%","2s","2.0s");
-            barLoad(".preview3 .graph #bar2","110%","2s","2.2s");
-            barLoad(".preview3 .graph #bar3", "80%","2s","2.4s");
-            barLoad(".preview3 .graph #bar4", "40%","2s","2.6s");
-            barLoad(".preview3 .graph #bar5", "70%","2s","2.8s");
-            //function barTextLoad(selector,transitionTime,transitionDelay);
-            barTextLoad(".preview3 .graph #bar1 p","1s","4.0s");
-            barTextLoad(".preview3 .graph #bar2 p","1s","4.3s");
-            barTextLoad(".preview3 .graph #bar3 p","1s","4.6s");
-            barTextLoad(".preview3 .graph #bar4 p","1s","4.9s");
-            barTextLoad(".preview3 .graph #bar5 p","1s","5.2s");
+            barLoad("#bar11","90%", "2s","2.0s");
+            barLoad("#bar12","110%","2s","2.2s");
+            barLoad("#bar13","80%", "2s","2.4s");
+            barLoad("#bar14","40%", "2s","2.6s");
+            barLoad("#bar15","70%", "2s","2.8s");
+            //function itemLoad(selector,transitionTime,transitionDelay);
+            itemLoad("#bar11 p",    "1s","4.0s");
+            itemLoad("#bar12 p",    "1s","4.3s");
+            itemLoad("#bar13 p",    "1s","4.6s");
+            itemLoad("#bar14 p",    "1s","4.9s");
+            itemLoad("#bar15 p",    "1s","5.2s");
             switchLeft(".preview3",10000); // Move it center > left
-            checkVar=true; // Confirm that the function has been run
         }
         function switchRight(selector,transitionDelay){
             setTimeout(() => {
@@ -267,6 +280,14 @@ $(document).ready(() => {
                 $(selector).addClass("switchLeft");
             },transitionDelay);
         }
+        function itemLoad(selector,transitionTime,transitionDelay){
+            $(selector).css({
+                "visibility":"visible",
+                "opacity":"1",
+                "transition":transitionTime,
+                "transition-delay":transitionDelay
+            });
+        }
         function barLoad(selector,width,transitionTime,transitionDelay){
             $(selector).css({
                 "visibility":"visible",
@@ -277,23 +298,15 @@ $(document).ready(() => {
                 "transition-delay":transitionDelay
             });
         }
-        function barTextLoad(selector,transitionTime,transitionDelay){
-            $(selector).css({
-                "visibility":"visible",
-                "opacity":"1",
-                "transition":transitionTime,
-                "transition-delay":transitionDelay
-            });
-        }
     }
     // End of function(s)
 
     // Start of on-load trigger(s)
-    new scrollHandler('one');
-    new scrollHandler('two');
-    new scrollHandler('three');
-    new scrollHandler('four');
-    new scrollHandler('five');
+    new scrollHandler('home');
+    new scrollHandler('about');
+    new scrollHandler('team');
+    new scrollHandler('portfolio');
+    new scrollHandler('contact');
 
     $("nav").css({ // Make the nav slide in on pageload
         "transform":"rotate(-90deg) translate(-100%, 0)",
@@ -312,5 +325,5 @@ $(document).ready(() => {
         }, 10); // Make it short so it appears it's not an animation at all.
         loadContent(0);
     });
-    // End of trigger(s)
+    // End of on-load trigger(s)
 }); // End of $(document).ready(){};
