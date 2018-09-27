@@ -1,7 +1,15 @@
 $(document).ready(() => {
     // Start of global variable(s)
     var pageJump=false; // Used for full page slide animations
-    var loadAvatars=true;
+    // Below are used for content-loading confirmations
+    var home = false;
+    var about = false;
+    var team = false;
+    var portfolio = false;
+    var contact = false;
+    var teamContentOne = false;
+    var teamContentTwo = false;
+    var teamContentThree = false;
     // End of global variable(s)
 
     // Start of event(s)
@@ -129,14 +137,6 @@ $(document).ready(() => {
     }
 
     function loadContent(page){
-        var home = false;
-        var about = false;
-        var team = false;
-        var portfolio = false;
-        var contact = false;
-        var teamContentOne = false;
-        var teamContentTwo = false;
-        var teamContentThree = false;
         switch(page){
             case 0:
             case "home":
@@ -145,7 +145,6 @@ $(document).ready(() => {
             case 1:
             case "about":
                 if(!about){
-                    console.log("About: "+about);
                     about=true; // Confirm that the about has been loaded
                     var dateObject = new Date();
                     var year = parseInt(dateObject.getUTCFullYear());
@@ -219,7 +218,6 @@ $(document).ready(() => {
             */
                 if(!team){
                     team=true; // Confirm that the team page has been loaded
-                    console.log("Team: "+team);
                     $(".timer").css({ // Load the timer button
                         "visibility":"visible",
                         "opacity":"1",
@@ -250,7 +248,6 @@ $(document).ready(() => {
             case "contact":
                 if(!contact){
                     contact=true; // Confirm that the contact page has been loaded
-                    console.log("Contact: "+contact);
                     // function itemLoad(selector,transitionTime,transitionDelay);
                     itemLoad("#contact .text p",            "1s","1.0s");
                     itemLoad("#contact .forms #name",       "2s","1.4s");
@@ -274,7 +271,6 @@ $(document).ready(() => {
                     $(".preview1").show(); // Show it again
                 },100);
                 switchCenter(".preview1",500); // Move right > center
-                console.log("Full cycle 1: "+teamContentOne);
             }
             if(!teamContentOne){
                 itemLoad("#avatar1",    "2s","1.0s"); // Load the avatar
@@ -290,7 +286,6 @@ $(document).ready(() => {
                 itemLoad("#bar3 p",     "1s","4.6s");
                 itemLoad("#bar4 p",     "1s","4.9s");
                 itemLoad("#bar5 p",     "1s","5.2s");
-                console.log("Full load 1: "+!teamContentOne);
             }
             switchLeft(".preview1",10000); // Move center > left
             teamContentOne=true; // Confirm that slide-page one has been loaded
@@ -316,7 +311,6 @@ $(document).ready(() => {
                 itemLoad("#bar8 p",     "1s","4.6s");
                 itemLoad("#bar9 p",     "1s","4.9s");
                 itemLoad("#bar10 p",    "1s","5.2s");
-                console.log("Full load 2: "+!teamContentTwo);
             }
             switchLeft(".preview2",10000); // Move it center > left
             teamContentTwo=true; // Confirm that slide-page two has been loaded
@@ -342,7 +336,6 @@ $(document).ready(() => {
                 itemLoad("#bar13 p",    "1s","4.6s");
                 itemLoad("#bar14 p",    "1s","4.9s");
                 itemLoad("#bar15 p",    "1s","5.2s");
-                console.log("Full load 3: "+!teamContentThree);
             }
             switchLeft(".preview3",10000); // Move it center > left
             teamContentThree=true; // Confirm that slide-page three has been loaded
