@@ -31,3 +31,9 @@
     width: calc(50% - 20px);
     background: #dce4d9;
 }
+.trendClass li{
+    list-style:none;
+}
+.trendClass li a{
+    text-decoration:none;
+}
