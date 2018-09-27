@@ -1,6 +1,10 @@
 $(document).ready(() => {
     // Start of global variable(s)
     var pageJump=false; // Used for full page slide animations
+
+    var userName=[]; // For highlight/lookup
+    var projectName=[]; // For highlight/lookup
+
     // Below are used for content-loading confirmations
     var home = false;
     var about = false;
@@ -197,16 +201,37 @@ $(document).ready(() => {
                         headers:{
                             'Content-Type':'application/vnd.github.v3+json; charset=utf-8',
                         },
-                        })
-                        .then((response) => { // Response is of type responseObject
-                            return response.json(); // Convert responseObject to JSONObject
-                        })
-                        .then((response) => { // Use JSONObject
-                            for(var i = 0;i < 5;i++){ // Loop 5 times (get the 5-top trends in javascript this week)
-                                $("#trend"+i).html(response.items[i].name); // Set the links show name to the name of the github project repository
-                                $("#trend"+i).attr("href",response.items[i].html_url); // Set the link's href to the url of the github repository
-                            }
-                        })
+                    })
+                    .then(response => { // Response is of type responseObject
+                        return response.json(); // Convert responseObject to JSONObject
+                    })
+                    .then(response => { // Use JSONObject
+                        for(var i = 0;i < 5;i++){ // Loop 5 times (get the 5-top trends in javascript this week)
+                            $("#trend"+i).html(parseInt(i+1)+". "+response.items[i].name); // Set the links show name to the name of the github project repository
+                            $("#trend"+i).attr("href",response.items[i].html_url); // Set the link's href to the url of the github repository
+                            userName[i]=response.items[i].owner.login;
+                            projectName[i]=response.items[i].name;
+                        }
+                    })
+                    .catch(error => console.error(error));
+                    url=`https://api.github.com/search/repositories?q=language:javascript&sort=stars&order=desc`
+                    fetch(url,{
+                        method:'get',
+                        headers:{
+                            'Content-Type':'application/vnd.github.v3+json; charset=utf-8',
+                        }
+                    })
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(response => {
+                        for(var i = 5;i < 10;i++){
+                            $("#trend"+i).html(parseInt(i-4)+". "+response.items[i].name);
+                            $("#trend"+i).attr("href",response.items[i].html_url);
+                            userName[i]=response.items[i].owner.login;
+                            projectName[i]=response.items[i].name;
+                        }
+                    })
                     .catch(error => console.error(error));
                 }
                 break;
@@ -408,6 +433,46 @@ $(document).ready(() => {
 			scrollTop:$('.wrapper').offset().top
         }, 10); // Make it short so it appears it's not an animation at all.
         loadContent(0);
+    });
+    
+    $(".github").on("mouseenter", "ul.trendClass li a", function(){
+        $(".moreInfo").removeClass("sneaky");
+        $(".github ul li a").removeClass("active");
+        $(this).addClass("active");
+        var dataValue=this.attributes.data.value;
+        console.log(dataValue);
+        // console.log("dataValue: "+dataValue+", userName: "+userName[dataValue]+", projectURL: "+projectURL[dataValue]);
+        url=`https://api.github.com/repos/${userName[dataValue]}/${projectName[dataValue]}/contributors`
+        fetch(url,{
+            method:'get',
+            headers:{
+                'Content-Type':'application/vnd.github.v3+json; charset=utf-8',
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(response => {
+            $(".contributorList").html("");
+            for(key in response){
+                $(".contributorList").append(`
+                <li>
+                    <a href="${response[key].html_url}" target="_blank" data-response-id=${response[key].id}>
+                        <img src="${response[key].avatar_url}">${response[key].login}
+                    </a>
+                </li>
+                `);
+            }
+        })
+        .catch(error => console.error(error));
+    });
+    $(".github, .github .moreInfo").mouseleave(() => {
+        $(".moreInfo").addClass("sneaky");
+        $(".github ul li a").removeClass("active");
+    });
+    $(".github p").mouseenter(() => {
+        $(".moreInfo").addClass("sneaky");
+        $(".github ul li a").removeClass("active");
     });
     // End of on-load trigger(s)
 }); // End of $(document).ready(){};
