@@ -97,9 +97,9 @@
     width:25%;
     padding-top:25%;
     top:33%;
-    transform:translate(calc(25% + 10px),-50%);
-    -webkit-transform:translate(calc(25% + 10px),-50%);
-    -moz-transform:translate(calc(25% + 10px),-50%);
+    transform:translate(calc(25% + 11px),-50%);
+    -webkit-transform:translate(calc(25% + 11px),-50%);
+    -moz-transform:translate(calc(25% + 11px),-50%);
 }
 .bar{
     position:absolute;
