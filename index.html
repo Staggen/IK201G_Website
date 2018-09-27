@@ -1,145 +1,188 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Scrolling plz?</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" type="text/css" href="home.css">
-        <link rel="stylesheet" type="text/css" href="about.css">
-        <link rel="stylesheet" type="text/css" href="team.css">
-        <link rel="stylesheet" type="text/css" href="portfolio.css">
-        <link rel="stylesheet" type="text/css" href="contact.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-    </head>
-    <body>
-        <nav>
-            <ul class="menu">
-                <li><a id="menu-home" href="#home">Home</a></li>
-                <li><a id="menu-about" href="#about">About</a></li>
-                <li><a id="menu-team" href="#team">Team</a></li>
-                <li><a id="menu-portfolio" href="#portfolio">Portfolio</a></li>
-                <li><a id="menu-contact" href="#contact">Contact</a></li>
-            </ul>
-            <div class="underline"></div> <!-- nav underline div -->
-        </nav>
-        <div class="wrapper">
-            <!-- Main body wrapper div -->
-            <div class="page" id="home">
-                <!-- Home -->
-                <h1>jQuery</h1>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scrolling plz?</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" type="text/css" href="about.css">
+    <link rel="stylesheet" type="text/css" href="team.css">
+    <link rel="stylesheet" type="text/css" href="portfolio.css">
+    <link rel="stylesheet" type="text/css" href="contact.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+</head>
+
+<body>
+    <nav>
+        <ul class="menu">
+            <li><a id="menu-home" href="#home">Home</a></li>
+            <li><a id="menu-about" href="#about">About</a></li>
+            <li><a id="menu-team" href="#team">Team</a></li>
+            <li><a id="menu-portfolio" href="#portfolio">Portfolio</a></li>
+            <li><a id="menu-contact" href="#contact">Contact</a></li>
+        </ul>
+        <div class="underline"></div> <!-- nav underline div -->
+    </nav>
+    <div class="wrapper">
+        <!-- Main body wrapper div -->
+        <div class="page" id="home">
+            <!-- Home -->
+            <h1>jQuery</h1>
+        </div>
+        <div class="page" id="about">
+            <!-- About -->
+            <div class="blurb">
+                <h2>The team behind J.E.P.H.</h2>
+                <p>Hailing from the each of the three corners of the earth, which was recently confirmed to be
+                    triangular (it makes sense, seeing how it <em>is</em> the strongest mathematical shape), two
+                    young men and one less so joined forces to create arguably the most sophisticated work of art in
+                    modern times.<br><br>These three men–henceforth referred to as <em>the Pale Council</em>–put forth
+                    a herculean effort over a fortnight, culminating in the very pages you are currently having the
+                    pleasure of experiencing.<br><br>What can the Pale Council accomplish? Perhaps the better question
+                    would be "what can they <em>not</em> accomplish?". Amongst themselves they possess unfathomable
+                    knowledge about nigh every conceivable subject.<br><br></p>
             </div>
-            <div class="page" id="about">
-                <!-- About -->
-                <div class="blurb">
-                    <h2>The team behind J.E.P.H.</h2>
-                    <p>Hailing from the each of the three corners of the earth, which was recently confirmed to be triangular (which makes sense seeing how it <em>is</em> the strongest mathematical shape), two young men and one less so joined forces to create arguably the most sophisticated work of art in modern times.<br><br>These three men–henceforth referred to as <em>the Pale Council</em>–put forth a herculean effort over a fortnight, culminating in the very page you are currently having the pleasure of experiencing.<br><br>What can the Pale Council accomplish? Perhaps the better question would be "what can they <em>not</em> accomplish?". Amongst themselves they possess unfathomable knowledge about nigh every conceivable subject.<br><br></p>
-                </div>
-                <div class="github">
-                    <!-- This is where we put the github API response -->
-                    <p>We specialize in the following:</p>
-                    <ul class="trendClass">
-                        <li><a href="" target="_blank" id="trend0"></a></li>
-                        <li><a href="" target="_blank" id="trend1"></a></li>
-                        <li><a href="" target="_blank" id="trend2"></a></li>
-                        <li><a href="" target="_blank" id="trend3"></a></li>
-                        <li><a href="" target="_blank" id="trend4"></a></li>
-                    </ul>   
-                </div>
-            </div>
-            <div class="page" id="team">
-                <!-- Team -->
-                <div class="content-container">
-                    <div class="preview1"> <!-- Team member 1 -->
-                        <div class="avatar" id="avatar1">
-                            <img src="95225493_512.jpg" alt="" class="pic">
-                        </div>
-                        <div class="graph">
-                            <div class="bar" id="bar1"><p>Skill 1</p></div>
-                            <div class="bar" id="bar2"><p>Skill 2</p></div>
-                            <div class="bar" id="bar3"><p>Skill 3</p></div>
-                            <div class="bar" id="bar4"><p>Skill 4</p></div>
-                            <div class="bar" id="bar5"><p>Skill 5</p></div>
-                        </div>
-                    </div>
-                    <div class="preview2"> <!-- Team member 2 -->
-                        <div class="avatar" id="avatar2">
-                            <img src="92413374_512.jpg" alt="" class="pic">
-                        </div>
-                        <div class="graph">
-                            <div class="bar" id="bar6"><p>Derp 1</p></div>
-                            <div class="bar" id="bar7"><p>Derp 2</p></div>
-                            <div class="bar" id="bar8"><p>Derp 3</p></div>
-                            <div class="bar" id="bar9"><p>Derp 4</p></div>
-                            <div class="bar" id="bar10"><p>Derp 5</p></div>
-                        </div>
-                    </div>
-                    <div class="preview3"> <!-- Team member 3 -->
-                        <div class="avatar" id="avatar3">
-                            <img src="216901241_512.jpg" alt="" class="pic">
-                        </div>
-                        <div class="graph">
-                            <div class="bar" id="bar11"><p>Text 1</p></div>
-                            <div class="bar" id="bar12"><p>Text 2</p></div>
-                            <div class="bar" id="bar13"><p>Text 3</p></div>
-                            <div class="bar" id="bar14"><p>Text 4</p></div>
-                            <div class="bar" id="bar15"><p>Text 5</p></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timer">
-                    <ul>
-                        <li><a href="#">Indulge</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="page" id="portfolio">
-                <!-- Portfolio -->
-                <h1>Don't question why it works,</h1>
-            </div>
-            <div class="page" id="contact">
-                <!-- Contact -->
-                <div class="text">
-                    <p>CONTACT</p>
-                </div>
-                <div class="forms">
-                    <form action="" method="post">
-                        <input type="text" name="Name" placeholder="Name" id="name">
-                        <input type="email" name="e-mail" placeholder="eMail" id="email">
-                        <textarea cols="50" id="main" placeholder="What's on your mind?"></textarea>
-                        <input type="submit" value="Submit" id="submit">
-                    </form>
-                </div>
-                <div id="map">
-                    <!-- This is where the map appears -->
-                </div>
-                <div class="mediaIcons">
-                    <ul>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                        <li><a href="#"><i class="fas fa-wheelchair"></i></a></li>
-                    </ul>
-                </div>
-                <script>
-                    function initMap() {
-                        // The location of Uluru
-                        var uluru = {lat: -25.344, lng: 131.036};
-                        // The map, centered at Uluru
-                        var map = new google.maps.Map(
-                            document.getElementById('map'), {zoom: 4, center: uluru});
-                        // The marker, positioned at Uluru
-                        var marker = new google.maps.Marker({position: uluru, map: map});
-                    }
-                </script>
-                <script async defer
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6fRj75Slc2keJ34O0Zpfu-wKOZzx8iY0&callback=initMap">
-                </script>
+            <div class="github">
+                <!-- This is where we put the github API response -->
+                <p>We specialize in the following:</p>
+                <ul class="trendClass">
+                    <li><a href="" target="_blank" id="trend0"></a></li>
+                    <li><a href="" target="_blank" id="trend1"></a></li>
+                    <li><a href="" target="_blank" id="trend2"></a></li>
+                    <li><a href="" target="_blank" id="trend3"></a></li>
+                    <li><a href="" target="_blank" id="trend4"></a></li>
+                </ul>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-latest.js"></script>
-        <script src="script.js"></script>
-    </body>
+        <div class="page" id="team">
+            <!-- Team -->
+            <div class="content-container">
+                <div class="preview1">
+                    <!-- Team member 1 -->
+                    <div class="avatar" id="avatar1">
+                        <img src="95225493_512.jpg" alt="" class="pic">
+                    </div>
+                    <div class="graph">
+                        <div class="bar" id="bar1">
+                            <p>Skill 1</p>
+                        </div>
+                        <div class="bar" id="bar2">
+                            <p>Skill 2</p>
+                        </div>
+                        <div class="bar" id="bar3">
+                            <p>Skill 3</p>
+                        </div>
+                        <div class="bar" id="bar4">
+                            <p>Skill 4</p>
+                        </div>
+                        <div class="bar" id="bar5">
+                            <p>Skill 5</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="preview2">
+                    <!-- Team member 2 -->
+                    <div class="avatar" id="avatar2">
+                        <img src="92413374_512.jpg" alt="" class="pic">
+                    </div>
+                    <div class="graph">
+                        <div class="bar" id="bar6">
+                            <p>Derp 1</p>
+                        </div>
+                        <div class="bar" id="bar7">
+                            <p>Derp 2</p>
+                        </div>
+                        <div class="bar" id="bar8">
+                            <p>Derp 3</p>
+                        </div>
+                        <div class="bar" id="bar9">
+                            <p>Derp 4</p>
+                        </div>
+                        <div class="bar" id="bar10">
+                            <p>Derp 5</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="preview3">
+                    <!-- Team member 3 -->
+                    <div class="avatar" id="avatar3">
+                        <img src="216901241_512.jpg" alt="" class="pic">
+                    </div>
+                    <div class="graph">
+                        <div class="bar" id="bar11">
+                            <p>Text 1</p>
+                        </div>
+                        <div class="bar" id="bar12">
+                            <p>Text 2</p>
+                        </div>
+                        <div class="bar" id="bar13">
+                            <p>Text 3</p>
+                        </div>
+                        <div class="bar" id="bar14">
+                            <p>Text 4</p>
+                        </div>
+                        <div class="bar" id="bar15">
+                            <p>Text 5</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="timer">
+                <ul>
+                    <li><a href="#">Indulge</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="page" id="portfolio">
+            <!-- Portfolio -->
+            <h1>Don't question why it works,</h1>
+        </div>
+        <div class="page" id="contact">
+            <!-- Contact -->
+            <div class="text">
+                <p>CONTACT</p>
+            </div>
+            <div class="forms">
+                <form action="" method="post">
+                    <input type="text" name="Name" placeholder="Name" id="name">
+                    <input type="email" name="e-mail" placeholder="eMail" id="email">
+                    <textarea cols="50" id="main" placeholder="What's on your mind?"></textarea>
+                    <input type="submit" value="Submit" id="submit">
+                </form>
+            </div>
+            <div id="map">
+                <!-- This is where the map appears -->
+            </div>
+            <div class="mediaIcons">
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="#"><i class="fas fa-wheelchair"></i></a></li>
+                </ul>
+            </div>
+            <script>
+                function initMap() {
+                    // The location of Uluru
+                    var uluru = { lat: -25.344, lng: 131.036 };
+                    // The map, centered at Uluru
+                    var map = new google.maps.Map(
+                        document.getElementById('map'), { zoom: 4, center: uluru });
+                    // The marker, positioned at Uluru
+                    var marker = new google.maps.Marker({ position: uluru, map: map });
+                }
+            </script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6fRj75Slc2keJ34O0Zpfu-wKOZzx8iY0&callback=initMap">
+
+            </script>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="script.js"></script>
+</body>
+
 </html>

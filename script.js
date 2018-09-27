@@ -148,7 +148,7 @@ $(document).ready(() => {
                     about=true; // Confirm that the about has been loaded
                     var dateObject = new Date();
                     var year = parseInt(dateObject.getUTCFullYear());
-                    var month = parseInt(dateObject.getUTCMonth())+1; // getUTCMonth() counts 0-11 by default, so that's why we add +1 at the end
+                    var month = parseInt(dateObject.getUTCMonth()) + 1; // getUTCMonth() counts 0-11 by default, so that's why we add +1 at the end
                     var day = parseInt(dateObject.getUTCDate());
                     function pastWeek(){
                         day = day - 7;
@@ -159,31 +159,34 @@ $(document).ready(() => {
                                 month = month + 12; // Setting the new month value
                             }
                             switch(month){ // Setting the new day value depending on month
-                                case 2:
+                                case 2: // February
                                     if(year % 4 == 0){ // If leap year
                                         day = 29 + day;
                                     }else{ // If not leap year
                                         day = 28 + day;
                                     }
                                     break;
-                                case 4:
-                                case 6:
-                                case 9:
-                                case 11:
+                                case 4: // April
+                                case 6: // June
+                                case 9: // September
+                                case 11: // November
                                     day = 30 + day;
                                     break;
-                                case 1:
-                                case 3:
-                                case 5:
-                                case 7:
-                                case 8:
-                                case 10:
-                                case 12:
+                                case 1: // January
+                                case 3: // March
+                                case 5: // May
+                                case 7: // July
+                                case 8: // August
+                                case 10: // Oktober
+                                case 12: // December
                                     day = 31 + day;
                                     break;
                             }
                         }
-                        if(month < 10){ // If month is less than 10, it will get a 0 infront of it (for API reasons) and be converted to a string
+                        if(day < 10){ // If the day is less than the 10th (single digit), it will get a 0 infront of it (for API reasons) and be converted to a string
+                            day = 0 + day.toString();
+                        }
+                        if(month < 10){ // If the month is less than the 10th (single digit), it will get a 0 infront of it (for API reasons) and be converted to a string
                             month = 0 + month.toString();
                         }
                         return year + "-" + month + "-" + day;
@@ -200,8 +203,8 @@ $(document).ready(() => {
                         })
                         .then((response) => { // Use JSONObject
                             for(var i = 0;i < 5;i++){ // Loop 5 times (get the 5-top trends in javascript this week)
-                                $("#trend"+i).html(response.items[i].name); // Add the link to the list
-                                $("#trend"+i).attr("href",response.items[i].html_url); // Set the links href to the href of the github repository
+                                $("#trend"+i).html(response.items[i].name); // Set the links show name to the name of the github project repository
+                                $("#trend"+i).attr("href",response.items[i].html_url); // Set the link's href to the url of the github repository
                             }
                         })
                     .catch(error => console.error(error));

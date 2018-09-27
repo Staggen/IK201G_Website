@@ -116,7 +116,24 @@
     letter-spacing:2px;
     color:#f1faee;
     margin-left:2em;
-    line-height:3em;
+}
+/* 1440p */
+@media (max-width:2560px){
+    .bar p{
+        line-height:5em;
+    }
+}
+/* 1080p */
+@media (max-width:1920px){
+    .bar p{
+        line-height:4em;
+    }
+}
+/* 720p */
+@media (max-width:1280px){
+    .bar p{
+        line-height:3em;
+    }
 }
 #bar1{
     top:0;
