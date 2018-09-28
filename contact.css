@@ -104,9 +104,7 @@
     border-radius:50%;
     border:2px solid #f1faee;
     margin:0 10px;
-    /* So it can be loaded */
-    visibility:hidden;
-    opacity:0;
+    transition: opacity 2s;
 }
 .mediaIcons ul li a{
     font-size:30px;
@@ -125,5 +123,9 @@
 .mediaIcons ul li a:hover{
     color:#1d3557;
     transition:0.5s;
+}
+#contact .sneaky{
+    visibility:hidden;
+    opacity:0;
 }
 /* End of social media icons */

@@ -1,6 +1,7 @@
 $(document).ready(() => {
     // Start of global variable(s)
     var pageJump=false; // Used for full page slide animations
+    var sneakyNormalScrolling=false; // OMG IT WORKS :O
 
     var userName=[]; // For highlight/lookup
     var projectName=[]; // For highlight/lookup
@@ -69,13 +70,15 @@ $(document).ready(() => {
                 var canJumpUp = pageEndPart >= 0; // Can do full page slide animation of pageEndPart is larger than or equal to 0
                 var stopJumpUp = pageEndPart > pageStopPortion; // Stop jump up after one element
                 var scrollingForward = event.deltaY > 0; // The deltaY property returns a positive value when scrolling down, and a negative value when scrolling up, otherwise 0.
-                if((scrollingForward && canJumpDown && !stopJumpDown)
-                    ||(!scrollingForward && canJumpUp && !stopJumpUp)){
-                    event.preventDefault();
-                    scrollToPage();
+                if(!sneakyNormalScrolling){
+                    if((scrollingForward && canJumpDown && !stopJumpDown)
+                        ||(!scrollingForward && canJumpUp && !stopJumpUp)){
+                        event.preventDefault();
+                        scrollToPage();
+                    }
                 }
             }else{ // If it is already scrolling
-                event.preventDefault();
+                    event.preventDefault();
             }
 		});
 		window.addEventListener('keydown', function(event){ // Window event listener for arrow key scrolling #StillHasNoIdeaWhatHeIsDoing
@@ -91,7 +94,7 @@ $(document).ready(() => {
                 var stopJumpDown = pageStartPart > pageStopPortion; // Stops jump down after one element
                 var canJumpUp = pageEndPart >= 0; // Can do full page slide animation of pageEndPart is larger than or equal to 0
                 var stopJumpUp = pageEndPart > pageStopPortion; // Stop jump up after one element
-                var keyEntry = event.keyCode; // event.keyCode returns the event keypress code. For arrow up that is 40, for arrow down it is 38.
+                var keyEntry = event.which; // event.which returns the event keypress code. For arrow up that is 40, for arrow down it is 38.
 				if((keyEntry == 40 && canJumpDown && !stopJumpDown)
                     ||(keyEntry == 38 && canJumpUp && !stopJumpUp)){
                     event.preventDefault();
@@ -103,7 +106,17 @@ $(document).ready(() => {
         });
         window.addEventListener('resize', function(event){ // Make the full page slide work properly even after resizing the window
             pageStart = page.offset().top;
-        })
+        });
+        window.addEventListener('keydown', function(event){ // Full page slide disabled while holding down control
+            if(event.which==17){ // keyCode 17 is CTRL
+                pageJump=true;
+            }
+        });
+        window.addEventListener('keyup', function(event){ // Release the brakes
+            if(event.which==17){ // keyCode 17 is CTRL
+                pageJump=false;
+            }
+        });
     }
 
     function switchFunction(data){ // Moves the nav underline and changes it's colors respective to the pages
@@ -195,6 +208,7 @@ $(document).ready(() => {
                         }
                         return year + "-" + month + "-" + day;
                     }
+                    
                     var url=`https://api.github.com/search/repositories?q=language:javascript+created:>${pastWeek()}&sort=stars&order=desc`;
                     fetch(url,{
                         method:'get',
@@ -206,14 +220,15 @@ $(document).ready(() => {
                         return response.json(); // Convert responseObject to JSONObject
                     })
                     .then(response => { // Use JSONObject
-                        for(var i = 0;i < 5;i++){ // Loop 5 times (get the 5-top trends in javascript this week)
+                        for(var i = 0;i < 5;i++){ // Loop 5 times (get the 5-top trends created in javascript this week)
                             $("#trend"+i).html(parseInt(i+1)+". "+response.items[i].name); // Set the links show name to the name of the github project repository
                             $("#trend"+i).attr("href",response.items[i].html_url); // Set the link's href to the url of the github repository
-                            userName[i]=response.items[i].owner.login;
-                            projectName[i]=response.items[i].name;
+                            userName[i]=response.items[i].owner.login; // Store the username ofuser who created the repo
+                            projectName[i]=response.items[i].name; // Store the profile link of the user who created the repo
                         }
                     })
-                    .catch(error => console.error(error));
+                    .catch(error => console.error(error)); // If someone is a doofus
+                    
                     url=`https://api.github.com/search/repositories?q=language:javascript&sort=stars&order=desc`
                     fetch(url,{
                         method:'get',
@@ -221,18 +236,52 @@ $(document).ready(() => {
                             'Content-Type':'application/vnd.github.v3+json; charset=utf-8',
                         }
                     })
-                    .then(response => {
-                        return response.json();
+                    .then(response => { // response is of type responseObject
+                        return response.json(); // Convert response to JSONObject
                     })
-                    .then(response => {
-                        for(var i = 5;i < 10;i++){
-                            $("#trend"+i).html(parseInt(i-4)+". "+response.items[i].name);
-                            $("#trend"+i).attr("href",response.items[i].html_url);
-                            userName[i]=response.items[i].owner.login;
-                            projectName[i]=response.items[i].name;
+                    .then(response => { // Use the JSONObject
+                        var counter=0;
+                        for(var i = 5;i < 10;i++){ // Loop 5 times to get the top 5 javascript repos of all time
+                            $("#trend"+i).html(parseInt(i-4)+". "+response.items[counter].name);
+                            $("#trend"+i).attr("href",response.items[counter].html_url);
+                            userName[i]=response.items[counter].owner.login;
+                            projectName[i]=response.items[counter].name;
+                            counter++;
                         }
                     })
-                    .catch(error => console.error(error));
+                    .catch(error => console.error(error)); // If someone is a doofus
+
+                    $(".github").on("mouseenter", "ul.trendClass li a", function(){
+                        sneakyNormalScrolling=false; // Disallow normal scrolling | enforce full page scrolling
+                        $(".moreInfo").removeClass("sneaky"); // Un-hide the .moreInfo class
+                        $(".github ul li a").removeClass("active"); // remove the class active from all li elements
+                        $(this).addClass("active"); // add the class active for this current li element
+                        
+                        var dataValue=this.attributes.data.value; // Get the specific data value for the current li
+                        url=`https://api.github.com/repos/${userName[dataValue]}/${projectName[dataValue]}/contributors`
+                        fetch(url,{
+                            method:'get',
+                            headers:{
+                                'Content-Type':'application/vnd.github.v3+json; charset=utf-8',
+                            }
+                        })
+                        .then(response => { // response is of type responseObject
+                            return response.json(); // Convert response to JSONObject
+                        })
+                        .then(response => { // Use the JSONObject
+                            $(".contributorList").html(""); // Clear the list
+                            for(key in response){
+                                $(".contributorList").append(`
+                                    <li>
+                                        <a href="${response[key].html_url}" target="_blank" data-response-id=${response[key].id}>
+                                            <img src="${response[key].avatar_url}">${response[key].login}
+                                        </a>
+                                    </li>
+                                `);// Adding rows individually to the list
+                            }
+                        })
+                        .catch(error => console.error(error)); // If somoene is a doofus
+                    });
                 }
                 break;
             case 2:
@@ -277,17 +326,27 @@ $(document).ready(() => {
                 if(!contact){
                     contact=true; // Confirm that the contact page has been loaded
                     // function itemLoad(selector,transitionTime,transitionDelay);
-                    itemLoad("#contact .text p",            "1s","1.0s");
-                    itemLoad("#contact .forms #name",       "2s","1.4s");
-                    itemLoad("#contact .forms #email",      "2s","1.8s");
-                    itemLoad("#contact .forms #main",       "2s","2.2s");
-                    itemLoad("#contact .forms #submit",     "2s","2.6s");
-                    itemLoad("#contact #map",               "2s","3.0s");
-                    itemLoad("#contact ul li:nth-child(1)", "2s","3.5s");
-                    itemLoad("#contact ul li:nth-child(2)", "2s","3.7s");
-                    itemLoad("#contact ul li:nth-child(3)", "2s","3.9s");
-                    itemLoad("#contact ul li:nth-child(4)", "2s","4.1s");
-                    itemLoad("#contact ul li:nth-child(5)", "2s","4.3s");
+                    itemLoad("#contact .text p",        "1s","1.0s");
+                    itemLoad("#contact .forms #name",   "2s","1.4s");
+                    itemLoad("#contact .forms #email",  "2s","1.8s");
+                    itemLoad("#contact .forms #main",   "2s","2.2s");
+                    itemLoad("#contact .forms #submit", "2s","2.6s");
+                    itemLoad("#contact #map",           "2s","3.0s");
+                    setTimeout(() => {
+                        $("#contact ul li:nth-child(1)").removeClass("sneaky");
+                    }, 3500);
+                    setTimeout(() => {
+                        $("#contact ul li:nth-child(2)").removeClass("sneaky");
+                    }, 3700);
+                    setTimeout(() => {
+                        $("#contact ul li:nth-child(3)").removeClass("sneaky");
+                    }, 3900);
+                    setTimeout(() => {
+                        $("#contact ul li:nth-child(4)").removeClass("sneaky");
+                    }, 4100);
+                    setTimeout(() => {
+                        $("#contact ul li:nth-child(5)").removeClass("sneaky");
+                    }, 4300);
                 }
                 break;
         }
@@ -435,44 +494,18 @@ $(document).ready(() => {
         loadContent(0);
     });
     
-    $(".github").on("mouseenter", "ul.trendClass li a", function(){
-        $(".moreInfo").removeClass("sneaky");
-        $(".github ul li a").removeClass("active");
-        $(this).addClass("active");
-        var dataValue=this.attributes.data.value;
-        console.log(dataValue);
-        // console.log("dataValue: "+dataValue+", userName: "+userName[dataValue]+", projectURL: "+projectURL[dataValue]);
-        url=`https://api.github.com/repos/${userName[dataValue]}/${projectName[dataValue]}/contributors`
-        fetch(url,{
-            method:'get',
-            headers:{
-                'Content-Type':'application/vnd.github.v3+json; charset=utf-8',
-            }
-        })
-        .then(response => {
-            return response.json();
-        })
-        .then(response => {
-            $(".contributorList").html("");
-            for(key in response){
-                $(".contributorList").append(`
-                <li>
-                    <a href="${response[key].html_url}" target="_blank" data-response-id=${response[key].id}>
-                        <img src="${response[key].avatar_url}">${response[key].login}
-                    </a>
-                </li>
-                `);
-            }
-        })
-        .catch(error => console.error(error));
-    });
     $(".github, .github .moreInfo").mouseleave(() => {
+        sneakyNormalScrolling=false;
         $(".moreInfo").addClass("sneaky");
         $(".github ul li a").removeClass("active");
     });
     $(".github p").mouseenter(() => {
+        sneakyNormalScrolling=false;
         $(".moreInfo").addClass("sneaky");
         $(".github ul li a").removeClass("active");
+    });
+    $(".moreInfo").mouseenter(() => {
+        sneakyNormalScrolling=true; // Allow normal scrolling in the .moreInfo div
     });
     // End of on-load trigger(s)
 }); // End of $(document).ready(){};
