@@ -16,16 +16,18 @@
 </head>
 
 <body>
-    <nav>
-        <ul class="menu">
-            <li><a id="menu-home" href="#home">Home</a></li>
-            <li><a id="menu-about" href="#about">About</a></li>
-            <li><a id="menu-team" href="#team">Team</a></li>
-            <li><a id="menu-portfolio" href="#portfolio">Portfolio</a></li>
-            <li><a id="menu-contact" href="#contact">Contact</a></li>
-        </ul>
-        <div class="underline"></div> <!-- nav underline div -->
-    </nav>
+    <div class="menuDiv">
+        <nav>
+            <ul class="menu">
+                <li><a id="menu-home" href="#home">Home</a></li>
+                <li><a id="menu-about" href="#about">About</a></li>
+                <li><a id="menu-team" href="#team">Team</a></li>
+                <li><a id="menu-portfolio" href="#portfolio">Portfolio</a></li>
+                <li><a id="menu-contact" href="#contact">Contact</a></li>
+            </ul>
+            <div class="underline"></div> <!-- nav underline div -->
+        </nav>
+    </div>
     <div class="wrapper">
         <!-- Main body wrapper div -->
         <div class="page" id="home">
@@ -48,7 +50,7 @@
             <div class="github">
                 <!-- This is where we put the github API response -->
                 <h2>We specialize in the following</h2>
-                <p>Top JS repos created this week:</p>
+                <p>Cascading Style Sheets:</p>
                 <ul class="trendClass">
                     <li><a href="" target="_blank" id="trend0" data=0></a></li>
                     <li><a href="" target="_blank" id="trend1" data=1></a></li>
@@ -56,7 +58,7 @@
                     <li><a href="" target="_blank" id="trend3" data=3></a></li>
                     <li><a href="" target="_blank" id="trend4" data=4></a></li>
                 </ul>
-                <p>Top JS repos alltime:</p>
+                <p>JavaScript:</p>
                 <ul class="trendClass">
                     <li><a href="" target="_blank" id="trend5" data=5></a></li>
                     <li><a href="" target="_blank" id="trend6" data=6></a></li>
@@ -146,9 +148,21 @@
                     </div>
                 </div>
             </div>
-            <div class="timer">
+            <div class="in-depth sneaky">
+                <img src="" alt="" class="person"> <!-- Inject picture of the team member -->
+                <p class="personInfo">
+                    <!-- Inject bullet list of personal information -->
+                </p>
+                <p class="lifeStory">
+                    <!-- Inject longer text with in-depth information about the team member -->
+                </p>
+            </div>
+            <div class="back sneaky">
+                    <p>╳</p>
+            </div>
+            <div class="timer sneaky">
                 <ul>
-                    <li><a href="#">Indulge</a></li>
+                    <li><a href="">Indulge</a></li>
                 </ul>
             </div>
         </div>
@@ -183,31 +197,16 @@
             </div>
             <script>
                 function initMap() {
-                    // The location of Uluru
-                    var uluru = { lat: -25.344, lng: 131.036 };
-                    // The map, centered at Uluru
+                    // The location of westMinisterAbbey
+                    var westMinisterAbbey = { lat: 51.4993500, lng: -0.1272900 };
+                    // The map, centered at westMinisterAbbey
                     var map = new google.maps.Map(
-                        document.getElementById('map'), { zoom: 4, center: uluru });
-                    // The marker, positioned at Uluru
-                    var marker = new google.maps.Marker({ position: uluru, map: map });
+                        document.getElementById('map'), { zoom: 16, center: westMinisterAbbey });
+                    // The marker, positioned at westMinisterAbbey
+                    var marker = new google.maps.Marker({ position: westMinisterAbbey, map: map });
                 }
             </script>
             <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6fRj75Slc2keJ34O0Zpfu-wKOZzx8iY0&callback=initMap">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </script>
         </div>
     </div>
