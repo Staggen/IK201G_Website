@@ -107,16 +107,6 @@ $(document).ready(() => {
         window.addEventListener('resize', function(event){ // Make the full page slide work properly even after resizing the window
             pageStart = page.offset().top;
         });
-        window.addEventListener('keydown', function(event){ // Full page slide disabled while holding down control
-            if(event.which==17){ // keyCode 17 is CTRL
-                pageJump=true;
-            }
-        });
-        window.addEventListener('keyup', function(event){ // Release the brakes
-            if(event.which==17){ // keyCode 17 is CTRL
-                pageJump=false;
-            }
-        });
     }
 
     function switchFunction(data){ // Moves the nav underline and changes it's colors respective to the pages
@@ -480,9 +470,10 @@ $(document).ready(() => {
                     itemLoad("#contact .text p",        "1s","1.0s");
                     itemLoad("#contact .forms #name",   "2s","1.4s");
                     itemLoad("#contact .forms #email",  "2s","1.8s");
-                    itemLoad("#contact .forms #main",   "2s","2.2s");
-                    itemLoad("#contact .forms #submit", "2s","2.6s");
-                    itemLoad("#contact #map",           "2s","3.0s");
+                    itemLoad("#contact .forms #phone",  "2s","2.2s");
+                    itemLoad("#contact .forms #main",   "2s","2.6s");
+                    itemLoad("#contact .forms #submit", "2s","3.0s");
+                    itemLoad("#contact #map",           "2s","3.4s");
                     setTimeout(() => {
                         $("#contact ul li:nth-child(1)").removeClass("sneaky");
                     }, 3500);
