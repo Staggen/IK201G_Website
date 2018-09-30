@@ -1,0 +1,131 @@
+#contact{
+    /* Space Cadet */
+    background-color:#1d3557;
+    color:#f1faee;
+    position:relative;
+    overflow: hidden;
+}
+/* Text */
+#contact .text {
+    text-align: center;
+}
+#contact .text p {
+    font-size: 5em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+    letter-spacing: 1em;
+    margin-left: 0.55em;
+    /* So it can be loaded */
+    visibility:hidden;
+    opacity:0;
+}
+/* Contact input forms */
+#contact .forms {
+    position: absolute;
+    width: calc(100% - 40px);
+    height: 50vh;
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
+}
+.forms #name,
+.forms #email {
+    width: calc(22.5% - 5px);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #32292F;
+    outline: none;
+    border: 1px solid #f1faee;
+    color: #f1faee;
+    padding: 2px;
+    /* So it can be loaded */
+    visibility:hidden;
+    opacity:0;
+}
+.forms #main {
+    margin-top: 10px;
+    width: 45%;
+    height: 44vh;
+    display: block;
+    resize: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 2px;
+    padding-left: 2px;
+    background: #32292F;
+    border: 1px solid #f1faee;
+    color: #f1faee;
+    outline: none;
+    /* So it can be loaded */
+    visibility:hidden;
+    opacity:0;
+}
+.forms #submit {
+    outline: none;
+    background: #32292F;
+    color: #f1faee;
+    border: 1px solid #f1faee;
+    padding: 2px;
+    margin-top: 10px;
+    /* So it can be loaded */
+    visibility:hidden;
+    opacity:0;
+}
+/* Google Maps div */
+#map {
+    width: calc(45% + 25px);
+    height: 50vh;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    border: 1px solid #f1faee;
+    /* So it can be loaded */
+    visibility:hidden;
+    opacity:0;
+}
+/* Social media icons */
+.mediaIcons{
+    position:absolute;
+    left:50%;
+    top:90%;
+    transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
+.mediaIcons ul li{
+    width:80px;
+    height:80px;
+    background:#1d3557;
+    list-style:none;
+    display:inline-block;
+    text-align:center;
+    border-radius:50%;
+    border:2px solid #f1faee;
+    margin:0 10px;
+    transition: opacity 2s;
+}
+.mediaIcons ul li a{
+    font-size:30px;
+    text-decoration:none;
+    color:#f1faee;
+    line-height:80px;
+    display:block;
+}
+.mediaIcons ul li:hover{
+    background:#f1faee;
+    transform:scale(1.1);
+    -webkit-transform:scale(1.1);
+    -moz-transform:scale(1.1);
+    transition:0.75s;
+}
+.mediaIcons ul li a:hover{
+    color:#1d3557;
+    transition:0.5s;
+}
+#contact .sneaky{
+    visibility:hidden;
+    opacity:0;
+}
+/* End of social media icons */

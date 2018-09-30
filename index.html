@@ -1,106 +1,220 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Scrolling plz?</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-    </head>
-    <body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scrolling plz?</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" type="text/css" href="about.css">
+    <link rel="stylesheet" type="text/css" href="team.css">
+    <link rel="stylesheet" type="text/css" href="portfolio.css">
+    <link rel="stylesheet" type="text/css" href="contact.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+</head>
+
+<body>
+    <div class="menuDiv">
         <nav>
             <ul class="menu">
-                <li><a id="menu-one" href="#one">Home</a></li>
-                <li><a id="menu-two" href="#two">About</a></li>
-                <li><a id="menu-three" href="#three">Team</a></li>
-                <li><a id="menu-four" href="#four">Portfolio</a></li>
-                <li><a id="menu-five" href="#five">Contact</a></li>
+                <li><a id="menu-home" href="#home">Home</a></li>
+                <li><a id="menu-about" href="#about">About</a></li>
+                <li><a id="menu-team" href="#team">Team</a></li>
+                <li><a id="menu-portfolio" href="#portfolio">Portfolio</a></li>
+                <li><a id="menu-contact" href="#contact">Contact</a></li>
             </ul>
             <div class="underline"></div> <!-- nav underline div -->
         </nav>
-        <div class="wrapper">
-            <!-- Main body wrapper div -->  
-            <div class="page" id="one">
-                <!-- Home -->
-                <h1>jQuery</h1>
-            </div>
-            <div class="page" id="two">
-                <!-- About -->
-                <h1> does make things easier </h1>
-            </div>
-            <div class="page" id="three">
-                <!-- Team -->
-                <div class="timer">
-                    <ul>
-                        <li><a href="#">Indulge</a></li>
-                    </ul>
-                </div>
-                <div class="dots">
-                    <ul>
-                        <li class="dot" id="dot1"><a href="#"></a></li>
-                        <li class="dot" id="dot2"><a href="#"></a></li>
-                        <li class="dot" id="dot3"><a href="#"></a></li>
-                    </ul>
-                </div>
-                <div class="preview">
-                    <div class="avatar">
-                        <img src="white.jpg" alt="" class="pic">
-                    </div>
-                    <div class="graph">
-                        <div class="bar" id="bar1"><p>Skill 1</p></div>
-                        <div class="bar" id="bar2"><p>Skill 2</p></div>
-                        <div class="bar" id="bar3"><p>Skill 3</p></div>
-                        <div class="bar" id="bar4"><p>Skill 4</p></div>
-                        <div class="bar" id="bar5"><p>Skill 5</p></div>
-                    </div>
-                </div>
+    </div>
 
+    <div class="wrapper">
+        <!-- Main body wrapper div -->
+        <div class="page" id="home">
+            <!-- Home -->
+            <h1>jQuery</h1>
+        </div>
+        <div class="page" id="about">
+            <!-- About -->
+            <div class="blurb">
+                <h2>The team behind J.E.P.H.</h2>
+                <p>Hailing from the each of the three corners of the earth, which was recently confirmed to be
+                    triangular (it makes sense, seeing how it <em>is</em> the strongest mathematical shape), two
+                    young men and one less so joined forces to create arguably the most sophisticated work of art in
+                    modern times.<br><br>These three men–henceforth referred to as <em>the Pale Council</em>–put forth
+                    a herculean effort over a fortnight, culminating in the very pages you are currently having the
+                    pleasure of experiencing.<br><br>What can the Pale Council accomplish? Perhaps the better question
+                    would be "what can they <em>not</em> accomplish?". Amongst themselves they possess unfathomable
+                    knowledge about nigh every conceivable subject.<br><br>I implore any reader who doubts the legitimacy of this claim to scour the trichiliocosm in its entirety for greater minds; you will not succeed. To the right the reader will find chronicles of their grandest undertakings to peruse at their leisure.</p>
             </div>
-            <div class="page" id="four">
-                <h1>Don't question why it works,</h1>
-            </div>
-            <div class="page" id="five">
-                <div class="text">
-                    <p>CONTACT</p>
-                </div>
-                <div class="forms">
-                    <form action="" method="post">
-                            <input type="text" name="Name" placeholder="Name" id="name">
-                            <input type="email" name="e-mail" placeholder="e-mail" id="email">
-                            <textarea cols="50" id="main" placeholder="What's on your mind?"></textarea>
-                            <input type="submit" name="submit" id="submit">
-                    </form>
-                </div>
-                <div id="map">
+            <div class="github">
+                <!-- This is where we put the github API response -->
+                <h2>We specialize in the following</h2>
+                <p>Top JS repos created this week:</p>
+                <ul class="trendClass">
+                    <li><a href="" target="_blank" id="trend0" data=0></a></li>
+                    <li><a href="" target="_blank" id="trend1" data=1></a></li>
+                    <li><a href="" target="_blank" id="trend2" data=2></a></li>
+                    <li><a href="" target="_blank" id="trend3" data=3></a></li>
+                    <li><a href="" target="_blank" id="trend4" data=4></a></li>
+                </ul>
+                <p>Top JS repos alltime:</p>
+                <ul class="trendClass">
+                    <li><a href="" target="_blank" id="trend5" data=5></a></li>
+                    <li><a href="" target="_blank" id="trend6" data=6></a></li>
+                    <li><a href="" target="_blank" id="trend7" data=7></a></li>
+                    <li><a href="" target="_blank" id="trend8" data=8></a></li>
+                    <li><a href="" target="_blank" id="trend9" data=9></a></li>
+                </ul>
+                <p style="display:block;line-height:1em;"></p> <!-- To allow the mouse to escape -->
+                <div class="moreInfo sneaky">
+                    <!-- This is where we have the github contributor info and avatars -->
+                    <ul class="contributorList">
 
-                </div>
-                <div class="mediaIcons">
-                    <ul>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                        <li><a href="#"><i class="fas fa-wheelchair"></i></a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <script>
-        function initMap() {
-            // The location of Uluru
-            var uluru = {lat: -25.344, lng: 131.036};
-            // The map, centered at Uluru
-            var map = new google.maps.Map(
-                document.getElementById('map'), {zoom: 4, center: uluru});
-            // The marker, positioned at Uluru
-            var marker = new google.maps.Marker({position: uluru, map: map});
-          }
-        </script>
-        <script src="https://code.jquery.com/jquery-latest.js"></script>
-        <script src="script.js"></script>
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6fRj75Slc2keJ34O0Zpfu-wKOZzx8iY0&callback=initMap">
-        </script>
-    </body>
+        <div class="page" id="team">
+            <!-- Team -->
+            <div class="content-container">
+                <div class="preview1">
+                    <!-- Team member 1 -->
+                    <div class="avatar" id="avatar1">
+                        <img src="95225493_512.jpg" alt="" class="pic">
+                    </div>
+                    <div class="graph">
+                        <div class="bar" id="bar1">
+                            <p>Skill 1</p>
+                        </div>
+                        <div class="bar" id="bar2">
+                            <p>Skill 2</p>
+                        </div>
+                        <div class="bar" id="bar3">
+                            <p>Skill 3</p>
+                        </div>
+                        <div class="bar" id="bar4">
+                            <p>Skill 4</p>
+                        </div>
+                        <div class="bar" id="bar5">
+                            <p>Skill 5</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="preview2">
+                    <!-- Team member 2 -->
+                    <div class="avatar" id="avatar2">
+                        <img src="92413374_512.jpg" alt="" class="pic">
+                    </div>
+                    <div class="graph">
+                        <div class="bar" id="bar6">
+                            <p>Derp 1</p>
+                        </div>
+                        <div class="bar" id="bar7">
+                            <p>Derp 2</p>
+                        </div>
+                        <div class="bar" id="bar8">
+                            <p>Derp 3</p>
+                        </div>
+                        <div class="bar" id="bar9">
+                            <p>Derp 4</p>
+                        </div>
+                        <div class="bar" id="bar10">
+                            <p>Derp 5</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="preview3">
+                    <!-- Team member 3 -->
+                    <div class="avatar" id="avatar3">
+                        <img src="216901241_512.jpg" alt="" class="pic">
+                    </div>
+                    <div class="graph">
+                        <div class="bar" id="bar11">
+                            <p>Text 1</p>
+                        </div>
+                        <div class="bar" id="bar12">
+                            <p>Text 2</p>
+                        </div>
+                        <div class="bar" id="bar13">
+                            <p>Text 3</p>
+                        </div>
+                        <div class="bar" id="bar14">
+                            <p>Text 4</p>
+                        </div>
+                        <div class="bar" id="bar15">
+                            <p>Text 5</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IN-DEPTH CONTENT -->
+            <div class="in-depth sneaky">
+                <img src="" alt="" class="person"> <!-- Inject picture of the team member -->
+                <p class="personInfo">
+                    <!-- Inject bullet list of personal information -->
+                </p>
+                <p class="lifeStory">
+                    <!-- Inject longer text with in-depth information about the team member -->
+                </p>
+            </div>
+            <div class="back sneaky">
+                    <p>╳</p>
+            </div>
+            <div class="timer sneaky">
+                <ul>
+                    <li><a href="">Indulge</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="page" id="portfolio">
+            <!-- Portfolio -->
+            <h1>Don't question why it works,</h1>
+        </div>
+        <div class="page" id="contact">
+            <!-- Contact -->
+            <div class="text">
+                <p>CONTACT</p>
+            </div>
+            <div class="forms">
+                <form action="" method="post">
+                    <input type="text" name="Name" placeholder="Name" id="name">
+                    <input type="email" name="e-mail" placeholder="eMail" id="email">
+                    <textarea cols="50" id="main" placeholder="What's on your mind?"></textarea>
+                    <input type="submit" value="Submit" id="submit">
+                </form>
+            </div>
+            <div id="map">
+                <!-- This is where the map appears -->
+            </div>
+            <div class="mediaIcons">
+                <ul>
+                    <li class="sneaky"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li class="sneaky"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li class="sneaky"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li class="sneaky"><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    <li class="sneaky"><a href="#"><i class="fas fa-wheelchair"></i></a></li>
+                </ul>
+            </div>
+            <script>
+                function initMap() {
+                    // The location of Uluru
+                    var uluru = { lat: -25.344, lng: 131.036 };
+                    // The map, centered at Uluru
+                    var map = new google.maps.Map(
+                        document.getElementById('map'), { zoom: 4, center: uluru });
+                    // The marker, positioned at Uluru
+                    var marker = new google.maps.Marker({ position: uluru, map: map });
+                }
+            </script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6fRj75Slc2keJ34O0Zpfu-wKOZzx8iY0&callback=initMap">
+            </script>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="script.js"></script>
+</body>
+
 </html>
