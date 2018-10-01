@@ -10,6 +10,12 @@
 .sneaky{
     visibility:hidden;
     opacity:0;
+    /* transition: opacity 1s; */
+}
+.sneaky2{
+    visibility:hidden;
+    opacity:0;
+    /* transition: opacity 2s; */
 }
 h1{
     line-height:100vh;
@@ -51,6 +57,8 @@ ul.menu li a{
     font-weight:400;
     font-size:12px;
     transform:translate(3px);
+    -webkit-transform:translate(3px);
+    -moz-transform:translate(3px);
 }
 nav div{
     position:fixed;
@@ -63,7 +71,6 @@ nav div{
     transform:translateX(850%);
     -webkit-transform:translateX(850%);
     -moz-transform:translateX(850%);
-    rotate:(-90deg);
 }
 /* End of sexy vertical nav */
 /* Experimenting with nav color scheme below */

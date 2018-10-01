@@ -15,9 +15,7 @@
     font-weight: lighter;
     letter-spacing: 1em;
     margin-left: 0.55em;
-    /* So it can be loaded */
-    visibility:hidden;
-    opacity:0;
+    transition: opacity 1s;
 }
 /* Contact input forms */
 #contact .forms {
@@ -35,12 +33,10 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #32292F;
     outline: none;
-    border: 1px solid #f1faee;
+    border: 1px solid #e63946;
     color: #f1faee;
     padding: 2px;
-    /* So it can be loaded */
-    visibility:hidden;
-    opacity:0;
+    transition: opacity 2s;
 }
 .forms #main {
     margin-top: 10px;
@@ -55,9 +51,7 @@
     border: 1px solid #f1faee;
     color: #f1faee;
     outline: none;
-    /* So it can be loaded */
-    visibility:hidden;
-    opacity:0;
+    transition: opacity 2s;
 }
 .forms #submit {
     outline: none;
@@ -66,9 +60,7 @@
     border: 1px solid #f1faee;
     padding: 2px;
     margin-top: 10px;
-    /* So it can be loaded */
-    visibility:hidden;
-    opacity:0;
+    transition: opacity 2s;
 }
 /* Google Maps div */
 #map {
@@ -79,9 +71,7 @@
     right: 10px;
     transform: translateY(-50%);
     border: 1px solid #f1faee;
-    /* So it can be loaded */
-    visibility:hidden;
-    opacity:0;
+    transition: opacity 2s;
 }
 /* Social media icons */
 .mediaIcons{
@@ -126,3 +116,9 @@
     transition:0.5s;
 }
 /* End of social media icons */
+.greenBorder{
+    border: 1px limegreen;
+}
+.redBorder{
+    border: 1px red;
+}
