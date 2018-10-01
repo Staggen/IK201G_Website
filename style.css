@@ -7,6 +7,10 @@
     width:100%;
     position:relative;
 }
+.sneaky{
+    visibility:hidden;
+    opacity:0;
+}
 h1{
     line-height:100vh;
     margin:auto;
@@ -26,10 +30,6 @@ nav{
     width:100vh; /* Full screen, flipped to height */
     z-index:1;
 }
-/* .menuDiv .sneaky{
-    visibility: hidden;
-    opacity: 0;
-} */
 nav ul.menu li{
     float:right;
     height:100%;

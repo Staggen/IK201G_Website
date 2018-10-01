@@ -30,7 +30,7 @@
     right: 0;
     height: 100%;
     width: calc(50% - 20px);
-    background: #dce4d9;
+    background: #a8dadc;
     font-family: Arial, Helvetica, sans-serif;
 }
 .moreInfo{
@@ -63,9 +63,6 @@
 .github .active{
     color: #f1faee;
     background-color: #1d3557;
-}
-#about .sneaky{
-    visibility:hidden;
 }
 #about img{
     width:32px;

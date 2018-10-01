@@ -29,8 +29,9 @@
     transform: translateY(-50%);
 }
 .forms #name,
-.forms #email {
-    width: calc(22.5% - 5px);
+.forms #email,
+.forms #phone {
+    width: calc(15% - 6.3px);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #32292F;
     outline: none;
@@ -123,9 +124,5 @@
 .mediaIcons ul li a:hover{
     color:#1d3557;
     transition:0.5s;
-}
-#contact .sneaky{
-    visibility:hidden;
-    opacity:0;
 }
 /* End of social media icons */

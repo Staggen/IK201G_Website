@@ -107,16 +107,6 @@ $(document).ready(() => {
         window.addEventListener('resize', function(event){ // Make the full page slide work properly even after resizing the window
             pageStart = page.offset().top;
         });
-        window.addEventListener('keydown', function(event){ // Full page slide disabled while holding down control
-            if(event.which==17){ // keyCode 17 is CTRL
-                pageJump=true;
-            }
-        });
-        window.addEventListener('keyup', function(event){ // Release the brakes
-            if(event.which==17){ // keyCode 17 is CTRL
-                pageJump=false;
-            }
-        });
     }
 
     function switchFunction(data){ // Moves the nav underline and changes it's colors respective to the pages
@@ -154,6 +144,7 @@ $(document).ready(() => {
     }
 
     function loadContent(page){
+        var slideOut;
         switch(page){
             case 0:
             case "home":
@@ -163,74 +154,93 @@ $(document).ready(() => {
             case "about":
                 if(!about){
                     about=true; // Confirm that the about has been loaded
-                    var dateObject = new Date();
-                    var year = parseInt(dateObject.getUTCFullYear());
-                    var month = parseInt(dateObject.getUTCMonth()) + 1; // getUTCMonth() counts 0-11 by default, so that's why we add +1 at the end
-                    var day = parseInt(dateObject.getUTCDate());
-                    function pastWeek(){
-                        day = day - 7;
-                        if(day < 1){ // If day goes below 1, it hops back a month
-                            month--;
-                            if(month < 0){ // If month goes below 0, it hops back a year
-                                year--;
-                                month = month + 12; // Setting the new month value
-                            }
-                            switch(month){ // Setting the new day value depending on month
-                                case 2: // February
-                                    if(year % 4 == 0){ // If leap year
-                                        day = 29 + day;
-                                    }else{ // If not leap year
-                                        day = 28 + day;
-                                    }
-                                    break;
-                                case 4: // April
-                                case 6: // June
-                                case 9: // September
-                                case 11: // November
-                                    day = 30 + day;
-                                    break;
-                                case 1: // January
-                                case 3: // March
-                                case 5: // May
-                                case 7: // July
-                                case 8: // August
-                                case 10: // Oktober
-                                case 12: // December
-                                    day = 31 + day;
-                                    break;
-                            }
-                        }
-                        if(day < 10){ // If the day is less than the 10th (single digit), it will get a 0 infront of it (for API reasons) and be converted to a string
-                            day = 0 + day.toString();
-                        }
-                        if(month < 10){ // If the month is less than the 10th (single digit), it will get a 0 infront of it (for API reasons) and be converted to a string
-                            month = 0 + month.toString();
-                        }
-                        return year + "-" + month + "-" + day;
-                    }
+                    // var dateObject = new Date();
+                    // var year = parseInt(dateObject.getUTCFullYear());
+                    // var month = parseInt(dateObject.getUTCMonth()) + 1; // getUTCMonth() counts 0-11 by default, so that's why we add +1 at the end
+                    // var day = parseInt(dateObject.getUTCDate());
+                    // function pastWeek(){
+                    //     day = day - 7;
+                    //     if(day < 1){ // If day goes below 1, it hops back a month
+                    //         month--;
+                    //         if(month < 0){ // If month goes below 0, it hops back a year
+                    //             year--;
+                    //             month = month + 12; // Setting the new month value
+                    //         }
+                    //         switch(month){ // Setting the new day value depending on month
+                    //             case 2: // February
+                    //                 if(year % 4 == 0){ // If leap year
+                    //                     day = 29 + day;
+                    //                 }else{ // If not leap year
+                    //                     day = 28 + day;
+                    //                 }
+                    //                 break;
+                    //             case 4: // April
+                    //             case 6: // June
+                    //             case 9: // September
+                    //             case 11: // November
+                    //                 day = 30 + day;
+                    //                 break;
+                    //             case 1: // January
+                    //             case 3: // March
+                    //             case 5: // May
+                    //             case 7: // July
+                    //             case 8: // August
+                    //             case 10: // Oktober
+                    //             case 12: // December
+                    //                 day = 31 + day;
+                    //                 break;
+                    //         }
+                    //     }
+                    //     if(day < 10){ // If the day is less than the 10th (single digit), it will get a 0 infront of it (for API reasons) and be converted to a string
+                    //         day = 0 + day.toString();
+                    //     }
+                    //     if(month < 10){ // If the month is less than the 10th (single digit), it will get a 0 infront of it (for API reasons) and be converted to a string
+                    //         month = 0 + month.toString();
+                    //     }
+                    //     return year + "-" + month + "-" + day;
+                    // }
+                    // var url=`https://api.github.com/search/repositories?q=language:javascript+created:>${pastWeek()}&sort=stars&order=desc`;
+                    // fetch(url,{
+                    //     method:'get',
+                    //     headers:{
+                    //         'Content-Type':'application/vnd.github.v3+json;charset=utf-8',
+                    //     },
+                    // })
+                    // .then(response => { // Response is of type responseObject
+                    //     return response.json(); // Convert responseObject to JSONObject
+                    // })
+                    // .then(response => { // Use JSONObject
+                    //     for(var i = 0;i < 5;i++){ // Loop 5 times (get the 5-top trends created in javascript this week)
+                    //         $("#trend"+i).html(parseInt(i+1)+". "+response.items[i].name); // Set the links show name to the name of the github project repository
+                    //         $("#trend"+i).attr("href",response.items[i].html_url); // Set the link's href to the url of the github repository
+                    //         userName[i]=response.items[i].owner.login; // Store the username ofuser who created the repo
+                    //         projectName[i]=response.items[i].name; // Store the profile link of the user who created the repo
+                    //     }
+                    // })
+                    // .catch(error => console.error(error)); // If someone is a doofus
                     
-                    var url=`https://api.github.com/search/repositories?q=language:javascript+created:>${pastWeek()}&sort=stars&order=desc`;
-                    fetch(url,{
+                    url=`https://api.github.com/search/repositories?q=language:css&sort=stars&order=desc`
+                    fetch(url,{ // Get CSS repos
                         method:'get',
                         headers:{
-                            'Content-Type':'application/vnd.github.v3+json; charset=utf-8',
-                        },
-                    })
-                    .then(response => { // Response is of type responseObject
-                        return response.json(); // Convert responseObject to JSONObject
-                    })
-                    .then(response => { // Use JSONObject
-                        for(var i = 0;i < 5;i++){ // Loop 5 times (get the 5-top trends created in javascript this week)
-                            $("#trend"+i).html(parseInt(i+1)+". "+response.items[i].name); // Set the links show name to the name of the github project repository
-                            $("#trend"+i).attr("href",response.items[i].html_url); // Set the link's href to the url of the github repository
-                            userName[i]=response.items[i].owner.login; // Store the username ofuser who created the repo
-                            projectName[i]=response.items[i].name; // Store the profile link of the user who created the repo
+                            'Content-Type':'application/vnd.github.v3+json; charset=utf-8'
                         }
                     })
-                    .catch(error => console.error(error)); // If someone is a doofus
-                    
+                    .then(response => {// response is of type responseObject
+                        return response.json(); // Convert response to JSONObject
+                    })
+                    .then(response => { // Use the JSONObject
+                        for(var i = 0; i < 5;i++){ // Loop 5 times to get the top 5 CSS repos
+                            $("#trend"+i).html(parseInt(i+1)+". "+response.items[i].name+" by "+response.items[i].owner.login);
+                            $("#trend"+i).attr("href",response.items[i].html_url);
+                            userName[i]=response.items[i].owner.login;
+                            projectName[i]=response.items[i].name;
+                        }
+                    })
+                    .catch(error => console.error(error));
+
                     url=`https://api.github.com/search/repositories?q=language:javascript&sort=stars&order=desc`
-                    fetch(url,{
+                    fetch(url,{ // Get JavaScript repos
                         method:'get',
                         headers:{
                             'Content-Type':'application/vnd.github.v3+json; charset=utf-8',
@@ -241,8 +251,8 @@ $(document).ready(() => {
                     })
                     .then(response => { // Use the JSONObject
                         var counter=0;
-                        for(var i = 5;i < 10;i++){ // Loop 5 times to get the top 5 javascript repos of all time
-                            $("#trend"+i).html(parseInt(i-4)+". "+response.items[counter].name);
+                        for(var i = 5;i < 10;i++){ // Loop 5 times to get the top 5 javascript
+                            $("#trend"+i).html(parseInt(i-4)+". "+response.items[counter].name+" by "+response.items[counter].owner.login);
                             $("#trend"+i).attr("href",response.items[counter].html_url);
                             userName[i]=response.items[counter].owner.login;
                             projectName[i]=response.items[counter].name;
@@ -259,7 +269,7 @@ $(document).ready(() => {
                         
                         var dataValue=this.attributes.data.value; // Get the specific data value for the current li
                         url=`https://api.github.com/repos/${userName[dataValue]}/${projectName[dataValue]}/contributors`
-                        fetch(url,{
+                        fetch(url,{ // Get a list of contributors
                             method:'get',
                             headers:{
                                 'Content-Type':'application/vnd.github.v3+json; charset=utf-8',
@@ -295,23 +305,157 @@ $(document).ready(() => {
             */
                 if(!team){
                     team=true; // Confirm that the team page has been loaded
-                    setTimeout(() => {
-                        $("#team .timer").removeClass("sneaky");
-                    }, 5500);
-                    memberOne();
-                    setTimeout(memberTwo,10000);
-                    setTimeout(memberThree,20000);
-                    var firstContent=setInterval(() => {
-                        memberOne();
-                    },30000);
-                    var secondContent=setInterval(() => {
-                        setTimeout(memberTwo,10000);
-                    },30000);
-                    var thirdContent=setInterval(() => {
-                        setTimeout(memberThree,20000);
-                    },30000);
-                }else{
-                    break;
+                    var teamCounter = 0;
+                    var initialSecondary;
+                    var initialTertiary;
+                    var firstContent;
+                    var secondContent;
+                    var thirdContent;
+                    function contentSlide(memberNumber){
+                        setTimeout(() => {
+                            $("#team .timer").removeClass("sneaky");
+                        },5500);
+                        if(memberNumber==0){
+                            memberOne();
+                            initialSecondary = setTimeout(() => {
+                                memberTwo();
+                                teamCounter = 1;
+                            },10000);
+                            initialTertiary = setTimeout(() => {
+                                memberThree();
+                                teamCounter = 2;
+                            },20000);
+                            firstContent=setInterval(() => {
+                                memberOne();
+                                teamCounter = 0;
+                            },30000);
+                            secondContent=setInterval(() => {
+                                setTimeout(memberTwo,10000);
+                                teamCounter = 1;
+                            },30000);
+                            thirdContent=setInterval(() => {
+                                setTimeout(memberThree,20000);
+                                teamCounter = 2;
+                            },30000);
+                        }
+                        else if(memberNumber==1){
+                            memberTwo();
+                            teamCounter = 1;
+                            initialSecondary = setTimeout(() => {
+                                memberThree();
+                                teamCounter = 2;
+                            },10000);
+                            initialTertiary = setTimeout(() => {
+                                memberOne();
+                                teamCounter = 0;
+                            },20000);
+                            secondContent=setInterval(() => {
+                                memberTwo();
+                                teamCounter = 1;
+                            },30000);
+                            thirdContent=setInterval(() => {
+                                setTimeout(memberThree,10000);
+                                teamCounter = 2;
+                            },30000);
+                            firstContent=setInterval(() => {
+                                setTimeout(memberOne,20000);
+                                teamCounter = 0;
+                            },30000);
+                        }
+                        else{
+                            memberThree();
+                            teamCounter = 2;
+                            initialSecondary = setTimeout(() => {
+                                memberOne();
+                                teamCounter = 0;
+                            },10000);
+                            initialTertiary = setTimeout(() => {
+                                memberTwo();
+                                teamCounter = 1;
+                            },20000);
+                            thirdContent=setInterval(() => {
+                                memberThree();
+                                teamCounter = 2;
+                            },30000);
+                            firstContent=setInterval(() => {
+                                setTimeout(memberOne,10000);
+                                teamCounter = 0;
+                            },30000);
+                            secondContent=setInterval(() => {
+                                setTimeout(memberTwo,20000);
+                                teamCounter = 1;
+                            },30000);
+                        }
+                    }
+
+                    $(".timer ul li").click((event) => {
+                        event.preventDefault();
+                        clearInterval(firstContent);
+                        clearInterval(secondContent);
+                        clearInterval(thirdContent);
+                        clearTimeout(initialSecondary);
+                        clearTimeout(initialTertiary);
+                        clearTimeout(slideOut);
+                        switch(teamCounter){
+                            case 0:
+                                $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
+                                $("#team .in-depth").html(`<img src="95225493_512.jpg" alt="" class="person">
+                                <p class="personInfo">
+                                    Former circle clicking master<br><br>
+                                    Underground arms dealer (secret)<br><br>
+                                    Enjoys clean ears<br><br>
+                                </p>
+                                <p class="lifeStory">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vero reiciendis laboriosam nam esse iure sequi illum porro laudantium nisi, harum quos repellat quasi autem quidem id nihil repellendus quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem facilis officiis magnam rem nulla vero veritatis ea quibusdam voluptatibus nesciunt suscipit, provident, sed nemo! Consequatur minus distinctio dolores sapiente! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit nobis harum voluptate quod. Maxime eius dolorum natus, facere ducimus amet odit harum a eaque perspiciatis architecto qui quia consequuntur illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet in modi, facilis velit sapiente rem rerum, tempora earum porro, sint et hic aliquam doloremque commodi impedit totam laborum ipsam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, provident dignissimos quidem cupiditate voluptates blanditiis. Pariatur ullam, excepturi hic tenetur, aut obcaecati id aliquid voluptas distinctio quasi impedit, veritatis non.
+                                </p>`).removeClass("sneaky");
+                                setTimeout(() => {
+                                    $(".menuDiv").addClass("sneaky");
+                                    $(".back").removeClass("sneaky");
+                                }, 100);
+                                break;
+                            case 1:
+                                $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
+                                $("#team .in-depth").html(`<img src="92413374_512.jpg" alt="" class="person">
+                                <p class="personInfo">
+                                    Likes shitty movies<br><br>
+                                    Finds milk too delicious to be vegan<br><br>
+                                    Buy more facts® for only $4.99 each<br><br>
+                                </p>
+                                <p class="lifeStory">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vero reiciendis laboriosam nam esse iure sequi illum porro laudantium nisi, harum quos repellat quasi autem quidem id nihil repellendus quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem facilis officiis magnam rem nulla vero veritatis ea quibusdam voluptatibus nesciunt suscipit, provident, sed nemo! Consequatur minus distinctio dolores sapiente! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit nobis harum voluptate quod. Maxime eius dolorum natus, facere ducimus amet odit harum a eaque perspiciatis architecto qui quia consequuntur illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet in modi, facilis velit sapiente rem rerum, tempora earum porro, sint et hic aliquam doloremque commodi impedit totam laborum ipsam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, provident dignissimos quidem cupiditate voluptates blanditiis. Pariatur ullam, excepturi hic tenetur, aut obcaecati id aliquid voluptas distinctio quasi impedit, veritatis non.
+                                </p>`).removeClass("sneaky");
+                                setTimeout(() => {
+                                    $(".menuDiv").addClass("sneaky");
+                                    $(".back").removeClass("sneaky");
+                                }, 100);
+                                break;
+                            case 2:
+                                $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
+                                $("#team .in-depth").html(`<img src="216901241_512.jpg" alt="" class="person">
+                                <p class="personInfo">
+                                    The palest council member<br><br>
+                                    Is possibly Queen Elizabeth II of the United Kingdom<br><br>
+                                    Dreams of owning a farm<br><br>
+                                </p>
+                                <p class="lifeStory">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vero reiciendis laboriosam nam esse iure sequi illum porro laudantium nisi, harum quos repellat quasi autem quidem id nihil repellendus quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem facilis officiis magnam rem nulla vero veritatis ea quibusdam voluptatibus nesciunt suscipit, provident, sed nemo! Consequatur minus distinctio dolores sapiente! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit nobis harum voluptate quod. Maxime eius dolorum natus, facere ducimus amet odit harum a eaque perspiciatis architecto qui quia consequuntur illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet in modi, facilis velit sapiente rem rerum, tempora earum porro, sint et hic aliquam doloremque commodi impedit totam laborum ipsam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, provident dignissimos quidem cupiditate voluptates blanditiis. Pariatur ullam, excepturi hic tenetur, aut obcaecati id aliquid voluptas distinctio quasi impedit, veritatis non.
+                                </p>`).removeClass("sneaky");
+                                setTimeout(() => {
+                                    $(".menuDiv").addClass("sneaky");
+                                    $(".back").removeClass("sneaky");
+                                }, 100);
+                                break;
+                        }
+                    });
+                    $(".back").click(() => {
+                        $(".back").addClass("sneaky");
+                        $(".menuDiv").removeClass("sneaky");
+                        $(".preview1, .preview2, .preview3, .timer").removeClass("sneaky");
+                        $("#team .in-depth").html('').removeClass("sneaky");
+                        contentSlide(teamCounter);
+                    });
+
+                    contentSlide(teamCounter); // Initial call
                 }
                 break;
             case 3:
@@ -326,9 +470,10 @@ $(document).ready(() => {
                     itemLoad("#contact .text p",        "1s","1.0s");
                     itemLoad("#contact .forms #name",   "2s","1.4s");
                     itemLoad("#contact .forms #email",  "2s","1.8s");
-                    itemLoad("#contact .forms #main",   "2s","2.2s");
-                    itemLoad("#contact .forms #submit", "2s","2.6s");
-                    itemLoad("#contact #map",           "2s","3.0s");
+                    itemLoad("#contact .forms #phone",  "2s","2.2s");
+                    itemLoad("#contact .forms #main",   "2s","2.6s");
+                    itemLoad("#contact .forms #submit", "2s","3.0s");
+                    itemLoad("#contact #map",           "2s","3.4s");
                     setTimeout(() => {
                         $("#contact ul li:nth-child(1)").removeClass("sneaky");
                     }, 3500);
@@ -439,7 +584,7 @@ $(document).ready(() => {
             },transitionDelay);
         }
         function switchLeft(selector,transitionDelay){
-            setTimeout(() => {
+            slideOut = setTimeout(() => {
                 $(selector).removeClass("switchRight");
                 $(selector).removeClass("switchCenter");
                 $(selector).addClass("switchLeft");
@@ -504,76 +649,77 @@ $(document).ready(() => {
     $(".moreInfo").mouseenter(() => {
         sneakyNormalScrolling=true; // Allow normal scrolling in the .moreInfo div
     });
-
-
-
-
-
-
-    // indulge functionality
-    var teamCounter = 0;
-    var infoArray = []
-    $(".timer ul li").click((evt) =>{
+    
+    // PORTFOLIO
+    $("#text1 ul li").click((evt) => {
         evt.preventDefault();
-        switch(teamCounter){
-            case 0:
-            $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
-            $("#team .in-depth").html(`<img src="95225493_512.jpg" alt="" class="person">
-            <p class="personInfo">
-                Former circle clicking master<br><br>
-                Underground arms dealer (secret)<br><br>
-                Enjoys clean ears<br><br>
-            </p>
-            <p class="lifeStory">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vero reiciendis laboriosam nam esse iure sequi illum porro laudantium nisi, harum quos repellat quasi autem quidem id nihil repellendus quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem facilis officiis magnam rem nulla vero veritatis ea quibusdam voluptatibus nesciunt suscipit, provident, sed nemo! Consequatur minus distinctio dolores sapiente! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit nobis harum voluptate quod. Maxime eius dolorum natus, facere ducimus amet odit harum a eaque perspiciatis architecto qui quia consequuntur illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet in modi, facilis velit sapiente rem rerum, tempora earum porro, sint et hic aliquam doloremque commodi impedit totam laborum ipsam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, provident dignissimos quidem cupiditate voluptates blanditiis. Pariatur ullam, excepturi hic tenetur, aut obcaecati id aliquid voluptas distinctio quasi impedit, veritatis non.
-            </p>`).removeClass("sneaky");
-            setTimeout(() => {
-                $(".menuDiv").addClass("sneaky");
-                $(".back").removeClass("sneaky");
-            }, 100);
-            break; 
-            case 1:
-            $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
-            $("#team .in-depth").html(`<img src="92413374_512.jpg" alt="" class="person">
-            <p class="personInfo">
-                Likes shitty movies<br><br>
-                Finds milk too delicious to be vegan<br><br>
-                Buy more facts® for only $4.99 each<br><br>
-            </p>
-            <p class="lifeStory">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vero reiciendis laboriosam nam esse iure sequi illum porro laudantium nisi, harum quos repellat quasi autem quidem id nihil repellendus quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem facilis officiis magnam rem nulla vero veritatis ea quibusdam voluptatibus nesciunt suscipit, provident, sed nemo! Consequatur minus distinctio dolores sapiente! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit nobis harum voluptate quod. Maxime eius dolorum natus, facere ducimus amet odit harum a eaque perspiciatis architecto qui quia consequuntur illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet in modi, facilis velit sapiente rem rerum, tempora earum porro, sint et hic aliquam doloremque commodi impedit totam laborum ipsam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, provident dignissimos quidem cupiditate voluptates blanditiis. Pariatur ullam, excepturi hic tenetur, aut obcaecati id aliquid voluptas distinctio quasi impedit, veritatis non.
-            </p>`).removeClass("sneaky");
-            setTimeout(() => {
-                $(".menuDiv").addClass("sneaky");
-                $(".back").removeClass("sneaky");
-            }, 100); 
-            break;
-            case 2:
-            $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
-            $("#team .in-depth").html(`<img src="216901241_512.jpg" alt="" class="person">
-            <p class="personInfo">
-                The palest council member<br><br>
-                Is possibly Queen Elizabeth II of the United Kingdom<br><br>
-                Dreams of owning a farm<br><br>
-            </p>
-            <p class="lifeStory">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vero reiciendis laboriosam nam esse iure sequi illum porro laudantium nisi, harum quos repellat quasi autem quidem id nihil repellendus quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem facilis officiis magnam rem nulla vero veritatis ea quibusdam voluptatibus nesciunt suscipit, provident, sed nemo! Consequatur minus distinctio dolores sapiente! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit nobis harum voluptate quod. Maxime eius dolorum natus, facere ducimus amet odit harum a eaque perspiciatis architecto qui quia consequuntur illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet in modi, facilis velit sapiente rem rerum, tempora earum porro, sint et hic aliquam doloremque commodi impedit totam laborum ipsam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, provident dignissimos quidem cupiditate voluptates blanditiis. Pariatur ullam, excepturi hic tenetur, aut obcaecati id aliquid voluptas distinctio quasi impedit, veritatis non.
-            </p>`).removeClass("sneaky");
-            setTimeout(() => {
-                $(".menuDiv").addClass("sneaky");
-                $(".back").removeClass("sneaky");
-            }, 100); 
-        }
-        teamCounter = (teamCounter + 1) % 3;
-        console.log(teamCounter);
-    })
+        $("#portfolio #image1").addClass("expandHeight");
+        $("#portfolio #image1").addClass("z-index");
+        setTimeout(() => {
+            $("#portfolio #image1").addClass("expandWidth");
+        }, 500);
+        setTimeout(() => {
+            $(".menuDiv").addClass("sneaky");
+            $(".portBack").removeClass("sneaky");
+        }, 500);
+     });
 
-    //return to the preview carousel
-    $(".back").click(() => {
-        $(".back").addClass("sneaky");
+     $("#text2 ul li").click((evt) => {
+        evt.preventDefault();
+        $("#portfolio #image2").css({
+            "height":"100%",
+            "top":"0"
+        });
+        $("#portfolio #image2").addClass("z-index");
+        setTimeout(() => {
+            $("#portfolio #image2").css({
+                "width":"100%",
+                "left":"0"
+            });
+        }, 500);
+        setTimeout(() => {
+            $(".menuDiv").addClass("sneaky");
+            $(".portBack").removeClass("sneaky");
+        }, 500);
+     });
+
+     $("#text3 ul li").click((evt) => {
+        evt.preventDefault();
+        $("#portfolio #image3").addClass("expandHeight");
+        $("#portfolio #image3").addClass("z-index");
+        setTimeout(() => {
+            $("#portfolio #image3").addClass("expandWidth");
+        }, 500);
+        setTimeout(() => {
+            $(".menuDiv").addClass("sneaky");
+            $(".portBack").removeClass("sneaky");
+        }, 500);
+     });
+
+     $(".portBack").click(() => {
+        $(".portBack").addClass("sneaky");
         $(".menuDiv").removeClass("sneaky");
-        $(".preview1, .preview2, .preview3, .timer").removeClass("sneaky");
-        $("#team .in-depth").html('').removeClass("sneaky");
-    })
+        $("#portfolio .image").removeClass("expandWidth");
+        setTimeout(() =>{
+            $("#portfolio .image").removeClass("expandHeight");
+        }, 500);
+        setTimeout(() =>{
+            $("#portfolio .image").removeClass("z-index");
+        }, 1000);
+        //resetting image2
+        $("#image2").css({
+            "width":"34%",
+            "left":"33%"
+        });
+        setTimeout(() => {
+            $("#image2").css({
+                "height":"50%",
+                "top":"50%"
+            });
+        }, 500);
+        setTimeout(() =>{
+            $("#portfolio #image2").removeClass("z-index");
+        }, 1000);
+     });
     // End of on-load trigger(s)
 }); // End of $(document).ready(){};
