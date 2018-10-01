@@ -33,7 +33,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #32292F;
     outline: none;
-    border: 1px solid #e63946;
     color: #f1faee;
     padding: 2px;
     transition: opacity 2s;
@@ -48,12 +47,11 @@
     padding: 2px;
     padding-left: 2px;
     background: #32292F;
-    border: 1px solid #f1faee;
     color: #f1faee;
     outline: none;
     transition: opacity 2s;
 }
-.forms #submit {
+.forms #submit{
     outline: none;
     background: #32292F;
     color: #f1faee;
@@ -63,7 +61,7 @@
     transition: opacity 2s;
 }
 /* Google Maps div */
-#map {
+#map{
     width: calc(45% + 25px);
     height: 50vh;
     position: absolute;
@@ -117,8 +115,8 @@
 }
 /* End of social media icons */
 .greenBorder{
-    border: 1px limegreen;
+    border: 1px solid #32cd32;
 }
 .redBorder{
-    border: 1px red;
+    border: 1px solid #e63946;
 }

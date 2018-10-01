@@ -18,7 +18,7 @@ $(document).ready(() => {
     // End of global variable(s)
 
     // Start of event(s)
-    $('nav ul li a').click(function(evt){ // Swapping page on nav click
+    $('nav ul li a, .mobileDiv ul li a').click(function(evt){ // Swapping page on nav click
         pageJump = true;
         evt.preventDefault(); // Stop normal response to scrolling
 
@@ -32,7 +32,7 @@ $(document).ready(() => {
         });
         var menuChoice = $(this).closest("li").index();
         switchFunction(menuChoice); // Making the nav underline move
-        loadContent(menuChoice);
+        loadContent(menuChoice); // Loads the content | duh
     });
     // End of event(s)
 
@@ -392,7 +392,7 @@ $(document).ready(() => {
                         switch(teamCounter){
                             case 0:
                                 $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
-                                $("#team .in-depth").html(`<img src="95225493_512.jpg" alt="" class="person">
+                                $("#team .in-depth").html(`<img src="image/95225493_512.jpg" alt="" class="person">
                                 <p class="personInfo">
                                     Former circle clicking master<br><br>
                                     Underground arms dealer (secret)<br><br>
@@ -408,7 +408,7 @@ $(document).ready(() => {
                                 break;
                             case 1:
                                 $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
-                                $("#team .in-depth").html(`<img src="92413374_512.jpg" alt="" class="person">
+                                $("#team .in-depth").html(`<img src="image/92413374_512.jpg" alt="" class="person">
                                 <p class="personInfo">
                                     Likes shitty movies<br><br>
                                     Finds milk too delicious to be vegan<br><br>
@@ -424,7 +424,7 @@ $(document).ready(() => {
                                 break;
                             case 2:
                                 $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
-                                $("#team .in-depth").html(`<img src="216901241_512.jpg" alt="" class="person">
+                                $("#team .in-depth").html(`<img src="image/216901241_512.jpg" alt="" class="person">
                                 <p class="personInfo">
                                     The palest council member<br><br>
                                     Is possibly Queen Elizabeth II of the United Kingdom<br><br>
@@ -455,7 +455,7 @@ $(document).ready(() => {
             case "portfolio":
                 if(!portfolio){
                     portfolio=true; // Confirm that assets have been loaded
-                    $("#text1 ul li").click((evt) => {
+                    $("#text1 ul li a").click((evt) => {
                         evt.preventDefault();
                         $(".infoText").html(`<h2>Full Page Scroll</h2>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas itaque culpa praesentium porro ipsum repellendus quod fuga. In, aut! Mollitia enim dolorum eius culpa esse corporis eos asperiores dolores sint? Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam perspiciatis laudantium possimus hic. Eius doloremque velit architecto obcaecati sapiente cumque, ullam eos officia! Unde enim illo ullam ad dolore! Molestiae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum at nemo, dolorem cupiditate doloribus dolor tempore, consequatur eius est tenetur optio delectus esse neque aut incidunt voluptatum? Magnam, beatae vitae! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam, dolores earum dignissimos sequi voluptatem quae, obcaecati molestiae itaque autem maxime voluptatibus culpa! Totam accusamus magnam voluptates aliquam, quos magni ea? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed consectetur unde vero excepturi tempora nemo a odio? Impedit ex vero, provident deserunt, quasi dolore laudantium distinctio, nulla itaque eligendi ducimus!</p>`)
@@ -466,14 +466,14 @@ $(document).ready(() => {
                         }, 500);
                         setTimeout(() => {
                             $(".menuDiv").addClass("sneaky");
-                            $(".portBack").removeClass("sneaky");
+                            $(".portBack").removeClass("sneaky mobileSneaky");
                         }, 500);
                         setTimeout(() => {
-                            $(".infoText").removeClass("sneaky");
+                            $(".infoText").removeClass("sneaky mobileSneaky");
                         }, 1250);
                     });
                     
-                    $("#text2 ul li").click((evt) => {
+                    $("#text2 ul li a").click((evt) => {
                         evt.preventDefault();
                         $(".infoText").html(`<h2>Content Sliding</h2>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas itaque culpa praesentium porro ipsum repellendus quod fuga. In, aut! Mollitia enim dolorum eius culpa esse corporis eos asperiores dolores sint? Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam perspiciatis laudantium possimus hic. Eius doloremque velit architecto obcaecati sapiente cumque, ullam eos officia! Unde enim illo ullam ad dolore! Molestiae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum at nemo, dolorem cupiditate doloribus dolor tempore, consequatur eius est tenetur optio delectus esse neque aut incidunt voluptatum? Magnam, beatae vitae! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam, dolores earum dignissimos sequi voluptatem quae, obcaecati molestiae itaque autem maxime voluptatibus culpa! Totam accusamus magnam voluptates aliquam, quos magni ea? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed consectetur unde vero excepturi tempora nemo a odio? Impedit ex vero, provident deserunt, quasi dolore laudantium distinctio, nulla itaque eligendi ducimus!</p>`)
@@ -490,14 +490,14 @@ $(document).ready(() => {
                         }, 500);
                         setTimeout(() => {
                             $(".menuDiv").addClass("sneaky");
-                            $(".portBack").removeClass("sneaky");
+                            $(".portBack").removeClass("sneaky mobileSneaky");
                         }, 500);
                         setTimeout(() => {
-                            $(".infoText").removeClass("sneaky");
+                            $(".infoText").removeClass("sneaky mobileSneaky");
                         }, 1250);
                     });
                 
-                    $("#text3 ul li").click((evt) => {
+                    $("#text3 ul li a").click((evt) => {
                         evt.preventDefault();
                         $(".infoText").html(`<h2>Mobile "first"</h2>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas itaque culpa praesentium porro ipsum repellendus quod fuga. In, aut! Mollitia enim dolorum eius culpa esse corporis eos asperiores dolores sint? Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam perspiciatis laudantium possimus hic. Eius doloremque velit architecto obcaecati sapiente cumque, ullam eos officia! Unde enim illo ullam ad dolore! Molestiae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum at nemo, dolorem cupiditate doloribus dolor tempore, consequatur eius est tenetur optio delectus esse neque aut incidunt voluptatum? Magnam, beatae vitae! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam, dolores earum dignissimos sequi voluptatem quae, obcaecati molestiae itaque autem maxime voluptatibus culpa! Totam accusamus magnam voluptates aliquam, quos magni ea? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed consectetur unde vero excepturi tempora nemo a odio? Impedit ex vero, provident deserunt, quasi dolore laudantium distinctio, nulla itaque eligendi ducimus!</p>`)
@@ -508,16 +508,16 @@ $(document).ready(() => {
                         }, 500);
                         setTimeout(() => {
                             $(".menuDiv").addClass("sneaky");
-                            $(".portBack").removeClass("sneaky");
+                            $(".portBack").removeClass("sneaky mobileSneaky");
                         }, 500);
                         setTimeout(() => {
-                            $(".infoText").removeClass("sneaky");
+                            $(".infoText").removeClass("sneaky mobileSneaky");
                         }, 1250);
                     });
-    
+
                     $(".portBack").click(() => {
-                        $(".infoText").addClass("sneaky");
-                        $(".portBack").addClass("sneaky");
+                        $(".infoText").addClass("sneaky mobileSneaky");
+                        $(".portBack").addClass("sneaky mobileSneaky");
                         $(".menuDiv").removeClass("sneaky");
                         $("#portfolio .image").removeClass("expandWidth");
                         setTimeout(() =>{
@@ -547,15 +547,23 @@ $(document).ready(() => {
             case "contact":
                 if(!contact){
                     contact=true; // Confirm that the contact page has been loaded
+                    var nameGreen=false;
+                    var nameRed=false;
+                    var emailGreen=false;
+                    var emailRed=false;
+                    var phoneGreen=false;
+                    var phoneRed=false;
+                    var mainGreen=false;
+                    var mainRed=false;
                     // function itemFastLoad(selector,transitionDelay);
                     itemFastLoad("#contact .text p",1000);
                     // function itemSlowLoad(selector,transitionDelay);
-                    itemSlowLoad("#contact .forms #name",1400);
-                    itemSlowLoad("#contact .forms #email",1800);
-                    itemSlowLoad("#contact .forms #phone",2200);
-                    itemSlowLoad("#contact .forms #main",2600);
-                    itemSlowLoad("#contact .forms #submit",3000);
-                    itemSlowLoad("#contact #map",3400);
+                    itemSlowLoad("#name",1400);
+                    itemSlowLoad("#email",1800);
+                    itemSlowLoad("#phone",2200);
+                    itemSlowLoad("#main",2600);
+                    itemSlowLoad("#submit",3000);
+                    itemSlowLoad("#map",3400);
                     setTimeout(() => {
                         $("#contact ul li:nth-child(1)").removeClass("sneaky");
                     }, 3500);
@@ -572,48 +580,82 @@ $(document).ready(() => {
                         $("#contact ul li:nth-child(5)").removeClass("sneaky");
                     }, 4300);
                     
-                    // $("#contact .forms #name").keyup(() => { // Done?
-                    //     var contactName = $("#contact .forms #name").val();
-                    //     var regexName = /^[a-zA-Z]+$/i;
-                    //     if(regexName.test(contactName)){
-                    //         console.log("True");
-                    //         $("#contact .forms #name").removeClass("redBorder");
-                    //         $("#contact .forms #name").addClass("greenBorder");
-                    //     }else{
-                    //         console.log("Else");
-                    //         $("#contact .forms #name").removeClass("greenBorder");
-                    //         $("#contact .forms #name").addClass("redBorder");
-                    //     }
-                    // });
-                    // $("#contact .forms #email").keyup(() => { // Done?
-                    //     var contactEmail=$("#contact .forms #email").val();
-                    //     var regexEmail="/^[\.\w\S](?= @)(?=[\w\S])(?= \.)(?=[\w\S]){1,}$/i";
-                    //     if(regexEmail.test(contactEmail)){
-                    //         $("#contact .forms #name").removeClass("redBorder");
-                    //         $("#contact .forms #name").addClass("greenBorder");
-                    //     }else{
-                    //         $("#contact .forms #name").removeClass("greenBorder");
-                    //         $("#contact .forms #name").addClass("redBorder");
-                    //     }
-                    // });
-                    // $("#contact .forms #phone").keyup(() => { // NOT DONE
-                    //     if(/^[a-z ]+${3,}/i){
-                    //         $("#contact .forms #name").removeClass("redBorder");
-                    //         $("#contact .forms #name").addClass("greenBorder");
-                    //     }else{
-                    //         $("#contact .forms #name").removeClass("greenBorder");
-                    //         $("#contact .forms #name").addClass("redBorder");
-                    //     }
-                    // });
-                    // $("#contact .forms #main").keyup(() => { // NOT DONE
-                    //     if(/{1,}/i){
-                    //         $("#contact .forms #name").removeClass("redBorder");
-                    //         $("#contact .forms #name").addClass("greenBorder");
-                    //     }else{
-                    //         $("#contact .forms #name").removeClass("greenBorder");
-                    //         $("#contact .forms #name").addClass("redBorder");
-                    //     }
-                    // });
+                    $("#name").keyup(() => {
+                        var contactName = $("#name").val();
+                        var regexName = /^[a-zA-Z ]{3,}$/i;
+                        if(regexName.test(contactName)){
+                            if(!nameGreen){
+                                nameGreen = true;
+                                nameRed = false;
+                                $("#name").removeClass("redBorder");
+                                $("#name").addClass("greenBorder");
+                            }
+                        }else{
+                            if(!nameRed){
+                                nameGreen = false;
+                                nameRed = true;
+                                $("#name").removeClass("greenBorder");
+                                $("#name").addClass("redBorder");
+                            }
+                        }
+                    });
+                    $("#email").keyup(() => {
+                        var contactEmail = $("#email").val();
+                        var regexEmail = /^([\.\w\S]+(?:@)+(?:[\w\S])+(?:\.)+(?:[\w\S])+)$/i;
+                        if(regexEmail.test(contactEmail)){
+                            if(!emailGreen){
+                                emailGreen = true;
+                                emailRed = false;
+                                $("#email").removeClass("redBorder");
+                                $("#email").addClass("greenBorder");
+                            }
+                        }else{
+                            if(!emailRed){
+                                emailGreen = false;
+                                emailRed = true;
+                                $("#email").removeClass("greenBorder");
+                                $("#email").addClass("redBorder");
+                            }
+                        }
+                    });
+                    $("#phone").keyup(() => {
+                        var contactPhone = $("#phone").val();
+                        var regexPhone = /^[0-9]{7,}$/ // ^([\+]{1}(?:[1-9]){1}(?:[0-9])+){7,}$ ??? (Country codes)
+                        if(regexPhone.test(contactPhone)){
+                            if(!phoneGreen){
+                                phoneGreen=true;
+                                phoneRed=false;
+                                $("#phone").removeClass("redBorder");
+                                $("#phone").addClass("greenBorder");
+                            }
+                        }else{
+                            if(!phoneRed){
+                                phoneGreen=false;
+                                phoneRed=true;
+                                $("#phone").removeClass("greenBorder");
+                                $("#phone").addClass("redBorder");
+                            }
+                        }
+                    });
+                    $("#main").keyup(() => {
+                        var contactMain = $("#main").val();
+                        var regexMain = /^[^\0]+$/i;
+                        if(regexMain.test(contactMain)){
+                            if(!mainGreen){
+                                mainGreen=true;
+                                mainRed=false;
+                                $("#main").removeClass("redBorder");
+                                $("#main").addClass("greenBorder");
+                            }
+                        }else{
+                            if(!mainRed){
+                                mainGreen=false;
+                                mainRed=true;
+                                $("#main").removeClass("greenBorder");
+                                $("#main").addClass("redBorder");
+                            }
+                        }
+                    });
                 }
                 break;
         }
@@ -775,6 +817,9 @@ $(document).ready(() => {
     });
     $(".moreInfo").mouseenter(() => {
         sneakyNormalScrolling=true; // Allow normal scrolling in the .moreInfo div
+    });
+    $(".hamburger .fa-bars, .mobileDiv ul li").click(() =>{
+        $(".mobileDiv").toggleClass("mobileSneaky");
     });
     // End of on-load trigger(s)
 }); // End of $(document).ready(){};

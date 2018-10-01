@@ -46,29 +46,31 @@
     -webkit-transform:translate(50%,-50%);
     -moz-transform:translate(50%,-50%);
 }
-.switchRight{
-    transform:translate(50%,-50%);
-    -moz-transform:translate(50%,-50%);
-    -webkit-transform:translate(50%,-50%);
-    transition:1s;
-    -moz-transition:1s;
-    -webkit-transition:1s;
-}
-.switchCenter{
-    transform:translate(-50%,-50%);
-    -moz-transform:translate(-50%,-50%);
-    -webkit-transform:translate(-50%,-50%);
-    transition:1s;
-    -moz-transition:1s;
-    -webkit-transition:1s;
-}
-.switchLeft{
-    transform:translate(-150%,-50%);
-    -moz-transform:translate(-150%,-50%);
-    -webkit-transform:translate(-150%,-50%);
-    transition:1s;
-    -moz-transition:1s;
-    -webkit-transition:1s;
+@media (min-width: 768px){
+    .switchRight{
+        transform:translate(50%,-50%);
+        -moz-transform:translate(50%,-50%);
+        -webkit-transform:translate(50%,-50%);
+        transition:1s;
+        -moz-transition:1s;
+        -webkit-transition:1s;
+    }
+    .switchCenter{
+        transform:translate(-50%,-50%);
+        -moz-transform:translate(-50%,-50%);
+        -webkit-transform:translate(-50%,-50%);
+        transition:1s;
+        -moz-transition:1s;
+        -webkit-transition:1s;
+    }
+    .switchLeft{
+        transform:translate(-150%,-50%);
+        -moz-transform:translate(-150%,-50%);
+        -webkit-transform:translate(-150%,-50%);
+        transition:1s;
+        -moz-transition:1s;
+        -webkit-transition:1s;
+    }
 }
 .avatar{
     position:absolute;
@@ -105,7 +107,6 @@
     height:15%;
     width:0;
     background:#1d3557;
-    /* transition: opacity 2s; */
     transition: width linear 1s;
 }
 .bar p{
@@ -255,7 +256,6 @@
     top: calc(200px + 3em);
     left: 2em;
     color: #1d3557;
-    /* background: grey; */
 }
 .lifeStory{
     position: absolute;
@@ -288,5 +288,43 @@
 .back:hover p{
     font-weight: bold;
     transition: 0.3s;
+}
+@media (max-width: 767px){
+    .preview1{
+        position:absolute;
+        width:100%;
+        height:100%;
+        display:flex;
+        justify-content:center;
+        left:50%;
+        top:45%;
+        transform:translate(-50%,-50%);
+        -webkit-transform:translate(-50%,-50%);
+        -moz-transform:translate(-50%,-50%);
+    }
+    .preview2{
+        position:absolute;
+        width:100%;
+        height:100%;
+        display:flex;
+        justify-content:center;
+        left:50%;
+        top:65%;
+        transform:translate(-50%,-50%);
+        -webkit-transform:translate(-50%,-50%);
+        -moz-transform:translate(-50%,-50%);
+    }
+    .preview3{
+        position:absolute;
+        width:100%;
+        height:100%;
+        display:flex;
+        justify-content:center;
+        left:50%;
+        top:85%;
+        transform:translate(-50%,-50%);
+        -webkit-transform:translate(-50%,-50%);
+        -moz-transform:translate(-50%,-50%);
+    }
 }
 /* End of Team page carousel */

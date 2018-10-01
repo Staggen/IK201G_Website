@@ -7,15 +7,15 @@
     width:100%;
     position:relative;
 }
-.sneaky{
-    visibility:hidden;
-    opacity:0;
-    /* transition: opacity 1s; */
-}
-.sneaky2{
-    visibility:hidden;
-    opacity:0;
-    /* transition: opacity 2s; */
+@media (min-width: 768px){
+    .sneaky{
+        visibility:hidden;
+        opacity:0;
+    }
+    .sneaky2{
+        visibility:hidden;
+        opacity:0;
+    }
 }
 h1{
     line-height:100vh;
@@ -23,7 +23,7 @@ h1{
     text-align:center;
 }
 /* Start of sexy vertical nav */
-nav{
+.menuDiv nav{
     background-color:#1d3557; /* On load color */
     height:40px; /* Menu-bar width component 1/2 */
     position:fixed;
@@ -36,7 +36,7 @@ nav{
     width:100vh; /* Full screen, flipped to height */
     z-index:1;
 }
-nav ul.menu li{
+.menuDiv nav ul.menu li{
     float:right;
     height:100%;
     width:20%;
@@ -44,10 +44,7 @@ nav ul.menu li{
     list-style:none;
     text-align:center;
 }
-/* nav ul.menu li:hover{ // If we want to change the color of the list on hover
-    background-color:#457b9d;
-} */
-ul.menu li a{
+.menuDiv ul.menu li a{
     text-decoration:none;
     color:#f1faee;
     display:block;
@@ -60,7 +57,7 @@ ul.menu li a{
     -webkit-transform:translate(3px);
     -moz-transform:translate(3px);
 }
-nav div{
+.menuDiv nav div{
     position:fixed;
     display:block;
     width:10%;
@@ -74,25 +71,96 @@ nav div{
 }
 /* End of sexy vertical nav */
 /* Experimenting with nav color scheme below */
-#menu-home{
+#menu-home,
+#mobileMenu-home,
+#mli1
+{
     background-color:#e63946;
     color:#f1faee;
 }
-#menu-about{
+#menu-about,
+#mobileMenu-about,
+#mli2
+{
     background-color:#f1faee;
     color:#1d3557;
 }
-#menu-team{
+#menu-team,
+#mobileMenu-team,
+#mli3
+{
     background-color:#a8dadc;
     color:#1d3557;
 }
-#menu-portfolio{
+#menu-portfolio,
+#mobileMenu-portfolio,
+#mli4
+{
     background-color:#457b9d;
     color:#1d3557;
 }
-#menu-contact{
+#menu-contact,
+#mobileMenu-contact,
+#mli5
+{
     background-color:#1d3557;
     color:#f1faee;
+}
+.hamburger{
+    display: none;
+}
+.mobileDiv{
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+    background: #457b9d41;
+    position: fixed;
+    top: 0;
+    transition: opacity 0.5s;
+}
+.mobileMenu{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+}
+.mobileDiv ul.mobileMenu li{
+    height:20vh;
+    width:100%;
+    line-height: 100%;
+    list-style:none;
+    text-align:center;
+}
+.mobileDiv ul.mobileMenu li a{
+    text-decoration:none;
+    color:#f1faee;
+    display:block;
+    letter-spacing:10px; /* Makes all the difference <3 */
+    text-transform:uppercase;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight:400;
+    font-size:20px;
+    line-height: 20vh;
+}
+@media (max-width: 767px){
+    .mobileSneaky{
+        visibility: hidden;
+        opacity: 0;
+    }
+    .menuDiv{
+        opacity: 0;
+        visibility: hidden;
+    }
+    .hamburger{
+        display: block;
+        position: fixed;
+        z-index: 100;
+        right: 0;
+        margin: 1em;
+    }
+    .hamburger .fa-bars{
+        font-size: 40px;
+    }
 }
 /* 
 var colourPalettes=[];
