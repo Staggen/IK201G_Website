@@ -251,7 +251,6 @@
     -webkit-transform:rotate(-90deg) translate(-100%, 0);
     -moz-transform:rotate(-90deg) translate(-100%, 0);
     width:100vh; /* Full screen, flipped to height */
-    z-index:1;
     line-height: 35px;
     text-align: center;
     color: #f1faee;

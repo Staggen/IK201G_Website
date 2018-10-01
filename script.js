@@ -653,6 +653,8 @@ $(document).ready(() => {
     // PORTFOLIO
     $("#text1 ul li").click((evt) => {
         evt.preventDefault();
+        $(".infoText").html(`<h2>Full Page Scroll</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas itaque culpa praesentium porro ipsum repellendus quod fuga. In, aut! Mollitia enim dolorum eius culpa esse corporis eos asperiores dolores sint? Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam perspiciatis laudantium possimus hic. Eius doloremque velit architecto obcaecati sapiente cumque, ullam eos officia! Unde enim illo ullam ad dolore! Molestiae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum at nemo, dolorem cupiditate doloribus dolor tempore, consequatur eius est tenetur optio delectus esse neque aut incidunt voluptatum? Magnam, beatae vitae! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam, dolores earum dignissimos sequi voluptatem quae, obcaecati molestiae itaque autem maxime voluptatibus culpa! Totam accusamus magnam voluptates aliquam, quos magni ea? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed consectetur unde vero excepturi tempora nemo a odio? Impedit ex vero, provident deserunt, quasi dolore laudantium distinctio, nulla itaque eligendi ducimus!</p>`)
         $("#portfolio #image1").addClass("expandHeight");
         $("#portfolio #image1").addClass("z-index");
         setTimeout(() => {
@@ -662,10 +664,15 @@ $(document).ready(() => {
             $(".menuDiv").addClass("sneaky");
             $(".portBack").removeClass("sneaky");
         }, 500);
+        setTimeout(() => {
+            $(".infoText").removeClass("sneaky");
+        }, 1250);
      });
 
      $("#text2 ul li").click((evt) => {
         evt.preventDefault();
+        $(".infoText").html(`<h2>Content Sliding</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas itaque culpa praesentium porro ipsum repellendus quod fuga. In, aut! Mollitia enim dolorum eius culpa esse corporis eos asperiores dolores sint? Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam perspiciatis laudantium possimus hic. Eius doloremque velit architecto obcaecati sapiente cumque, ullam eos officia! Unde enim illo ullam ad dolore! Molestiae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum at nemo, dolorem cupiditate doloribus dolor tempore, consequatur eius est tenetur optio delectus esse neque aut incidunt voluptatum? Magnam, beatae vitae! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam, dolores earum dignissimos sequi voluptatem quae, obcaecati molestiae itaque autem maxime voluptatibus culpa! Totam accusamus magnam voluptates aliquam, quos magni ea? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed consectetur unde vero excepturi tempora nemo a odio? Impedit ex vero, provident deserunt, quasi dolore laudantium distinctio, nulla itaque eligendi ducimus!</p>`)
         $("#portfolio #image2").css({
             "height":"100%",
             "top":"0"
@@ -681,10 +688,15 @@ $(document).ready(() => {
             $(".menuDiv").addClass("sneaky");
             $(".portBack").removeClass("sneaky");
         }, 500);
+        setTimeout(() => {
+            $(".infoText").removeClass("sneaky");
+        }, 1250);
      });
 
      $("#text3 ul li").click((evt) => {
         evt.preventDefault();
+        $(".infoText").html(`<h2>Mobile "first"</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas itaque culpa praesentium porro ipsum repellendus quod fuga. In, aut! Mollitia enim dolorum eius culpa esse corporis eos asperiores dolores sint? Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam perspiciatis laudantium possimus hic. Eius doloremque velit architecto obcaecati sapiente cumque, ullam eos officia! Unde enim illo ullam ad dolore! Molestiae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum at nemo, dolorem cupiditate doloribus dolor tempore, consequatur eius est tenetur optio delectus esse neque aut incidunt voluptatum? Magnam, beatae vitae! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam, dolores earum dignissimos sequi voluptatem quae, obcaecati molestiae itaque autem maxime voluptatibus culpa! Totam accusamus magnam voluptates aliquam, quos magni ea? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed consectetur unde vero excepturi tempora nemo a odio? Impedit ex vero, provident deserunt, quasi dolore laudantium distinctio, nulla itaque eligendi ducimus!</p>`)
         $("#portfolio #image3").addClass("expandHeight");
         $("#portfolio #image3").addClass("z-index");
         setTimeout(() => {
@@ -694,9 +706,13 @@ $(document).ready(() => {
             $(".menuDiv").addClass("sneaky");
             $(".portBack").removeClass("sneaky");
         }, 500);
+        setTimeout(() => {
+            $(".infoText").removeClass("sneaky");
+        }, 1250);
      });
 
      $(".portBack").click(() => {
+        $(".infoText").addClass("sneaky");
         $(".portBack").addClass("sneaky");
         $(".menuDiv").removeClass("sneaky");
         $("#portfolio .image").removeClass("expandWidth");
