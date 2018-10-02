@@ -789,9 +789,9 @@ $(document).ready(() => {
                             $("#team .in-depth").html(`<img src="images/95225493_512.jpg" alt="" class="person">
                             <p class="personInfo">
                                 Nicolas Bj&ouml;rkefors<br>
-                                Former circle clicking master<br><br>
-                                Underground arms dealer (secret)<br><br>
-                                Enjoys clean ears<br><br>
+                                Former circle clicking master<br>
+                                Underground arms dealer (secret)<br>
+                                Enjoys clean ears<br>
                             </p>
                             <div class="lifeStory">
                             <p>
@@ -806,9 +806,9 @@ $(document).ready(() => {
                             $("#team .in-depth").html(`<img src="images/92413374_512.jpg" alt="" class="person">
                             <p class="personInfo">
                                 Oskar Olofsson<br>
-                                Likes shitty movies<br><br>
-                                Finds milk too delicious to be vegan<br><br>
-                                Buy more facts® for only $4.99 each<br><br>
+                                Likes shitty movies<br>
+                                Finds milk too delicious to be vegan<br>
+                                Buy more facts® for only $4.99 each<br>
                             </p>
                             <div class="lifeStory">
                             <p>
@@ -823,9 +823,9 @@ $(document).ready(() => {
                             $("#team .in-depth").html(`<img src="images/216901241_512.jpg" alt="" class="person">
                             <p class="personInfo">
                                 Elias Stagg<br>
-                                The palest council member<br><br>
-                                Is possibly Queen Elizabeth II of the United Kingdom<br><br>
-                                Dreams of owning a farm<br><br>
+                                The palest council member<br>
+                                Is possibly Queen Elizabeth II of the United Kingdom<br>
+                                Dreams of owning a farm<br>
                             </p>
                             <div class="lifeStory">
                             <p>
