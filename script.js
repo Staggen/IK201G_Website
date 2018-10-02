@@ -14,6 +14,359 @@ $(document).ready(() => {
         mobileMode = false;
     }
 
+    var localJSON={
+        name:$("#name").val(),
+        email:$("#email").val(),
+        phone:$("#phone").val(),
+        main:$("#main").val()
+    };
+
+    var localContributors={
+        projectLoadArray:[
+            {project_loaded:0},
+            {project_loaded:0},
+            {project_loaded:0},
+            {project_loaded:0},
+            {project_loaded:0},
+            {project_loaded:0},
+            {project_loaded:0},
+            {project_loaded:0},
+            {project_loaded:0},
+            {project_loaded:0}
+        ],
+        projectArray:[
+            {projectContributors:[
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''}
+            ]},
+            {projectContributors:[
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''}
+            ]},
+            {projectContributors:[
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''}
+            ]},
+            {projectContributors:[
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''}
+            ]},
+            {projectContributors:[
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''}
+            ]},
+            {projectContributors:[
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''}
+            ]},
+            {projectContributors:[
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''}
+            ]},
+            {projectContributors:[
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''}
+            ]},
+            {projectContributors:[
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''}
+            ]},
+            {projectContributors:[
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''},
+                {html_url:'',avatar_url:'',login:''}
+            ]}
+        ]
+    };
+
+    // Regex validation borders
+    var nameGreen=false;
+    var nameRed=false;
+    var emailGreen=false;
+    var emailRed=false;
+    var phoneGreen=false;
+    var phoneRed=false;
+    var mainGreen=false;
+    var mainRed=false;
     // Below are used for content-loading confirmations
     var home = false;
     var about = false;
@@ -171,39 +524,55 @@ $(document).ready(() => {
                     
                     if(mobileMode){
                         function mobileButtonFire(id){
-                            $(".moreInfo").removeClass("mobileSneaky");
+                            $(".moreInfo, .aboutBack").removeClass("mobileSneaky");
 
-                            url=`https://api.github.com/repos/${userName[id]}/${projectName[id]}/contributors`;
-                            fetch(url,{ // Get a list of contributors
-                                method:'get',
-                                headers:{
-                                    'Content-Type':'application/vnd.github.v3+json; charset=utf-8'
-                                }
-                            })
-                            .then(response => { // response is of type responseObject
-                                return response.json(); // Convert response to JSONObject
-                            })
-                            .then(response => {
-                                $(".contributorList").html(""); // Clear the list
-                                for(key in response){
-                                    $(".contributorList").append(`
-                                        <li>
-                                            <a href="${response[key].html_url}" target="_blank" data-response-id=${response[key].id}>
-                                                <img src="${response[key].avatar_url}">${response[key].login}
-                                            </a>
-                                        </li>
-                                    `);// Adding rows individually to the list
-                                }
-                            })
-                            .catch(error => console.error(error));
+                            if(localContributors.projectLoadArray[id].project_loaded == 0){
+                                localContributors.projectLoadArray[id].project_loaded = 1;
+                                url=`https://api.github.com/repos/${userName[id]}/${projectName[id]}/contributors`;
+                                fetch(url,{ // Get a list of contributors
+                                    method:'get',
+                                    headers:{
+                                        'Content-Type':'application/vnd.github.v3+json; charset=utf-8'
+                                    }
+                                })
+                                .then(response => { // response is of type responseObject
+                                    return response.json(); // Convert response to JSONObject
+                                })
+                                .then(response => { // Use the JSONObject
+                                    $(".contributorList").html(""); // Clear the list
+                                    for(key in response){
+                                        localContributors.projectArray[id].projectContributors[key].html_url = response[key].html_url;
+                                        localContributors.projectArray[id].projectContributors[key].avatar_url = response[key].avatar_url;
+                                        localContributors.projectArray[id].projectContributors[key].login = response[key].login;
+                                        $(".contributorList").append(`
+                                            <li>
+                                                <a href="${localContributors.projectArray[id].projectContributors[key].html_url}" target="_blank">
+                                                    <img src="${localContributors.projectArray[id].projectContributors[key].avatar_url}">${localContributors.projectArray[id].projectContributors[key].login}
+                                                </a>
+                                            </li>
+                                        `); // Adding rows individually to the list
+                                    }
+                                })
+                                .catch(error => console.error(error)); // If somoene is a doofus
+                            }
+                            $(".contributorList").html(""); // Clear the list
+                            for(key in localContributors.projectArray[id].projectContributors){
+                                $(".contributorList").append(`
+                                    <li>
+                                        <a href="${localContributors.projectArray[id].projectContributors[key].html_url}" target="_blank">
+                                            <img src="${localContributors.projectArray[id].projectContributors[key].avatar_url}">${localContributors.projectArray[id].projectContributors[key].login}
+                                        </a>
+                                    </li>
+                                `); // Adding rows individually to the list
+                            }
                         }
                         $("ul.trendClass li").on("click","button.showMoreButtons",function(){
                             var buttonID = $(this).data('button-id');
                             mobileButtonFire(buttonID);
                         });
-                        // $(".github, .blurb").click(function(event){
-                        //     $(".moreInfo").addClass("mobileSneaky");
-                        // });
+                        $(".aboutBack").click(() => {
+                            $(".moreInfo, .aboutBack").addClass("mobileSneaky");
+                        });
                     }else if(!mobileMode){
                         $(".github").on("mouseenter", "ul.trendClass li a", function(){
                             sneakyNormalScrolling=false; // Disallow normal scrolling | enforce full page scrolling
@@ -211,30 +580,45 @@ $(document).ready(() => {
                             $(".github ul li a").removeClass("active"); // remove the class active from all li elements
                             $(this).addClass("active"); // add the class active for this current li element
                             var dataValue=this.dataset.id; // Get the specific data value for the current li
-                            
-                            url=`https://api.github.com/repos/${userName[dataValue]}/${projectName[dataValue]}/contributors`;
-                            fetch(url,{ // Get a list of contributors
-                                method:'get',
-                                headers:{
-                                    'Content-Type':'application/vnd.github.v3+json; charset=utf-8'
-                                }
-                            })
-                            .then(response => { // response is of type responseObject
-                                return response.json(); // Convert response to JSONObject
-                            })
-                            .then(response => { // Use the JSONObject
-                                $(".contributorList").html(""); // Clear the list
-                                for(key in response){
-                                    $(".contributorList").append(`
-                                        <li>
-                                            <a href="${response[key].html_url}" target="_blank" data-response-id=${response[key].id}>
-                                                <img src="${response[key].avatar_url}">${response[key].login}
-                                            </a>
-                                        </li>
-                                    `);// Adding rows individually to the list
-                                }
-                            })
-                            .catch(error => console.error(error)); // If somoene is a doofus
+                            if(localContributors.projectLoadArray[dataValue].project_loaded == 0){
+                                localContributors.projectLoadArray[dataValue].project_loaded = 1;
+                                url=`https://api.github.com/repos/${userName[dataValue]}/${projectName[dataValue]}/contributors`;
+                                fetch(url,{ // Get a list of contributors
+                                    method:'get',
+                                    headers:{
+                                        'Content-Type':'application/vnd.github.v3+json; charset=utf-8'
+                                    }
+                                })
+                                .then(response => { // response is of type responseObject
+                                    return response.json(); // Convert response to JSONObject
+                                })
+                                .then(response => { // Use the JSONObject
+                                    $(".contributorList").html(""); // Clear the list
+                                    for(key in response){
+                                        localContributors.projectArray[dataValue].projectContributors[key].html_url = response[key].html_url;
+                                        localContributors.projectArray[dataValue].projectContributors[key].avatar_url = response[key].avatar_url;
+                                        localContributors.projectArray[dataValue].projectContributors[key].login = response[key].login;
+                                        $(".contributorList").append(`
+                                            <li>
+                                                <a href="${localContributors.projectArray[dataValue].projectContributors[key].html_url}" target="_blank">
+                                                    <img src="${localContributors.projectArray[dataValue].projectContributors[key].avatar_url}">${localContributors.projectArray[dataValue].projectContributors[key].login}
+                                                </a>
+                                            </li>
+                                        `); // Adding rows individually to the list
+                                    }
+                                })
+                                .catch(error => console.error(error)); // If somoene is a doofus
+                            }
+                            $(".contributorList").html(""); // Clear the list
+                            for(key in localContributors.projectArray[dataValue].projectContributors){
+                                $(".contributorList").append(`
+                                    <li>
+                                        <a href="${localContributors.projectArray[dataValue].projectContributors[key].html_url}" target="_blank">
+                                            <img src="${localContributors.projectArray[dataValue].projectContributors[key].avatar_url}">${localContributors.projectArray[dataValue].projectContributors[key].login}
+                                        </a>
+                                    </li>
+                                `); // Adding rows individually to the list
+                            }
                         });
                     }
                 }
@@ -340,6 +724,7 @@ $(document).ready(() => {
                                     $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
                                     $("#team .in-depth").html(`<img src="images/95225493_512.jpg" alt="" class="person">
                                     <p class="personInfo">
+                                        Nicolas Bj&ouml;rkefors<br><br>
                                         Former circle clicking master<br><br>
                                         Underground arms dealer (secret)<br><br>
                                         Enjoys clean ears<br><br>
@@ -356,6 +741,7 @@ $(document).ready(() => {
                                     $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
                                     $("#team .in-depth").html(`<img src="images/92413374_512.jpg" alt="" class="person">
                                     <p class="personInfo">
+                                        Oskar Olofsson<br><br>
                                         Likes shitty movies<br><br>
                                         Finds milk too delicious to be vegan<br><br>
                                         Buy more facts® for only $4.99 each<br><br>
@@ -372,6 +758,7 @@ $(document).ready(() => {
                                     $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
                                     $("#team .in-depth").html(`<img src="images/216901241_512.jpg" alt="" class="person">
                                     <p class="personInfo">
+                                        Elias Stagg<br><br>
                                         The palest council member<br><br>
                                         Is possibly Queen Elizabeth II of the United Kingdom<br><br>
                                         Dreams of owning a farm<br><br>
@@ -410,6 +797,9 @@ $(document).ready(() => {
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vero reiciendis laboriosam nam esse iure sequi illum porro laudantium nisi, harum quos repellat quasi autem quidem id nihil repellendus quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem facilis officiis magnam rem nulla vero veritatis ea quibusdam voluptatibus nesciunt suscipit, provident, sed nemo! Consequatur minus distinctio dolores sapiente! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit nobis harum voluptate quod. Maxime eius dolorum natus, facere ducimus amet odit harum a eaque perspiciatis architecto qui quia consequuntur illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet in modi, facilis velit sapiente rem rerum, tempora earum porro, sint et hic aliquam doloremque commodi impedit totam laborum ipsam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, provident dignissimos quidem cupiditate voluptates blanditiis. Pariatur ullam, excepturi hic tenetur, aut obcaecati id aliquid voluptas distinctio quasi impedit, veritatis non.
                             </p></div>`).removeClass("mobileSneaky");
+                            setTimeout(() => {
+                                $(".back").removeClass("mobileSneaky");
+                            },100);
                         });
                         $(".preview2 .avatar").click(() => {
                             $(".preview1, .preview2, .preview3, .teamTitle, .teamNameOne, .teamNameTwo, .teamNameThree").addClass("mobileSneaky");
@@ -424,6 +814,9 @@ $(document).ready(() => {
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vero reiciendis laboriosam nam esse iure sequi illum porro laudantium nisi, harum quos repellat quasi autem quidem id nihil repellendus quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem facilis officiis magnam rem nulla vero veritatis ea quibusdam voluptatibus nesciunt suscipit, provident, sed nemo! Consequatur minus distinctio dolores sapiente! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit nobis harum voluptate quod. Maxime eius dolorum natus, facere ducimus amet odit harum a eaque perspiciatis architecto qui quia consequuntur illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet in modi, facilis velit sapiente rem rerum, tempora earum porro, sint et hic aliquam doloremque commodi impedit totam laborum ipsam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, provident dignissimos quidem cupiditate voluptates blanditiis. Pariatur ullam, excepturi hic tenetur, aut obcaecati id aliquid voluptas distinctio quasi impedit, veritatis non.
                             </p></div>`).removeClass("mobileSneaky");
+                            setTimeout(() => {
+                                $(".back").removeClass("mobileSneaky");
+                            },100);
                         });
                         $(".preview3 .avatar").click(() => {
                             $(".preview1, .preview2, .preview3, .teamTitle, .teamNameOne, .teamNameTwo, .teamNameThree").addClass("mobileSneaky");
@@ -438,7 +831,15 @@ $(document).ready(() => {
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vero reiciendis laboriosam nam esse iure sequi illum porro laudantium nisi, harum quos repellat quasi autem quidem id nihil repellendus quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem facilis officiis magnam rem nulla vero veritatis ea quibusdam voluptatibus nesciunt suscipit, provident, sed nemo! Consequatur minus distinctio dolores sapiente! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit nobis harum voluptate quod. Maxime eius dolorum natus, facere ducimus amet odit harum a eaque perspiciatis architecto qui quia consequuntur illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet in modi, facilis velit sapiente rem rerum, tempora earum porro, sint et hic aliquam doloremque commodi impedit totam laborum ipsam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, provident dignissimos quidem cupiditate voluptates blanditiis. Pariatur ullam, excepturi hic tenetur, aut obcaecati id aliquid voluptas distinctio quasi impedit, veritatis non.
                             </p></div>`).removeClass("mobileSneaky");
+                            setTimeout(() => {
+                                $(".back").removeClass("mobileSneaky");
+                            },100);
                         })
+                        $(".back").click(() => {
+                            $(".back").addClass("mobileSneaky");
+                            $(".preview1, .preview2, .preview3, .teamTitle, .teamNameOne, .teamNameTwo, .teamNameThree").removeClass("mobileSneaky");
+                            $("#team .in-depth").html('').addClass("mobileSneaky");
+                        });
                     }
                 }
                 break;
@@ -538,14 +939,6 @@ $(document).ready(() => {
             case "contact":
                 if(!contact){
                     contact=true; // Confirm that the contact page has been loaded
-                    var nameGreen=false;
-                    var nameRed=false;
-                    var emailGreen=false;
-                    var emailRed=false;
-                    var phoneGreen=false;
-                    var phoneRed=false;
-                    var mainGreen=false;
-                    var mainRed=false;
                     // function itemFastLoad(selector,transitionDelay);
                     itemFastLoad("#contact .text p",1000);
                     // function itemSlowLoad(selector,transitionDelay);
@@ -572,9 +965,10 @@ $(document).ready(() => {
                     }, 4300);
                     
                     $("#name").keyup(() => {
-                        var contactName = $("#name").val();
+                        localJSON.name = $("#name").val();
+                        localStorage.setItem("contactInformation",JSON.stringify(localJSON));
                         var regexName = /^[a-zA-Z ]{3,}$/i;
-                        if(regexName.test(contactName)){
+                        if(regexName.test(localJSON.name)){
                             if(!nameGreen){
                                 nameGreen = true;
                                 nameRed = false;
@@ -591,9 +985,10 @@ $(document).ready(() => {
                         }
                     });
                     $("#email").keyup(() => {
-                        var contactEmail = $("#email").val();
+                        localJSON.email = $("#email").val();
+                        localStorage.setItem("contactInformation",JSON.stringify(localJSON));
                         var regexEmail = /^([\.\w\S]+(?:@)+(?:[\w\S])+(?:\.)+(?:[\w\S])+)$/i;
-                        if(regexEmail.test(contactEmail)){
+                        if(regexEmail.test(localJSON.email)){
                             if(!emailGreen){
                                 emailGreen = true;
                                 emailRed = false;
@@ -610,9 +1005,10 @@ $(document).ready(() => {
                         }
                     });
                     $("#phone").keyup(() => {
-                        var contactPhone = $("#phone").val();
-                        var regexPhone = /^[0-9]{7,}$/ // ^([\+]{1}(?:[1-9]){1}(?:[0-9])+){7,}$ ??? (Country codes)
-                        if(regexPhone.test(contactPhone)){
+                        localJSON.phone = $("#phone").val();
+                        localStorage.setItem("contactInformation",JSON.stringify(localJSON));
+                        var regexPhone = /^[0-9]{7,}$/ // ^([\+]{1}(?:[1-9]){1}(?:[0-9])+){7,}$ ???
+                        if(regexPhone.test(localJSON.phone)){
                             if(!phoneGreen){
                                 phoneGreen=true;
                                 phoneRed=false;
@@ -629,9 +1025,10 @@ $(document).ready(() => {
                         }
                     });
                     $("#main").keyup(() => {
-                        var contactMain = $("#main").val();
+                        localJSON.main = $("#main").val();
+                        localStorage.setItem("contactInformation",JSON.stringify(localJSON));
                         var regexMain = /^[^\0]+$/i;
-                        if(regexMain.test(contactMain)){
+                        if(regexMain.test(localJSON.main)){
                             if(!mainGreen){
                                 mainGreen=true;
                                 mainRed=false;
@@ -861,5 +1258,22 @@ $(document).ready(() => {
         }
     })
     .catch(error => console.error(error)); // If someone is a doofus
+
+    var returnedJSON = JSON.parse(localStorage.getItem('contactInformation'));
+    if(returnedJSON.name != null){
+        $("#name").val(returnedJSON.name);
+    }
+    if(returnedJSON.email != null){
+        $("#email").val(returnedJSON.email);
+
+    }
+    if(returnedJSON.phone != null){
+        $("#phone").val(returnedJSON.phone);
+
+    }
+    if(returnedJSON.main != null){
+        $("#main").val(returnedJSON.main);
+
+    }
     // End of on-load trigger(s)
 }); // End of $(document).ready(){};

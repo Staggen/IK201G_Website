@@ -299,10 +299,12 @@
 @media (max-width: 767px){
     .lifeStory{
         position:absolute;
-        width: calc(75% - 4em);
-        left:0;
-        top:20%;
+        width: 80%;
+        height: 50%;
+        left:12%;
+        top:55%;
         color: #1d3557;
+        /* background: #e63946; */
         overflow-y:scroll;
     }
     .teamNameOne{
@@ -370,6 +372,14 @@
         transform:translate(-50%,-50%);
         -webkit-transform:translate(-50%,-50%);
         -moz-transform:translate(-50%,-50%);
+    }
+    .back{
+        background: #1d3557af;
+        height: 40px;
+        width: 40px;
+        z-index: 5;
+        margin: 1em;
+        border-radius: 50%;
     }
 }
 /* End of Team page carousel */

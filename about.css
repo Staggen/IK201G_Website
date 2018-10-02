@@ -53,6 +53,19 @@ ul.contributorList li a p{
     font-size: 24px;
     line-height:32px;
 }
+.aboutBack{
+    position:absolute;
+    line-height:35px;
+    text-align:center;
+    color: #f1faee;
+    transition: opacity 1s;
+    background: #1d3557af;
+    height: 40px;
+    width: 40px;
+    z-index: 5;
+    margin: 1em;
+    border-radius: 50%;
+}
 @media (max-width: 767px){ /* Mobile */
     .trendClass li a{
         text-decoration:none;
