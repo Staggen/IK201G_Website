@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Scrolling plz?</title>
+    <title>j.E.P.H.</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="home.css">
     <link rel="stylesheet" type="text/css" href="about.css">
@@ -16,6 +16,15 @@
 </head>
 
 <body>
+    <div class="mobileDiv sneaky mobileSneaky">
+            <ul class="mobileMenu">
+                <li id="mli1"><a id="mobileMenu-home" href="#home">Home</a></li>
+                <li id="mli2"><a id="mobileMenu-about" href="#about">About</a></li>
+                <li id="mli3"><a id="mobileMenu-team" href="#team">Team</a></li>
+                <li id="mli4"><a id="mobileMenu-portfolio" href="#portfolio">Portfolio</a></li>
+                <li id="mli5"><a id="mobileMenu-contact" href="#contact">Contact</a></li>
+            </ul>
+    </div>
     <div class="menuDiv">
         <nav>
             <ul class="menu">
@@ -28,16 +37,21 @@
             <div class="underline"></div> <!-- nav underline div -->
         </nav>
     </div>
+    <div class="hamburger">
+        <i class="fas fa-bars"></i>
+    </div>
     <div class="wrapper">
         <!-- Main body wrapper div -->
         <div class="page" id="home">
             <!-- Home -->
-            <h1>jQuery</h1>
+            <div class="company">
+                <p>jQuery Eats Performance, Heh</p>
+            </div>
         </div>
         <div class="page" id="about">
             <!-- About -->
             <div class="blurb">
-                <h2>The team behind J.E.P.H.</h2>
+                <h2>The team behind j.E.P.H.</h2>
                 <p>Hailing from the each of the three corners of the earth, which was recently confirmed to be
                     triangular (it makes sense, seeing how it <em>is</em> the strongest mathematical shape), two
                     young men and one less so joined forces to create arguably the most sophisticated work of art in
@@ -45,26 +59,29 @@
                     a herculean effort over a fortnight, culminating in the very pages you are currently having the
                     pleasure of experiencing.<br><br>What can the Pale Council accomplish? Perhaps the better question
                     would be "what can they <em>not</em> accomplish?". Amongst themselves they possess unfathomable
-                    knowledge about nigh every conceivable subject.<br><br></p>
+                    knowledge about nigh every conceivable subject.<br><br>I implore any reader who doubts the
+                    legitimacy of this claim to scour the trichiliocosm in its entirety for greater minds; you will not
+                    succeed. To the right the reader will find chronicles of their recent exploits as well as their
+                    grandest undertakings to peruse at their leisure.</p>
             </div>
             <div class="github">
                 <!-- This is where we put the github API response -->
                 <h2>We specialize in the following</h2>
                 <p>Cascading Style Sheets:</p>
                 <ul class="trendClass">
-                    <li><a href="" target="_blank" id="trend0" data=0></a></li>
-                    <li><a href="" target="_blank" id="trend1" data=1></a></li>
-                    <li><a href="" target="_blank" id="trend2" data=2></a></li>
-                    <li><a href="" target="_blank" id="trend3" data=3></a></li>
-                    <li><a href="" target="_blank" id="trend4" data=4></a></li>
+                    <li><a href="" target="_blank" id="trend0" data-id=0></a></li>
+                    <li><a href="" target="_blank" id="trend1" data-id=1></a></li>
+                    <li><a href="" target="_blank" id="trend2" data-id=2></a></li>
+                    <li><a href="" target="_blank" id="trend3" data-id=3></a></li>
+                    <li><a href="" target="_blank" id="trend4" data-id=4></a></li>
                 </ul>
                 <p>JavaScript:</p>
                 <ul class="trendClass">
-                    <li><a href="" target="_blank" id="trend5" data=5></a></li>
-                    <li><a href="" target="_blank" id="trend6" data=6></a></li>
-                    <li><a href="" target="_blank" id="trend7" data=7></a></li>
-                    <li><a href="" target="_blank" id="trend8" data=8></a></li>
-                    <li><a href="" target="_blank" id="trend9" data=9></a></li>
+                    <li><a href="" target="_blank" id="trend5" data-id=5></a></li>
+                    <li><a href="" target="_blank" id="trend6" data-id=6></a></li>
+                    <li><a href="" target="_blank" id="trend7" data-id=7></a></li>
+                    <li><a href="" target="_blank" id="trend8" data-id=8></a></li>
+                    <li><a href="" target="_blank" id="trend9" data-id=9></a></li>
                 </ul>
                 <p style="display:block;line-height:1em;"></p> <!-- To allow the mouse to escape -->
                 <div class="moreInfo sneaky">
@@ -80,85 +97,81 @@
             <div class="content-container">
                 <div class="preview1">
                     <!-- Team member 1 -->
-                    <div class="avatar" id="avatar1">
-                        <img src="95225493_512.jpg" alt="" class="pic">
+                    <div class="avatar sneaky2" id="avatar1">
+                        <img src="images/95225493_512.jpg" alt="" class="pic">
                     </div>
                     <div class="graph">
                         <div class="bar" id="bar1">
-                            <p>Skill 1</p>
+                            <p class="sneaky mobileSneaky">Skill 1</p>
                         </div>
                         <div class="bar" id="bar2">
-                            <p>Skill 2</p>
+                            <p class="sneaky mobileSneaky">Skill 2</p>
                         </div>
                         <div class="bar" id="bar3">
-                            <p>Skill 3</p>
+                            <p class="sneaky mobileSneaky">Skill 3</p>
                         </div>
                         <div class="bar" id="bar4">
-                            <p>Skill 4</p>
+                            <p class="sneaky mobileSneaky">Skill 4</p>
                         </div>
                         <div class="bar" id="bar5">
-                            <p>Skill 5</p>
+                            <p class="sneaky mobileSneaky">Skill 5</p>
                         </div>
                     </div>
                 </div>
                 <div class="preview2">
                     <!-- Team member 2 -->
-                    <div class="avatar" id="avatar2">
-                        <img src="92413374_512.jpg" alt="" class="pic">
+                    <div class="avatar sneaky2" id="avatar2">
+                        <img src="images/92413374_512.jpg" alt="" class="pic">
                     </div>
                     <div class="graph">
                         <div class="bar" id="bar6">
-                            <p>Derp 1</p>
+                            <p class="sneaky mobileSneaky">Derp 1</p>
                         </div>
                         <div class="bar" id="bar7">
-                            <p>Derp 2</p>
+                            <p class="sneaky mobileSneaky">Derp 2</p>
                         </div>
                         <div class="bar" id="bar8">
-                            <p>Derp 3</p>
+                            <p class="sneaky mobileSneaky">Derp 3</p>
                         </div>
                         <div class="bar" id="bar9">
-                            <p>Derp 4</p>
+                            <p class="sneaky mobileSneaky">Derp 4</p>
                         </div>
                         <div class="bar" id="bar10">
-                            <p>Derp 5</p>
+                            <p class="sneaky mobileSneaky">Derp 5</p>
                         </div>
                     </div>
                 </div>
                 <div class="preview3">
                     <!-- Team member 3 -->
-                    <div class="avatar" id="avatar3">
-                        <img src="216901241_512.jpg" alt="" class="pic">
+                    <div class="avatar sneaky2" id="avatar3">
+                        <img src="images/216901241_512.jpg" alt="" class="pic">
                     </div>
                     <div class="graph">
                         <div class="bar" id="bar11">
-                            <p>Text 1</p>
+                            <p class="sneaky mobileSneaky">Text 1</p>
                         </div>
                         <div class="bar" id="bar12">
-                            <p>Text 2</p>
+                            <p class="sneaky mobileSneaky">Text 2</p>
                         </div>
                         <div class="bar" id="bar13">
-                            <p>Text 3</p>
+                            <p class="sneaky mobileSneaky">Text 3</p>
                         </div>
                         <div class="bar" id="bar14">
-                            <p>Text 4</p>
+                            <p class="sneaky mobileSneaky">Text 4</p>
                         </div>
                         <div class="bar" id="bar15">
-                            <p>Text 5</p>
+                            <p class="sneaky mobileSneaky">Text 5</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="in-depth sneaky">
-                <img src="" alt="" class="person"> <!-- Inject picture of the team member -->
-                <p class="personInfo">
-                    <!-- Inject bullet list of personal information -->
-                </p>
-                <p class="lifeStory">
-                    <!-- Inject longer text with in-depth information about the team member -->
-                </p>
+                <!-- Inject picture of the team member -->
+                <!-- Inject bullet list of personal information -->
+                <!-- Inject longer text with in-depth information about the team member -->
             </div>
-            <div class="back sneaky">
-                    <p>╳</p>
+            <div class="back sneaky mobileSneaky">
+                <p>╳</p>
             </div>
             <div class="timer sneaky">
                 <ul>
@@ -168,9 +181,9 @@
         </div>
         <div class="page" id="portfolio">
             <!-- Portfolio -->
-            <div class="portBack sneaky">
+            <div class="portBack sneaky mobileSneaky">
                 <p>╳</p>
-            </div>    
+            </div>
             <div class="framework">
                 <div class="projectText" id="text1">
                     <p>Full Page Scroll</p>
@@ -197,34 +210,34 @@
                     <div class="arrow-up"></div>
                 </div>
                 <div class="image" id="image1">
-                    <img src="sky.png" alt="">
+                    <img src="images/sky.png" alt="">
                 </div>
                 <div class="image" id="image2">
-                    <img src="platter.jpg" alt="">
+                    <img src="images/platter.jpg" alt="">
                 </div>
                 <div class="image" id="image3">
-                    <img src="magic.gif" alt="">
+                    <img src="images/magic.gif" alt="">
                 </div>
-                <div class="infoText sneaky">
+                <div class="infoText sneaky mobileSneaky">
                     <!-- Inject relevant project information -->
                 </div>
-            </div>        
+            </div>
         </div>
         <div class="page" id="contact">
             <!-- Contact -->
             <div class="text">
-                <p>CONTACT</p>
+                <p class="sneaky">CONTACT</p>
             </div>
             <div class="forms">
                 <form action="mailto:elias.stagg@gmail.com" method="POST" enctype="text/plain">
-                    <input type="text" name="Name" placeholder="Name" id="name">
-                    <input type="email" name="email" placeholder="eMail" id="email">
-                    <input type="tel" name="Phone" placeholder="Phone" id="phone">
-                    <textarea cols="50" id="main" placeholder="What's on your mind?"></textarea>
-                    <input type="submit" value="Submit" id="submit">
+                    <input class="sneaky2 redBorder" type="text" name="Name" placeholder="Name" id="name">
+                    <input class="sneaky2 redBorder" type="text" name="email" placeholder="eMail" id="email">
+                    <input class="sneaky2 redBorder" type="tel" name="Phone" placeholder="Phone" id="phone">
+                    <textarea class="sneaky2 redBorder" cols="50" name="main" id="main" placeholder="What's on your mind?"></textarea>
+                    <input class="sneaky2" type="submit" value="Submit" id="submit">
                 </form>
             </div>
-            <div id="map">
+            <div class="sneaky2" id="map">
                 <!-- This is where the map appears -->
             </div>
             <div class="mediaIcons">

@@ -5,14 +5,6 @@
     padding:0;
     margin:0;
 }
-/* Page two: about the group and trending on github */
-.blurb{
-    position: absolute;
-    top: 0;
-    left: 40px;
-    height: 100%;
-    width: calc(50% - 20px);
-}
 .blurb h2{
     font-family: Arial, Helvetica, sans-serif;
     margin: 0.5em;
@@ -25,24 +17,8 @@
     color: #32292F;
 }
 .github{
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: calc(50% - 20px);
     background: #a8dadc;
     font-family: Arial, Helvetica, sans-serif;
-}
-.moreInfo{
-    position: absolute;
-    top: 3em;
-    right: 0;
-    height: calc(100% - 3em);
-    width: 50%;
-    background-color: #1d3557;
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-y: scroll;
-    overflow-x: hidden;
 }
 .github h2{
     text-align:center;
@@ -60,33 +36,73 @@
     padding: 0.5em 1em;
     display: block;
 }
-.github .active{
-    color: #f1faee;
-    background-color: #1d3557;
+@media (max-width: 767px){
+    .blurb{
+        width: 100%;
+        height: 50%;
+        overflow: scroll;
+    }
+    .github{
+        width: 100%;
+        height: 50%;
+        overflow: scroll;
+    }
 }
-#about img{
-    width:32px;
-    height:32px;
-    padding-right:1em;
-    vertical-align:middle;
-}
-ul.contributorList{
-    margin:5px;
-}
-ul.contributorList li{
-    list-style:none;
-}
-ul.contributorList a{
-    padding:5px;
-    text-decoration:none;
-    display:block;
-    color:#f1faee;
-}
-ul.contributorList li a:hover{
-    background-color:#a8dadc;
-}
-ul.contributorList li a p{
-    display:inline;
-    font-size: 24px;
-    line-height:32px;
+@media (min-width: 768px){
+    /* About the group and trending on github */
+    .blurb{
+        position: absolute;
+        top: 0;
+        left: 40px;
+        height: 100%;
+        width: calc(50% - 20px);
+    }
+    .github{
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: calc(50% - 20px);
+    }
+    .moreInfo{
+        position: absolute;
+        top: 3em;
+        right: 0;
+        height: calc(100% - 3em);
+        width: 50%;
+        background-color: #1d3557;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    .github .active{
+        color: #f1faee;
+        background-color: #1d3557;
+    }
+    #about img{
+        width:32px;
+        height:32px;
+        padding-right:1em;
+        vertical-align:middle;
+    }
+    ul.contributorList{
+        margin:5px;
+    }
+    ul.contributorList li{
+        list-style:none;
+    }
+    ul.contributorList a{
+        padding:5px;
+        text-decoration:none;
+        display:block;
+        color:#f1faee;
+    }
+    ul.contributorList li a:hover{
+        background-color:#a8dadc;
+    }
+    ul.contributorList li a p{
+        display:inline;
+        font-size: 24px;
+        line-height:32px;
+    }
 }

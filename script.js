@@ -18,7 +18,7 @@ $(document).ready(() => {
     // End of global variable(s)
 
     // Start of event(s)
-    $('nav ul li a').click(function(evt){ // Swapping page on nav click
+    $('nav ul li a, .mobileDiv ul li a').click(function(evt){ // Swapping page on nav click
         pageJump = true;
         evt.preventDefault(); // Stop normal response to scrolling
 
@@ -32,7 +32,7 @@ $(document).ready(() => {
         });
         var menuChoice = $(this).closest("li").index();
         switchFunction(menuChoice); // Making the nav underline move
-        loadContent(menuChoice);
+        loadContent(menuChoice); // Loads the content | duh
     });
     // End of event(s)
 
@@ -231,7 +231,7 @@ $(document).ready(() => {
                     })
                     .then(response => { // Use the JSONObject
                         for(var i = 0; i < 5;i++){ // Loop 5 times to get the top 5 CSS repos
-                            $("#trend"+i).html(parseInt(i+1)+". "+response.items[i].name+" by "+response.items[i].owner.login);
+                            $("#trend"+i).html(parseInt(i+1)+". ★ "+response.items[i].stargazers_count+" | "+response.items[i].name+" by "+response.items[i].owner.login);
                             $("#trend"+i).attr("href",response.items[i].html_url);
                             userName[i]=response.items[i].owner.login;
                             projectName[i]=response.items[i].name;
@@ -252,7 +252,7 @@ $(document).ready(() => {
                     .then(response => { // Use the JSONObject
                         var counter=0;
                         for(var i = 5;i < 10;i++){ // Loop 5 times to get the top 5 javascript
-                            $("#trend"+i).html(parseInt(i-4)+". "+response.items[counter].name+" by "+response.items[counter].owner.login);
+                            $("#trend"+i).html(parseInt(i-4)+". ★ "+response.items[counter].stargazers_count+" | "+response.items[counter].name+" by "+response.items[counter].owner.login);
                             $("#trend"+i).attr("href",response.items[counter].html_url);
                             userName[i]=response.items[counter].owner.login;
                             projectName[i]=response.items[counter].name;
@@ -266,8 +266,8 @@ $(document).ready(() => {
                         $(".moreInfo").removeClass("sneaky"); // Un-hide the .moreInfo class
                         $(".github ul li a").removeClass("active"); // remove the class active from all li elements
                         $(this).addClass("active"); // add the class active for this current li element
+                        var dataValue=this.dataset.id; // Get the specific data value for the current li
                         
-                        var dataValue=this.attributes.data.value; // Get the specific data value for the current li
                         url=`https://api.github.com/repos/${userName[dataValue]}/${projectName[dataValue]}/contributors`
                         fetch(url,{ // Get a list of contributors
                             method:'get',
@@ -296,13 +296,6 @@ $(document).ready(() => {
                 break;
             case 2:
             case "team":
-            /*
-            ERROR | Only on the initial call of memberOne(); do we get the avatar and bars
-                    to load at all, or in order. For the rest of the calls (memberTwo,
-                    memberThree initial calls + all secondary calls for all functions) the
-                    bars refuse to animate/load in. They just appear as if they would always
-                    have been there.
-            */
                 if(!team){
                     team=true; // Confirm that the team page has been loaded
                     var teamCounter = 0;
@@ -399,7 +392,7 @@ $(document).ready(() => {
                         switch(teamCounter){
                             case 0:
                                 $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
-                                $("#team .in-depth").html(`<img src="95225493_512.jpg" alt="" class="person">
+                                $("#team .in-depth").html(`<img src="image/95225493_512.jpg" alt="" class="person">
                                 <p class="personInfo">
                                     Former circle clicking master<br><br>
                                     Underground arms dealer (secret)<br><br>
@@ -415,7 +408,7 @@ $(document).ready(() => {
                                 break;
                             case 1:
                                 $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
-                                $("#team .in-depth").html(`<img src="92413374_512.jpg" alt="" class="person">
+                                $("#team .in-depth").html(`<img src="image/92413374_512.jpg" alt="" class="person">
                                 <p class="personInfo">
                                     Likes shitty movies<br><br>
                                     Finds milk too delicious to be vegan<br><br>
@@ -431,7 +424,7 @@ $(document).ready(() => {
                                 break;
                             case 2:
                                 $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
-                                $("#team .in-depth").html(`<img src="216901241_512.jpg" alt="" class="person">
+                                $("#team .in-depth").html(`<img src="image/216901241_512.jpg" alt="" class="person">
                                 <p class="personInfo">
                                     The palest council member<br><br>
                                     Is possibly Queen Elizabeth II of the United Kingdom<br><br>
@@ -460,20 +453,117 @@ $(document).ready(() => {
                 break;
             case 3:
             case "portfolio":
-                // Code
+                if(!portfolio){
+                    portfolio=true; // Confirm that assets have been loaded
+                    $("#text1 ul li a").click((evt) => {
+                        evt.preventDefault();
+                        $(".infoText").html(`<h2>Full Page Scroll</h2>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas itaque culpa praesentium porro ipsum repellendus quod fuga. In, aut! Mollitia enim dolorum eius culpa esse corporis eos asperiores dolores sint? Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam perspiciatis laudantium possimus hic. Eius doloremque velit architecto obcaecati sapiente cumque, ullam eos officia! Unde enim illo ullam ad dolore! Molestiae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum at nemo, dolorem cupiditate doloribus dolor tempore, consequatur eius est tenetur optio delectus esse neque aut incidunt voluptatum? Magnam, beatae vitae! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam, dolores earum dignissimos sequi voluptatem quae, obcaecati molestiae itaque autem maxime voluptatibus culpa! Totam accusamus magnam voluptates aliquam, quos magni ea? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed consectetur unde vero excepturi tempora nemo a odio? Impedit ex vero, provident deserunt, quasi dolore laudantium distinctio, nulla itaque eligendi ducimus!</p>`)
+                        $("#portfolio #image1").addClass("expandHeight");
+                        $("#portfolio #image1").addClass("z-index");
+                        setTimeout(() => {
+                            $("#portfolio #image1").addClass("expandWidth");
+                        }, 500);
+                        setTimeout(() => {
+                            $(".menuDiv").addClass("sneaky");
+                            $(".portBack").removeClass("sneaky mobileSneaky");
+                        }, 500);
+                        setTimeout(() => {
+                            $(".infoText").removeClass("sneaky mobileSneaky");
+                        }, 1250);
+                    });
+                    
+                    $("#text2 ul li a").click((evt) => {
+                        evt.preventDefault();
+                        $(".infoText").html(`<h2>Content Sliding</h2>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas itaque culpa praesentium porro ipsum repellendus quod fuga. In, aut! Mollitia enim dolorum eius culpa esse corporis eos asperiores dolores sint? Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam perspiciatis laudantium possimus hic. Eius doloremque velit architecto obcaecati sapiente cumque, ullam eos officia! Unde enim illo ullam ad dolore! Molestiae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum at nemo, dolorem cupiditate doloribus dolor tempore, consequatur eius est tenetur optio delectus esse neque aut incidunt voluptatum? Magnam, beatae vitae! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam, dolores earum dignissimos sequi voluptatem quae, obcaecati molestiae itaque autem maxime voluptatibus culpa! Totam accusamus magnam voluptates aliquam, quos magni ea? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed consectetur unde vero excepturi tempora nemo a odio? Impedit ex vero, provident deserunt, quasi dolore laudantium distinctio, nulla itaque eligendi ducimus!</p>`)
+                        $("#portfolio #image2").css({
+                            "height":"100%",
+                            "top":"0"
+                        });
+                        $("#portfolio #image2").addClass("z-index");
+                        setTimeout(() => {
+                            $("#portfolio #image2").css({
+                                "width":"100%",
+                                "left":"0"
+                            });
+                        }, 500);
+                        setTimeout(() => {
+                            $(".menuDiv").addClass("sneaky");
+                            $(".portBack").removeClass("sneaky mobileSneaky");
+                        }, 500);
+                        setTimeout(() => {
+                            $(".infoText").removeClass("sneaky mobileSneaky");
+                        }, 1250);
+                    });
+                
+                    $("#text3 ul li a").click((evt) => {
+                        evt.preventDefault();
+                        $(".infoText").html(`<h2>Mobile "first"</h2>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas itaque culpa praesentium porro ipsum repellendus quod fuga. In, aut! Mollitia enim dolorum eius culpa esse corporis eos asperiores dolores sint? Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam perspiciatis laudantium possimus hic. Eius doloremque velit architecto obcaecati sapiente cumque, ullam eos officia! Unde enim illo ullam ad dolore! Molestiae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum at nemo, dolorem cupiditate doloribus dolor tempore, consequatur eius est tenetur optio delectus esse neque aut incidunt voluptatum? Magnam, beatae vitae! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam, dolores earum dignissimos sequi voluptatem quae, obcaecati molestiae itaque autem maxime voluptatibus culpa! Totam accusamus magnam voluptates aliquam, quos magni ea? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed consectetur unde vero excepturi tempora nemo a odio? Impedit ex vero, provident deserunt, quasi dolore laudantium distinctio, nulla itaque eligendi ducimus!</p>`)
+                        $("#portfolio #image3").addClass("expandHeight");
+                        $("#portfolio #image3").addClass("z-index");
+                        setTimeout(() => {
+                            $("#portfolio #image3").addClass("expandWidth");
+                        }, 500);
+                        setTimeout(() => {
+                            $(".menuDiv").addClass("sneaky");
+                            $(".portBack").removeClass("sneaky mobileSneaky");
+                        }, 500);
+                        setTimeout(() => {
+                            $(".infoText").removeClass("sneaky mobileSneaky");
+                        }, 1250);
+                    });
+
+                    $(".portBack").click(() => {
+                        $(".infoText").addClass("sneaky mobileSneaky");
+                        $(".portBack").addClass("sneaky mobileSneaky");
+                        $(".menuDiv").removeClass("sneaky");
+                        $("#portfolio .image").removeClass("expandWidth");
+                        setTimeout(() =>{
+                            $("#portfolio .image").removeClass("expandHeight");
+                        }, 500);
+                        setTimeout(() =>{
+                            $("#portfolio .image").removeClass("z-index");
+                        }, 1000);
+                        //resetting image2
+                        $("#image2").css({
+                            "width":"34%",
+                            "left":"33%"
+                        });
+                        setTimeout(() => {
+                            $("#image2").css({
+                                "height":"50%",
+                                "top":"50%"
+                            });
+                        }, 500);
+                        setTimeout(() =>{
+                            $("#portfolio #image2").removeClass("z-index");
+                        }, 1000);
+                    });
+                }
                 break;
             case 4:
             case "contact":
                 if(!contact){
                     contact=true; // Confirm that the contact page has been loaded
-                    // function itemLoad(selector,transitionTime,transitionDelay);
-                    itemLoad("#contact .text p",        "1s","1.0s");
-                    itemLoad("#contact .forms #name",   "2s","1.4s");
-                    itemLoad("#contact .forms #email",  "2s","1.8s");
-                    itemLoad("#contact .forms #phone",  "2s","2.2s");
-                    itemLoad("#contact .forms #main",   "2s","2.6s");
-                    itemLoad("#contact .forms #submit", "2s","3.0s");
-                    itemLoad("#contact #map",           "2s","3.4s");
+                    var nameGreen=false;
+                    var nameRed=false;
+                    var emailGreen=false;
+                    var emailRed=false;
+                    var phoneGreen=false;
+                    var phoneRed=false;
+                    var mainGreen=false;
+                    var mainRed=false;
+                    // function itemFastLoad(selector,transitionDelay);
+                    itemFastLoad("#contact .text p",1000);
+                    // function itemSlowLoad(selector,transitionDelay);
+                    itemSlowLoad("#name",1400);
+                    itemSlowLoad("#email",1800);
+                    itemSlowLoad("#phone",2200);
+                    itemSlowLoad("#main",2600);
+                    itemSlowLoad("#submit",3000);
+                    itemSlowLoad("#map",3400);
                     setTimeout(() => {
                         $("#contact ul li:nth-child(1)").removeClass("sneaky");
                     }, 3500);
@@ -489,6 +579,83 @@ $(document).ready(() => {
                     setTimeout(() => {
                         $("#contact ul li:nth-child(5)").removeClass("sneaky");
                     }, 4300);
+                    
+                    $("#name").keyup(() => {
+                        var contactName = $("#name").val();
+                        var regexName = /^[a-zA-Z ]{3,}$/i;
+                        if(regexName.test(contactName)){
+                            if(!nameGreen){
+                                nameGreen = true;
+                                nameRed = false;
+                                $("#name").removeClass("redBorder");
+                                $("#name").addClass("greenBorder");
+                            }
+                        }else{
+                            if(!nameRed){
+                                nameGreen = false;
+                                nameRed = true;
+                                $("#name").removeClass("greenBorder");
+                                $("#name").addClass("redBorder");
+                            }
+                        }
+                    });
+                    $("#email").keyup(() => {
+                        var contactEmail = $("#email").val();
+                        var regexEmail = /^([\.\w\S]+(?:@)+(?:[\w\S])+(?:\.)+(?:[\w\S])+)$/i;
+                        if(regexEmail.test(contactEmail)){
+                            if(!emailGreen){
+                                emailGreen = true;
+                                emailRed = false;
+                                $("#email").removeClass("redBorder");
+                                $("#email").addClass("greenBorder");
+                            }
+                        }else{
+                            if(!emailRed){
+                                emailGreen = false;
+                                emailRed = true;
+                                $("#email").removeClass("greenBorder");
+                                $("#email").addClass("redBorder");
+                            }
+                        }
+                    });
+                    $("#phone").keyup(() => {
+                        var contactPhone = $("#phone").val();
+                        var regexPhone = /^[0-9]{7,}$/ // ^([\+]{1}(?:[1-9]){1}(?:[0-9])+){7,}$ ??? (Country codes)
+                        if(regexPhone.test(contactPhone)){
+                            if(!phoneGreen){
+                                phoneGreen=true;
+                                phoneRed=false;
+                                $("#phone").removeClass("redBorder");
+                                $("#phone").addClass("greenBorder");
+                            }
+                        }else{
+                            if(!phoneRed){
+                                phoneGreen=false;
+                                phoneRed=true;
+                                $("#phone").removeClass("greenBorder");
+                                $("#phone").addClass("redBorder");
+                            }
+                        }
+                    });
+                    $("#main").keyup(() => {
+                        var contactMain = $("#main").val();
+                        var regexMain = /^[^\0]+$/i;
+                        if(regexMain.test(contactMain)){
+                            if(!mainGreen){
+                                mainGreen=true;
+                                mainRed=false;
+                                $("#main").removeClass("redBorder");
+                                $("#main").addClass("greenBorder");
+                            }
+                        }else{
+                            if(!mainRed){
+                                mainGreen=false;
+                                mainRed=true;
+                                $("#main").removeClass("greenBorder");
+                                $("#main").addClass("redBorder");
+                            }
+                        }
+                    });
                 }
                 break;
         }
@@ -502,19 +669,20 @@ $(document).ready(() => {
                 switchCenter(".preview1",500); // Move right > center
             }
             if(!teamContentOne){
-                itemLoad("#avatar1",    "2s","1.0s"); // Load the avatar
-                // function barLoad(selector,width,transitionTime,transitionDelay);
-                barLoad("#bar1", "75%", "2s","2.0s");
-                barLoad("#bar2","100%", "2s","2.2s");
-                barLoad("#bar3", "50%", "2s","2.4s");
-                barLoad("#bar4","125%", "2s","2.6s");
-                barLoad("#bar5", "75%", "2s","2.8s");
-                // function itemLoad(selector,transitionTime,transitionDelay);
-                itemLoad("#bar1 p",     "1s","4.0s");
-                itemLoad("#bar2 p",     "1s","4.3s");
-                itemLoad("#bar3 p",     "1s","4.6s");
-                itemLoad("#bar4 p",     "1s","4.9s");
-                itemLoad("#bar5 p",     "1s","5.2s");
+                // function itemSlowLoad(selector,transitionDelay);
+                itemSlowLoad("#avatar1",1000);
+                // function barLoad(selector,width,transitionDelay);
+                barLoad("#bar1","100",2000);
+                barLoad("#bar2","120",2200);
+                barLoad("#bar3","50",2400);
+                barLoad("#bar4","70",2600);
+                barLoad("#bar5","60",2800);
+                //function itemFastLoad(selector,transitionDelay);
+                itemFastLoad("#bar1 p",4000);
+                itemFastLoad("#bar2 p",4200);
+                itemFastLoad("#bar3 p",4400);
+                itemFastLoad("#bar4 p",4600);
+                itemFastLoad("#bar5 p",4800);
             }
             switchLeft(".preview1",10000); // Move center > left
             teamContentOne=true; // Confirm that slide-page one has been loaded
@@ -527,19 +695,20 @@ $(document).ready(() => {
             },100);
             switchCenter(".preview2",500); // Move it right > center
             if(!teamContentTwo){
-                itemLoad("#avatar2",    "2s","1.0s"); // Load the avatar
-                // function barLoad(selector,width,transitionTime,transitionDelay);
-                barLoad("#bar6","75%",  "2s","2.0s");
-                barLoad("#bar7","100%", "2s","2.2s");
-                barLoad("#bar8","50%",  "2s","2.4s");
-                barLoad("#bar9","125%", "2s","2.6s");
-                barLoad("#bar10","80%", "2s","2.8s");
-                //function itemLoad(selector,transitionTime,transitionDelay);
-                itemLoad("#bar6 p",     "1s","4.0s");
-                itemLoad("#bar7 p",     "1s","4.3s");
-                itemLoad("#bar8 p",     "1s","4.6s");
-                itemLoad("#bar9 p",     "1s","4.9s");
-                itemLoad("#bar10 p",    "1s","5.2s");
+                // function itemSlowLoad(selector,transitionDelay);
+                itemSlowLoad("#avatar2",1000);
+                // function barLoad(selector,width,transitionDelay);
+                barLoad("#bar6","120",2000);
+                barLoad("#bar7","70",2200);
+                barLoad("#bar8","90",2400);
+                barLoad("#bar9","60",2600);
+                barLoad("#bar10","110",2800);
+                //function itemFastLoad(selector,transitionDelay);
+                itemFastLoad("#bar6 p",4000);
+                itemFastLoad("#bar7 p",4200);
+                itemFastLoad("#bar8 p",4400);
+                itemFastLoad("#bar9 p",4600);
+                itemFastLoad("#bar10 p",4800);
             }
             switchLeft(".preview2",10000); // Move it center > left
             teamContentTwo=true; // Confirm that slide-page two has been loaded
@@ -552,19 +721,20 @@ $(document).ready(() => {
             },100);
             switchCenter(".preview3",500); // Move it right > center
             if(!teamContentThree){
-                itemLoad("#avatar3",    "2s","1.0s"); // Load the avatar
-                // function barLoad(selector,width,transitionTime,transitionDelay);
-                barLoad("#bar11","90%", "2s","2.0s");
-                barLoad("#bar12","110%","2s","2.2s");
-                barLoad("#bar13","80%", "2s","2.4s");
-                barLoad("#bar14","40%", "2s","2.6s");
-                barLoad("#bar15","70%", "2s","2.8s");
-                //function itemLoad(selector,transitionTime,transitionDelay);
-                itemLoad("#bar11 p",    "1s","4.0s");
-                itemLoad("#bar12 p",    "1s","4.3s");
-                itemLoad("#bar13 p",    "1s","4.6s");
-                itemLoad("#bar14 p",    "1s","4.9s");
-                itemLoad("#bar15 p",    "1s","5.2s");
+                // function itemSlowLoad(selector,transitionDelay);
+                itemSlowLoad("#avatar3",1000);
+                // function barLoad(selector,width,transitionDelay);
+                barLoad("#bar11","90",2000);
+                barLoad("#bar12","110",2200);
+                barLoad("#bar13","80",2400);
+                barLoad("#bar14","40",2600);
+                barLoad("#bar15","70",2800);
+                //function itemFastLoad(selector,transitionDelay);
+                itemFastLoad("#bar11 p",4000);
+                itemFastLoad("#bar12 p",4200);
+                itemFastLoad("#bar13 p",4400);
+                itemFastLoad("#bar14 p",4600);
+                itemFastLoad("#bar15 p",4800);
             }
             switchLeft(".preview3",10000); // Move it center > left
             teamContentThree=true; // Confirm that slide-page three has been loaded
@@ -590,23 +760,22 @@ $(document).ready(() => {
                 $(selector).addClass("switchLeft");
             },transitionDelay);
         }
-        function itemLoad(selector,transitionTime,transitionDelay){
-            $(selector).css({
-                "visibility":"visible",
-                "opacity":"1",
-                "transition":transitionTime,
-                "transition-delay":transitionDelay
-            });
+        function itemFastLoad(selector,transitionDelay){
+            setTimeout(() => {
+                $(selector).removeClass("sneaky");
+                $(selector).removeClass("sneaky2");
+            },transitionDelay);
         }
-        function barLoad(selector,width,transitionTime,transitionDelay){
-            $(selector).css({
-                "visibility":"visible",
-                "opacity":"1",
-                "width":width,
-                "transition":transitionTime,
-                "transition-timing-function":"linear",
-                "transition-delay":transitionDelay
-            });
+        function itemSlowLoad(selector,transitionDelay){
+            setTimeout(() => {
+                $(selector).removeClass("sneaky");
+                $(selector).removeClass("sneaky2");
+            },transitionDelay);
+        }
+        function barLoad(selector,width,transitionDelay){
+            setTimeout(() => {
+                $(selector).addClass("barWidth"+width);
+            },transitionDelay);
         }
     }
     // End of function(s)
@@ -649,93 +818,8 @@ $(document).ready(() => {
     $(".moreInfo").mouseenter(() => {
         sneakyNormalScrolling=true; // Allow normal scrolling in the .moreInfo div
     });
-    
-    // PORTFOLIO
-    $("#text1 ul li").click((evt) => {
-        evt.preventDefault();
-        $(".infoText").html(`<h2>Full Page Scroll</h2>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas itaque culpa praesentium porro ipsum repellendus quod fuga. In, aut! Mollitia enim dolorum eius culpa esse corporis eos asperiores dolores sint? Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam perspiciatis laudantium possimus hic. Eius doloremque velit architecto obcaecati sapiente cumque, ullam eos officia! Unde enim illo ullam ad dolore! Molestiae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum at nemo, dolorem cupiditate doloribus dolor tempore, consequatur eius est tenetur optio delectus esse neque aut incidunt voluptatum? Magnam, beatae vitae! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam, dolores earum dignissimos sequi voluptatem quae, obcaecati molestiae itaque autem maxime voluptatibus culpa! Totam accusamus magnam voluptates aliquam, quos magni ea? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed consectetur unde vero excepturi tempora nemo a odio? Impedit ex vero, provident deserunt, quasi dolore laudantium distinctio, nulla itaque eligendi ducimus!</p>`)
-        $("#portfolio #image1").addClass("expandHeight");
-        $("#portfolio #image1").addClass("z-index");
-        setTimeout(() => {
-            $("#portfolio #image1").addClass("expandWidth");
-        }, 500);
-        setTimeout(() => {
-            $(".menuDiv").addClass("sneaky");
-            $(".portBack").removeClass("sneaky");
-        }, 500);
-        setTimeout(() => {
-            $(".infoText").removeClass("sneaky");
-        }, 1250);
-     });
-
-     $("#text2 ul li").click((evt) => {
-        evt.preventDefault();
-        $(".infoText").html(`<h2>Content Sliding</h2>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas itaque culpa praesentium porro ipsum repellendus quod fuga. In, aut! Mollitia enim dolorum eius culpa esse corporis eos asperiores dolores sint? Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam perspiciatis laudantium possimus hic. Eius doloremque velit architecto obcaecati sapiente cumque, ullam eos officia! Unde enim illo ullam ad dolore! Molestiae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum at nemo, dolorem cupiditate doloribus dolor tempore, consequatur eius est tenetur optio delectus esse neque aut incidunt voluptatum? Magnam, beatae vitae! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam, dolores earum dignissimos sequi voluptatem quae, obcaecati molestiae itaque autem maxime voluptatibus culpa! Totam accusamus magnam voluptates aliquam, quos magni ea? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed consectetur unde vero excepturi tempora nemo a odio? Impedit ex vero, provident deserunt, quasi dolore laudantium distinctio, nulla itaque eligendi ducimus!</p>`)
-        $("#portfolio #image2").css({
-            "height":"100%",
-            "top":"0"
-        });
-        $("#portfolio #image2").addClass("z-index");
-        setTimeout(() => {
-            $("#portfolio #image2").css({
-                "width":"100%",
-                "left":"0"
-            });
-        }, 500);
-        setTimeout(() => {
-            $(".menuDiv").addClass("sneaky");
-            $(".portBack").removeClass("sneaky");
-        }, 500);
-        setTimeout(() => {
-            $(".infoText").removeClass("sneaky");
-        }, 1250);
-     });
-
-     $("#text3 ul li").click((evt) => {
-        evt.preventDefault();
-        $(".infoText").html(`<h2>Mobile "first"</h2>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas itaque culpa praesentium porro ipsum repellendus quod fuga. In, aut! Mollitia enim dolorum eius culpa esse corporis eos asperiores dolores sint? Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam perspiciatis laudantium possimus hic. Eius doloremque velit architecto obcaecati sapiente cumque, ullam eos officia! Unde enim illo ullam ad dolore! Molestiae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum at nemo, dolorem cupiditate doloribus dolor tempore, consequatur eius est tenetur optio delectus esse neque aut incidunt voluptatum? Magnam, beatae vitae! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam, dolores earum dignissimos sequi voluptatem quae, obcaecati molestiae itaque autem maxime voluptatibus culpa! Totam accusamus magnam voluptates aliquam, quos magni ea? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed consectetur unde vero excepturi tempora nemo a odio? Impedit ex vero, provident deserunt, quasi dolore laudantium distinctio, nulla itaque eligendi ducimus!</p>`)
-        $("#portfolio #image3").addClass("expandHeight");
-        $("#portfolio #image3").addClass("z-index");
-        setTimeout(() => {
-            $("#portfolio #image3").addClass("expandWidth");
-        }, 500);
-        setTimeout(() => {
-            $(".menuDiv").addClass("sneaky");
-            $(".portBack").removeClass("sneaky");
-        }, 500);
-        setTimeout(() => {
-            $(".infoText").removeClass("sneaky");
-        }, 1250);
-     });
-
-     $(".portBack").click(() => {
-        $(".infoText").addClass("sneaky");
-        $(".portBack").addClass("sneaky");
-        $(".menuDiv").removeClass("sneaky");
-        $("#portfolio .image").removeClass("expandWidth");
-        setTimeout(() =>{
-            $("#portfolio .image").removeClass("expandHeight");
-        }, 500);
-        setTimeout(() =>{
-            $("#portfolio .image").removeClass("z-index");
-        }, 1000);
-        //resetting image2
-        $("#image2").css({
-            "width":"34%",
-            "left":"33%"
-        });
-        setTimeout(() => {
-            $("#image2").css({
-                "height":"50%",
-                "top":"50%"
-            });
-        }, 500);
-        setTimeout(() =>{
-            $("#portfolio #image2").removeClass("z-index");
-        }, 1000);
-     });
+    $(".hamburger .fa-bars, .mobileDiv ul li").click(() =>{
+        $(".mobileDiv").toggleClass("mobileSneaky");
+    });
     // End of on-load trigger(s)
 }); // End of $(document).ready(){};

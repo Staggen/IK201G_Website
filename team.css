@@ -46,29 +46,31 @@
     -webkit-transform:translate(50%,-50%);
     -moz-transform:translate(50%,-50%);
 }
-.switchRight{
-    transform:translate(50%,-50%);
-    -moz-transform:translate(50%,-50%);
-    -webkit-transform:translate(50%,-50%);
-    transition:1s;
-    -moz-transition:1s;
-    -webkit-transition:1s;
-}
-.switchCenter{
-    transform:translate(-50%,-50%);
-    -moz-transform:translate(-50%,-50%);
-    -webkit-transform:translate(-50%,-50%);
-    transition:1s;
-    -moz-transition:1s;
-    -webkit-transition:1s;
-}
-.switchLeft{
-    transform:translate(-150%,-50%);
-    -moz-transform:translate(-150%,-50%);
-    -webkit-transform:translate(-150%,-50%);
-    transition:1s;
-    -moz-transition:1s;
-    -webkit-transition:1s;
+@media (min-width: 768px){
+    .switchRight{
+        transform:translate(50%,-50%);
+        -moz-transform:translate(50%,-50%);
+        -webkit-transform:translate(50%,-50%);
+        transition:1s;
+        -moz-transition:1s;
+        -webkit-transition:1s;
+    }
+    .switchCenter{
+        transform:translate(-50%,-50%);
+        -moz-transform:translate(-50%,-50%);
+        -webkit-transform:translate(-50%,-50%);
+        transition:1s;
+        -moz-transition:1s;
+        -webkit-transition:1s;
+    }
+    .switchLeft{
+        transform:translate(-150%,-50%);
+        -moz-transform:translate(-150%,-50%);
+        -webkit-transform:translate(-150%,-50%);
+        transition:1s;
+        -moz-transition:1s;
+        -webkit-transition:1s;
+    }
 }
 .avatar{
     position:absolute;
@@ -78,8 +80,7 @@
     transform:translate(-75%,-50%);
     -webkit-transform:translate(-75%,-50%);
     -moz-transform:translate(-75%,-50%);
-    visibility:hidden;
-    opacity:0;
+    transition: opacity 2s;
 }
 .pic{
     position:absolute;
@@ -106,16 +107,18 @@
     height:15%;
     width:0;
     background:#1d3557;
+    transition: width linear 1s;
 }
 .bar p{
     font-size:1em;
     text-transform:uppercase;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight:400;
-    font:size 4vw; /* RELATIVE VIEW WIDTH, FIX IT PROPERLY */
+    font-size: 1em;
     letter-spacing:2px;
     color:#f1faee;
     margin-left:2em;
+    transition: opacity 1s;
 }
 /* 1440p */
 @media (max-width:2560px){
@@ -135,37 +138,59 @@
         line-height:3em;
     }
 }
-.graph p{ /* Hidden */
-    visibility:hidden;
-    opacity:0;
-}
 #bar1,#bar6,#bar11{
     top:0;
-    visibility:hidden;
-    opacity:0;
 }
 #bar2,#bar7,#bar12{
     top:25%;
     transform:translateY(-25%);
-    visibility:hidden;
-    opacity:0;
 }
 #bar3,#bar8,#bar13{
     top:50%;
     transform:translateY(-50%);
-    visibility:hidden;
-    opacity:0;
 }
 #bar4,#bar9,#bar14{
     bottom:25%;
     transform:translateY(25%);
-    visibility:hidden;
-    opacity:0;
 }
 #bar5,#bar10,#bar15{
     bottom: 0;
-    visibility:hidden;
-    opacity:0;
+}
+.barWidth40{
+    width:40%;
+    transition:linear 2s;
+}
+.barWidth50{
+    width:50%;
+    transition:linear 2s;
+}
+.barWidth60{
+    width:60%;
+    transition:linear 2s;
+}
+.barWidth70{
+    width:70%;
+    transition:linear 2s;
+}
+.barWidth80{
+    width:80%;
+    transition:linear 2s;
+}
+.barWidth90{
+    width:90%;
+    transition:linear 2s;
+}
+.barWidth100{
+    width:100%;
+    transition:linear 2s;
+}
+.barWidth110{
+    width:110%;
+    transition:linear 2s;
+}
+.barWidth120{
+    width:120%;
+    transition:linear 2s;
 }
 .timer{
     position:absolute;
@@ -231,7 +256,6 @@
     top: calc(200px + 3em);
     left: 2em;
     color: #1d3557;
-    /* background: grey; */
 }
 .lifeStory{
     position: absolute;
@@ -241,7 +265,7 @@
     color: #1d3557;
 }
 .back{
-    background-color: #1d3557a8; /* On load color */
+    background-color: rgba(29, 53, 87, 0.659); /* On load color */
     height:40px; /* Menu-bar width component 1/2 */
     position:absolute;
     transform-origin:top left 0;
@@ -251,8 +275,8 @@
     -webkit-transform:rotate(-90deg) translate(-100%, 0);
     -moz-transform:rotate(-90deg) translate(-100%, 0);
     width:100vh; /* Full screen, flipped to height */
-    line-height: 35px;
-    text-align: center;
+    line-height:35px;
+    text-align:center;
     color: #f1faee;
     transition: opacity 1s;
 }
@@ -264,5 +288,43 @@
 .back:hover p{
     font-weight: bold;
     transition: 0.3s;
+}
+@media (max-width: 767px){
+    .preview1{
+        position:absolute;
+        width:100%;
+        height:100%;
+        display:flex;
+        justify-content:center;
+        left:50%;
+        top:45%;
+        transform:translate(-50%,-50%);
+        -webkit-transform:translate(-50%,-50%);
+        -moz-transform:translate(-50%,-50%);
+    }
+    .preview2{
+        position:absolute;
+        width:100%;
+        height:100%;
+        display:flex;
+        justify-content:center;
+        left:50%;
+        top:65%;
+        transform:translate(-50%,-50%);
+        -webkit-transform:translate(-50%,-50%);
+        -moz-transform:translate(-50%,-50%);
+    }
+    .preview3{
+        position:absolute;
+        width:100%;
+        height:100%;
+        display:flex;
+        justify-content:center;
+        left:50%;
+        top:85%;
+        transform:translate(-50%,-50%);
+        -webkit-transform:translate(-50%,-50%);
+        -moz-transform:translate(-50%,-50%);
+    }
 }
 /* End of Team page carousel */
