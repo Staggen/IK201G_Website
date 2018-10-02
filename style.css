@@ -16,6 +16,10 @@
         visibility:hidden;
         opacity:0;
     }
+    .superSneaky{
+        display:none;
+        opacity: 0;
+    }
 }
 h1{
     line-height:100vh;
