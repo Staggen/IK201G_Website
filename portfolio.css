@@ -14,7 +14,7 @@
     position: absolute;
     width: 33%;
     height: 50%;
-    background: #a8dadc;
+    background: #dce4d9;
     text-align: center;
 }
 .projectText p{
@@ -45,28 +45,28 @@
 .projectText ul li{
     width:100px;
     height:100px;
-    background:#a8dadc;
+    background:#dce4d9;
     list-style:none;
     display:inline-block;
     text-align:center;
     border-radius:50%;
-    border:2px solid #f1faee;
+    border:2px solid #1d3557;
     margin:0 10px;
 }
 .projectText ul li a{
     font-size:20px;
     text-decoration:none;
-    color:#f1faee;
+    color:#1d3557;
     line-height:100px;
     display:block;
 }
 .projectText ul li:hover{
     transform: scale(1.1);
     transition: 0.7s;
-    background: #f1faee;
+    background: #1d3557;
 }
 .projectText ul li:hover a{
-    color: #a8dadc;
+    color: #dce4d9;
     transition: 0.5s;
     cursor: pointer;
 }
@@ -77,7 +77,7 @@
     height: 0; 
     border-left: 40px solid transparent;
     border-right: 40px solid transparent;
-    border-bottom: 40px solid #a8dadc;
+    border-bottom: 40px solid #dce4d9;
     left: 50%;
     top: 0;
     transform: translate(-50%, -100%);
@@ -91,7 +91,7 @@
     height: 0; 
     border-left: 40px solid transparent;
     border-right: 40px solid transparent;
-    border-top: 40px solid #a8dadc;
+    border-top: 40px solid #dce4d9;
     left: 50%;
     bottom: 0;
     transform: translate(-50%, 100%);

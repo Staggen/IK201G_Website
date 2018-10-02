@@ -2,7 +2,7 @@
     /* Light Blue */
     background-color:#a8dadc;
     color:#e63946;
-    overflow-x:hidden;
+    overflow:hidden;
 }
 /* Team page carousel */
 .content-container{
@@ -46,7 +46,14 @@
     -webkit-transform:translate(50%,-50%);
     -moz-transform:translate(50%,-50%);
 }
-@media (min-width: 768px){
+@media (min-width: 768px){ /* Non-Mobile */
+    .lifeStory{
+        position: absolute;
+        width: calc(75% - 4em);
+        left: calc(200px + 3em);
+        top: 2em;
+        color: #1d3557;
+    }
     .switchRight{
         transform:translate(50%,-50%);
         -moz-transform:translate(50%,-50%);
@@ -290,14 +297,54 @@
     transition: 0.3s;
 }
 @media (max-width: 767px){
+    .lifeStory{
+        position:absolute;
+        width: 80%;
+        height: 50%;
+        left:12%;
+        top:55%;
+        color: #1d3557;
+        /* background: #e63946; */
+        overflow-y:scroll;
+    }
+    .teamNameOne{
+        position:absolute;
+        text-align: center;
+        color: #f1faee;
+        top: 18%;
+        width:100%;
+    }
+    .teamNameTwo{
+        position:absolute;
+        text-align: center;
+        color: #f1faee;
+        top: 38%;
+        width:100%;
+    }
+    .teamNameThree{
+        position:absolute;
+        text-align: center;
+        color: #f1faee;
+        top: 58%;
+        width:100%;
+    }
+    .teamTitle{
+        position:absolute;
+        text-align: center;
+        margin: 0.5em;
+        color: #f1faee;
+        top: 10%;
+        width:100%;
+    }
     .preview1{
         position:absolute;
         width:100%;
-        height:100%;
+        height:33%;
         display:flex;
         justify-content:center;
-        left:50%;
-        top:45%;
+        /* background-color: #e63946; */
+        left:69%;
+        top:35%;
         transform:translate(-50%,-50%);
         -webkit-transform:translate(-50%,-50%);
         -moz-transform:translate(-50%,-50%);
@@ -305,11 +352,11 @@
     .preview2{
         position:absolute;
         width:100%;
-        height:100%;
+        height:34%;
         display:flex;
         justify-content:center;
-        left:50%;
-        top:65%;
+        left:69%;
+        top:55%;
         transform:translate(-50%,-50%);
         -webkit-transform:translate(-50%,-50%);
         -moz-transform:translate(-50%,-50%);
@@ -317,14 +364,22 @@
     .preview3{
         position:absolute;
         width:100%;
-        height:100%;
+        height:33%;
         display:flex;
         justify-content:center;
-        left:50%;
-        top:85%;
+        left:69%;
+        top:75%;
         transform:translate(-50%,-50%);
         -webkit-transform:translate(-50%,-50%);
         -moz-transform:translate(-50%,-50%);
+    }
+    .back{
+        background: #1d3557af;
+        height: 40px;
+        width: 40px;
+        z-index: 5;
+        margin: 1em;
+        border-radius: 50%;
     }
 }
 /* End of Team page carousel */

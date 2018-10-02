@@ -6,6 +6,14 @@ $(document).ready(() => {
     var userName=[]; // For highlight/lookup
     var projectName=[]; // For highlight/lookup
 
+    var globalWindowWidth = $(window).width();
+    var mobileMode=false;
+    if(globalWindowWidth<768){
+        mobileMode = true;
+    }else{
+        mobileMode = false;
+    }
+
     // Below are used for content-loading confirmations
     var home = false;
     var about = false;
@@ -106,6 +114,12 @@ $(document).ready(() => {
         });
         window.addEventListener('resize', function(event){ // Make the full page slide work properly even after resizing the window
             pageStart = page.offset().top;
+            globalWindowWidth = $(window).width();
+            if(globalWindowWidth < 768){
+                mobileMode=true;
+            }else{
+                mobileMode=false;
+            }
         });
     }
 
@@ -154,301 +168,299 @@ $(document).ready(() => {
             case "about":
                 if(!about){
                     about=true; // Confirm that the about has been loaded
-                    // var dateObject = new Date();
-                    // var year = parseInt(dateObject.getUTCFullYear());
-                    // var month = parseInt(dateObject.getUTCMonth()) + 1; // getUTCMonth() counts 0-11 by default, so that's why we add +1 at the end
-                    // var day = parseInt(dateObject.getUTCDate());
-                    // function pastWeek(){
-                    //     day = day - 7;
-                    //     if(day < 1){ // If day goes below 1, it hops back a month
-                    //         month--;
-                    //         if(month < 0){ // If month goes below 0, it hops back a year
-                    //             year--;
-                    //             month = month + 12; // Setting the new month value
-                    //         }
-                    //         switch(month){ // Setting the new day value depending on month
-                    //             case 2: // February
-                    //                 if(year % 4 == 0){ // If leap year
-                    //                     day = 29 + day;
-                    //                 }else{ // If not leap year
-                    //                     day = 28 + day;
-                    //                 }
-                    //                 break;
-                    //             case 4: // April
-                    //             case 6: // June
-                    //             case 9: // September
-                    //             case 11: // November
-                    //                 day = 30 + day;
-                    //                 break;
-                    //             case 1: // January
-                    //             case 3: // March
-                    //             case 5: // May
-                    //             case 7: // July
-                    //             case 8: // August
-                    //             case 10: // Oktober
-                    //             case 12: // December
-                    //                 day = 31 + day;
-                    //                 break;
-                    //         }
-                    //     }
-                    //     if(day < 10){ // If the day is less than the 10th (single digit), it will get a 0 infront of it (for API reasons) and be converted to a string
-                    //         day = 0 + day.toString();
-                    //     }
-                    //     if(month < 10){ // If the month is less than the 10th (single digit), it will get a 0 infront of it (for API reasons) and be converted to a string
-                    //         month = 0 + month.toString();
-                    //     }
-                    //     return year + "-" + month + "-" + day;
-                    // }
-                    // var url=`https://api.github.com/search/repositories?q=language:javascript+created:>${pastWeek()}&sort=stars&order=desc`;
-                    // fetch(url,{
-                    //     method:'get',
-                    //     headers:{
-                    //         'Content-Type':'application/vnd.github.v3+json;charset=utf-8',
-                    //     },
-                    // })
-                    // .then(response => { // Response is of type responseObject
-                    //     return response.json(); // Convert responseObject to JSONObject
-                    // })
-                    // .then(response => { // Use JSONObject
-                    //     for(var i = 0;i < 5;i++){ // Loop 5 times (get the 5-top trends created in javascript this week)
-                    //         $("#trend"+i).html(parseInt(i+1)+". "+response.items[i].name); // Set the links show name to the name of the github project repository
-                    //         $("#trend"+i).attr("href",response.items[i].html_url); // Set the link's href to the url of the github repository
-                    //         userName[i]=response.items[i].owner.login; // Store the username ofuser who created the repo
-                    //         projectName[i]=response.items[i].name; // Store the profile link of the user who created the repo
-                    //     }
-                    // })
-                    // .catch(error => console.error(error)); // If someone is a doofus
                     
-                    url=`https://api.github.com/search/repositories?q=language:css&sort=stars&order=desc`
-                    fetch(url,{ // Get CSS repos
-                        method:'get',
-                        headers:{
-                            'Content-Type':'application/vnd.github.v3+json; charset=utf-8'
+                    if(mobileMode){
+                        function mobileButtonFire(id){
+                            $(".moreInfo").removeClass("mobileSneaky");
+                            $(".aboutBack").removeClass("mobileSneaky");
+                            url=`https://api.github.com/repos/${userName[id]}/${projectName[id]}/contributors`;
+                            fetch(url,{ // Get a list of contributors
+                                method:'get',
+                                headers:{
+                                    'Content-Type':'application/vnd.github.v3+json; charset=utf-8'
+                                }
+                            })
+                            .then(response => { // response is of type responseObject
+                                return response.json(); // Convert response to JSONObject
+                            })
+                            .then(response => {
+                                $(".contributorList").html(""); // Clear the list
+                                for(key in response){
+                                    $(".contributorList").append(`
+                                        <li>
+                                            <a href="${response[key].html_url}" target="_blank" data-response-id=${response[key].id}>
+                                                <img src="${response[key].avatar_url}">${response[key].login}
+                                            </a>
+                                        </li>
+                                    `);// Adding rows individually to the list
+                                }
+                            })
+                            .catch(error => console.error(error));
                         }
-                    })
-                    .then(response => {// response is of type responseObject
-                        return response.json(); // Convert response to JSONObject
-                    })
-                    .then(response => { // Use the JSONObject
-                        for(var i = 0; i < 5;i++){ // Loop 5 times to get the top 5 CSS repos
-                            $("#trend"+i).html(parseInt(i+1)+". ★ "+response.items[i].stargazers_count+" | "+response.items[i].name+" by "+response.items[i].owner.login);
-                            $("#trend"+i).attr("href",response.items[i].html_url);
-                            userName[i]=response.items[i].owner.login;
-                            projectName[i]=response.items[i].name;
-                        }
-                    })
-                    .catch(error => console.error(error));
-
-                    url=`https://api.github.com/search/repositories?q=language:javascript&sort=stars&order=desc`
-                    fetch(url,{ // Get JavaScript repos
-                        method:'get',
-                        headers:{
-                            'Content-Type':'application/vnd.github.v3+json; charset=utf-8',
-                        }
-                    })
-                    .then(response => { // response is of type responseObject
-                        return response.json(); // Convert response to JSONObject
-                    })
-                    .then(response => { // Use the JSONObject
-                        var counter=0;
-                        for(var i = 5;i < 10;i++){ // Loop 5 times to get the top 5 javascript
-                            $("#trend"+i).html(parseInt(i-4)+". ★ "+response.items[counter].stargazers_count+" | "+response.items[counter].name+" by "+response.items[counter].owner.login);
-                            $("#trend"+i).attr("href",response.items[counter].html_url);
-                            userName[i]=response.items[counter].owner.login;
-                            projectName[i]=response.items[counter].name;
-                            counter++;
-                        }
-                    })
-                    .catch(error => console.error(error)); // If someone is a doofus
-
-                    $(".github").on("mouseenter", "ul.trendClass li a", function(){
-                        sneakyNormalScrolling=false; // Disallow normal scrolling | enforce full page scrolling
-                        $(".moreInfo").removeClass("sneaky"); // Un-hide the .moreInfo class
-                        $(".github ul li a").removeClass("active"); // remove the class active from all li elements
-                        $(this).addClass("active"); // add the class active for this current li element
-                        var dataValue=this.dataset.id; // Get the specific data value for the current li
-                        
-                        url=`https://api.github.com/repos/${userName[dataValue]}/${projectName[dataValue]}/contributors`
-                        fetch(url,{ // Get a list of contributors
-                            method:'get',
-                            headers:{
-                                'Content-Type':'application/vnd.github.v3+json; charset=utf-8',
-                            }
+                        $("ul.trendClass li").on("click","button.showMoreButtons",function(){
+                            var buttonID = $(this).data('button-id');
+                            mobileButtonFire(buttonID);
+                        });
+                        $(".aboutBack").click(() =>{
+                            $(".moreInfo").addClass("mobileSneaky");
+                            $(".aboutBack").addClass("mobileSneaky");
                         })
-                        .then(response => { // response is of type responseObject
-                            return response.json(); // Convert response to JSONObject
-                        })
-                        .then(response => { // Use the JSONObject
-                            $(".contributorList").html(""); // Clear the list
-                            for(key in response){
-                                $(".contributorList").append(`
-                                    <li>
-                                        <a href="${response[key].html_url}" target="_blank" data-response-id=${response[key].id}>
-                                            <img src="${response[key].avatar_url}">${response[key].login}
-                                        </a>
-                                    </li>
-                                `);// Adding rows individually to the list
-                            }
-                        })
-                        .catch(error => console.error(error)); // If somoene is a doofus
-                    });
+                        // $(".github, .blurb").click(function(event){
+                        //     $(".moreInfo").addClass("mobileSneaky");
+                        // });
+                    }else if(!mobileMode){
+                        $(".github").on("mouseenter", "ul.trendClass li a", function(){
+                            sneakyNormalScrolling=false; // Disallow normal scrolling | enforce full page scrolling
+                            $(".moreInfo").removeClass("sneaky"); // Un-hide the .moreInfo class
+                            $(".github ul li a").removeClass("active"); // remove the class active from all li elements
+                            $(this).addClass("active"); // add the class active for this current li element
+                            var dataValue=this.dataset.id; // Get the specific data value for the current li
+                            
+                            url=`https://api.github.com/repos/${userName[dataValue]}/${projectName[dataValue]}/contributors`;
+                            fetch(url,{ // Get a list of contributors
+                                method:'get',
+                                headers:{
+                                    'Content-Type':'application/vnd.github.v3+json; charset=utf-8'
+                                }
+                            })
+                            .then(response => { // response is of type responseObject
+                                return response.json(); // Convert response to JSONObject
+                            })
+                            .then(response => { // Use the JSONObject
+                                $(".contributorList").html(""); // Clear the list
+                                for(key in response){
+                                    $(".contributorList").append(`
+                                        <li>
+                                            <a href="${response[key].html_url}" target="_blank" data-response-id=${response[key].id}>
+                                                <img src="${response[key].avatar_url}">${response[key].login}
+                                            </a>
+                                        </li>
+                                    `);// Adding rows individually to the list
+                                }
+                            })
+                            .catch(error => console.error(error)); // If somoene is a doofus
+                        });
+                    }
                 }
                 break;
             case 2:
             case "team":
                 if(!team){
                     team=true; // Confirm that the team page has been loaded
-                    var teamCounter = 0;
-                    var initialSecondary;
-                    var initialTertiary;
-                    var firstContent;
-                    var secondContent;
-                    var thirdContent;
-                    function contentSlide(memberNumber){
-                        setTimeout(() => {
-                            $("#team .timer").removeClass("sneaky");
-                        },5500);
-                        if(memberNumber==0){
-                            memberOne();
-                            initialSecondary = setTimeout(() => {
+                    if(!mobileMode){
+                        var teamCounter = 0;
+                        var initialSecondary;
+                        var initialTertiary;
+                        var firstContent;
+                        var secondContent;
+                        var thirdContent;
+                        function contentSlide(memberNumber){
+                            setTimeout(() => {
+                                $("#team .timer").removeClass("sneaky");
+                            },5500);
+                            if(memberNumber==0){
+                                memberOne();
+                                initialSecondary = setTimeout(() => {
+                                    memberTwo();
+                                    teamCounter = 1;
+                                },10000);
+                                initialTertiary = setTimeout(() => {
+                                    memberThree();
+                                    teamCounter = 2;
+                                },20000);
+                                firstContent=setInterval(() => {
+                                    memberOne();
+                                    teamCounter = 0;
+                                },30000);
+                                secondContent=setInterval(() => {
+                                    setTimeout(memberTwo,10000);
+                                    teamCounter = 1;
+                                },30000);
+                                thirdContent=setInterval(() => {
+                                    setTimeout(memberThree,20000);
+                                    teamCounter = 2;
+                                },30000);
+                            }
+                            else if(memberNumber==1){
                                 memberTwo();
                                 teamCounter = 1;
-                            },10000);
-                            initialTertiary = setTimeout(() => {
+                                initialSecondary = setTimeout(() => {
+                                    memberThree();
+                                    teamCounter = 2;
+                                },10000);
+                                initialTertiary = setTimeout(() => {
+                                    memberOne();
+                                    teamCounter = 0;
+                                },20000);
+                                secondContent=setInterval(() => {
+                                    memberTwo();
+                                    teamCounter = 1;
+                                },30000);
+                                thirdContent=setInterval(() => {
+                                    setTimeout(memberThree,10000);
+                                    teamCounter = 2;
+                                },30000);
+                                firstContent=setInterval(() => {
+                                    setTimeout(memberOne,20000);
+                                    teamCounter = 0;
+                                },30000);
+                            }
+                            else{
                                 memberThree();
                                 teamCounter = 2;
-                            },20000);
-                            firstContent=setInterval(() => {
-                                memberOne();
-                                teamCounter = 0;
-                            },30000);
-                            secondContent=setInterval(() => {
-                                setTimeout(memberTwo,10000);
-                                teamCounter = 1;
-                            },30000);
-                            thirdContent=setInterval(() => {
-                                setTimeout(memberThree,20000);
-                                teamCounter = 2;
-                            },30000);
+                                initialSecondary = setTimeout(() => {
+                                    memberOne();
+                                    teamCounter = 0;
+                                },10000);
+                                initialTertiary = setTimeout(() => {
+                                    memberTwo();
+                                    teamCounter = 1;
+                                },20000);
+                                thirdContent=setInterval(() => {
+                                    memberThree();
+                                    teamCounter = 2;
+                                },30000);
+                                firstContent=setInterval(() => {
+                                    setTimeout(memberOne,10000);
+                                    teamCounter = 0;
+                                },30000);
+                                secondContent=setInterval(() => {
+                                    setTimeout(memberTwo,20000);
+                                    teamCounter = 1;
+                                },30000);
+                            }
                         }
-                        else if(memberNumber==1){
-                            memberTwo();
-                            teamCounter = 1;
-                            initialSecondary = setTimeout(() => {
-                                memberThree();
-                                teamCounter = 2;
-                            },10000);
-                            initialTertiary = setTimeout(() => {
-                                memberOne();
-                                teamCounter = 0;
-                            },20000);
-                            secondContent=setInterval(() => {
-                                memberTwo();
-                                teamCounter = 1;
-                            },30000);
-                            thirdContent=setInterval(() => {
-                                setTimeout(memberThree,10000);
-                                teamCounter = 2;
-                            },30000);
-                            firstContent=setInterval(() => {
-                                setTimeout(memberOne,20000);
-                                teamCounter = 0;
-                            },30000);
-                        }
-                        else{
-                            memberThree();
-                            teamCounter = 2;
-                            initialSecondary = setTimeout(() => {
-                                memberOne();
-                                teamCounter = 0;
-                            },10000);
-                            initialTertiary = setTimeout(() => {
-                                memberTwo();
-                                teamCounter = 1;
-                            },20000);
-                            thirdContent=setInterval(() => {
-                                memberThree();
-                                teamCounter = 2;
-                            },30000);
-                            firstContent=setInterval(() => {
-                                setTimeout(memberOne,10000);
-                                teamCounter = 0;
-                            },30000);
-                            secondContent=setInterval(() => {
-                                setTimeout(memberTwo,20000);
-                                teamCounter = 1;
-                            },30000);
-                        }
+
+                        $(".timer ul li").click((event) => {
+                            event.preventDefault();
+                            clearInterval(firstContent);
+                            clearInterval(secondContent);
+                            clearInterval(thirdContent);
+                            clearTimeout(initialSecondary);
+                            clearTimeout(initialTertiary);
+                            clearTimeout(slideOut);
+                            switch(teamCounter){
+                                case 0:
+                                    $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
+                                    $("#team .in-depth").html(`<img src="images/95225493_512.jpg" alt="" class="person">
+                                    <p class="personInfo">
+                                        Former circle clicking master<br><br>
+                                        Underground arms dealer (secret)<br><br>
+                                        Enjoys clean ears<br><br>
+                                    </p>
+                                    <p class="lifeStory">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vero reiciendis laboriosam nam esse iure sequi illum porro laudantium nisi, harum quos repellat quasi autem quidem id nihil repellendus quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem facilis officiis magnam rem nulla vero veritatis ea quibusdam voluptatibus nesciunt suscipit, provident, sed nemo! Consequatur minus distinctio dolores sapiente! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit nobis harum voluptate quod. Maxime eius dolorum natus, facere ducimus amet odit harum a eaque perspiciatis architecto qui quia consequuntur illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet in modi, facilis velit sapiente rem rerum, tempora earum porro, sint et hic aliquam doloremque commodi impedit totam laborum ipsam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, provident dignissimos quidem cupiditate voluptates blanditiis. Pariatur ullam, excepturi hic tenetur, aut obcaecati id aliquid voluptas distinctio quasi impedit, veritatis non.
+                                    </p>`).removeClass("sneaky");
+                                    setTimeout(() => {
+                                        $(".menuDiv").addClass("sneaky");
+                                        $(".back").removeClass("sneaky");
+                                    }, 100);
+                                    break;
+                                case 1:
+                                    $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
+                                    $("#team .in-depth").html(`<img src="images/92413374_512.jpg" alt="" class="person">
+                                    <p class="personInfo">
+                                        Likes shitty movies<br><br>
+                                        Finds milk too delicious to be vegan<br><br>
+                                        Buy more facts® for only $4.99 each<br><br>
+                                    </p>
+                                    <p class="lifeStory">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vero reiciendis laboriosam nam esse iure sequi illum porro laudantium nisi, harum quos repellat quasi autem quidem id nihil repellendus quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem facilis officiis magnam rem nulla vero veritatis ea quibusdam voluptatibus nesciunt suscipit, provident, sed nemo! Consequatur minus distinctio dolores sapiente! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit nobis harum voluptate quod. Maxime eius dolorum natus, facere ducimus amet odit harum a eaque perspiciatis architecto qui quia consequuntur illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet in modi, facilis velit sapiente rem rerum, tempora earum porro, sint et hic aliquam doloremque commodi impedit totam laborum ipsam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, provident dignissimos quidem cupiditate voluptates blanditiis. Pariatur ullam, excepturi hic tenetur, aut obcaecati id aliquid voluptas distinctio quasi impedit, veritatis non.
+                                    </p>`).removeClass("sneaky");
+                                    setTimeout(() => {
+                                        $(".menuDiv").addClass("sneaky");
+                                        $(".back").removeClass("sneaky");
+                                    }, 100);
+                                    break;
+                                case 2:
+                                    $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
+                                    $("#team .in-depth").html(`<img src="images/216901241_512.jpg" alt="" class="person">
+                                    <p class="personInfo">
+                                        The palest council member<br><br>
+                                        Is possibly Queen Elizabeth II of the United Kingdom<br><br>
+                                        Dreams of owning a farm<br><br>
+                                    </p>
+                                    <p class="lifeStory">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vero reiciendis laboriosam nam esse iure sequi illum porro laudantium nisi, harum quos repellat quasi autem quidem id nihil repellendus quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem facilis officiis magnam rem nulla vero veritatis ea quibusdam voluptatibus nesciunt suscipit, provident, sed nemo! Consequatur minus distinctio dolores sapiente! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit nobis harum voluptate quod. Maxime eius dolorum natus, facere ducimus amet odit harum a eaque perspiciatis architecto qui quia consequuntur illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet in modi, facilis velit sapiente rem rerum, tempora earum porro, sint et hic aliquam doloremque commodi impedit totam laborum ipsam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, provident dignissimos quidem cupiditate voluptates blanditiis. Pariatur ullam, excepturi hic tenetur, aut obcaecati id aliquid voluptas distinctio quasi impedit, veritatis non.
+                                    </p>`).removeClass("sneaky");
+                                    setTimeout(() => {
+                                        $(".menuDiv").addClass("sneaky");
+                                        $(".back").removeClass("sneaky");
+                                    }, 100);
+                                    break;
+                            }
+                        });
+                        $(".back").click(() => {
+                            $(".back").addClass("sneaky");
+                            $(".menuDiv").removeClass("sneaky");
+                            $(".preview1, .preview2, .preview3, .timer").removeClass("sneaky");
+                            $("#team .in-depth").html('').addClass("sneaky");
+                            contentSlide(teamCounter);
+                        });
+
+                        contentSlide(teamCounter); // Initial call
+                    }else if(mobileMode){
+                        // Code for targeting the images and doing stuff with them
+                        $(".preview1 .avatar").click(() => {
+                            $(".preview1, .preview2, .preview3, .teamTitle, .teamNameOne, .teamNameTwo, .teamNameThree").addClass("mobileSneaky");
+                            $("#team .in-depth").html(`<img src="images/95225493_512.jpg" alt="" class="person">
+                            <p class="personInfo">
+                                Nicolas Bj&ouml;rkefors<br>
+                                Former circle clicking master<br>
+                                Underground arms dealer (secret)<br>
+                                Enjoys clean ears<br>
+                            </p>
+                            <div class="lifeStory">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vero reiciendis laboriosam nam esse iure sequi illum porro laudantium nisi, harum quos repellat quasi autem quidem id nihil repellendus quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem facilis officiis magnam rem nulla vero veritatis ea quibusdam voluptatibus nesciunt suscipit, provident, sed nemo! Consequatur minus distinctio dolores sapiente! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit nobis harum voluptate quod. Maxime eius dolorum natus, facere ducimus amet odit harum a eaque perspiciatis architecto qui quia consequuntur illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet in modi, facilis velit sapiente rem rerum, tempora earum porro, sint et hic aliquam doloremque commodi impedit totam laborum ipsam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, provident dignissimos quidem cupiditate voluptates blanditiis. Pariatur ullam, excepturi hic tenetur, aut obcaecati id aliquid voluptas distinctio quasi impedit, veritatis non.
+                                </p>
+                            </div>`).removeClass("mobileSneaky");
+                            setTimeout(() => {
+                                $(".back").removeClass("mobileSneaky");
+                            }, 100);
+                        });
+                        $(".preview2 .avatar").click(() => {
+                            $(".preview1, .preview2, .preview3, .teamTitle, .teamNameOne, .teamNameTwo, .teamNameThree").addClass("mobileSneaky");
+                            $("#team .in-depth").html(`<img src="images/92413374_512.jpg" alt="" class="person">
+                            <p class="personInfo">
+                                Oskar Olofsson<br>
+                                Likes shitty movies<br>
+                                Finds milk too delicious to be vegan<br>
+                                Buy more facts® for only $4.99 each<br>
+                            </p>
+                            <div class="lifeStory">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vero reiciendis laboriosam nam esse iure sequi illum porro laudantium nisi, harum quos repellat quasi autem quidem id nihil repellendus quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem facilis officiis magnam rem nulla vero veritatis ea quibusdam voluptatibus nesciunt suscipit, provident, sed nemo! Consequatur minus distinctio dolores sapiente! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit nobis harum voluptate quod. Maxime eius dolorum natus, facere ducimus amet odit harum a eaque perspiciatis architecto qui quia consequuntur illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet in modi, facilis velit sapiente rem rerum, tempora earum porro, sint et hic aliquam doloremque commodi impedit totam laborum ipsam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, provident dignissimos quidem cupiditate voluptates blanditiis. Pariatur ullam, excepturi hic tenetur, aut obcaecati id aliquid voluptas distinctio quasi impedit, veritatis non.
+                                </p>
+                            </div>`).removeClass("mobileSneaky");
+                            setTimeout(() => {
+                                $(".back").removeClass("mobileSneaky");
+                            }, 100);
+                        });
+                        $(".preview3 .avatar").click(() => {
+                            $(".preview1, .preview2, .preview3, .teamTitle, .teamNameOne, .teamNameTwo, .teamNameThree").addClass("mobileSneaky");
+                            $("#team .in-depth").html(`<img src="images/216901241_512.jpg" alt="" class="person">
+                            <p class="personInfo">
+                                Elias Stagg<br>
+                                The palest council member<br>
+                                Is possibly Queen Elizabeth II of the United Kingdom<br>
+                                Dreams of owning a farm<br>
+                            </p>
+                            <div class="lifeStory">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vero reiciendis laboriosam nam esse iure sequi illum porro laudantium nisi, harum quos repellat quasi autem quidem id nihil repellendus quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem facilis officiis magnam rem nulla vero veritatis ea quibusdam voluptatibus nesciunt suscipit, provident, sed nemo! Consequatur minus distinctio dolores sapiente! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit nobis harum voluptate quod. Maxime eius dolorum natus, facere ducimus amet odit harum a eaque perspiciatis architecto qui quia consequuntur illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet in modi, facilis velit sapiente rem rerum, tempora earum porro, sint et hic aliquam doloremque commodi impedit totam laborum ipsam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, provident dignissimos quidem cupiditate voluptates blanditiis. Pariatur ullam, excepturi hic tenetur, aut obcaecati id aliquid voluptas distinctio quasi impedit, veritatis non.
+                                </p>
+                            </div>`).removeClass("mobileSneaky");
+                            setTimeout(() => {
+                                $(".back").removeClass("mobileSneaky");
+                            }, 100);
+                        })
+                        $(".back").click(() => {
+                            $(".back").addClass("mobileSneaky");
+                            $(".preview1, .preview2, .preview3, .teamTitle, .teamNameOne, .teamNameTwo, .teamNameThree").removeClass("mobileSneaky");
+                            $("#team .in-depth").html('').addClass("mobileSneaky");
+                        });
                     }
-
-                    $(".timer ul li").click((event) => {
-                        event.preventDefault();
-                        clearInterval(firstContent);
-                        clearInterval(secondContent);
-                        clearInterval(thirdContent);
-                        clearTimeout(initialSecondary);
-                        clearTimeout(initialTertiary);
-                        clearTimeout(slideOut);
-                        switch(teamCounter){
-                            case 0:
-                                $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
-                                $("#team .in-depth").html(`<img src="image/95225493_512.jpg" alt="" class="person">
-                                <p class="personInfo">
-                                    Former circle clicking master<br><br>
-                                    Underground arms dealer (secret)<br><br>
-                                    Enjoys clean ears<br><br>
-                                </p>
-                                <p class="lifeStory">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vero reiciendis laboriosam nam esse iure sequi illum porro laudantium nisi, harum quos repellat quasi autem quidem id nihil repellendus quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem facilis officiis magnam rem nulla vero veritatis ea quibusdam voluptatibus nesciunt suscipit, provident, sed nemo! Consequatur minus distinctio dolores sapiente! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit nobis harum voluptate quod. Maxime eius dolorum natus, facere ducimus amet odit harum a eaque perspiciatis architecto qui quia consequuntur illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet in modi, facilis velit sapiente rem rerum, tempora earum porro, sint et hic aliquam doloremque commodi impedit totam laborum ipsam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, provident dignissimos quidem cupiditate voluptates blanditiis. Pariatur ullam, excepturi hic tenetur, aut obcaecati id aliquid voluptas distinctio quasi impedit, veritatis non.
-                                </p>`).removeClass("sneaky");
-                                setTimeout(() => {
-                                    $(".menuDiv").addClass("sneaky");
-                                    $(".back").removeClass("sneaky");
-                                }, 100);
-                                break;
-                            case 1:
-                                $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
-                                $("#team .in-depth").html(`<img src="image/92413374_512.jpg" alt="" class="person">
-                                <p class="personInfo">
-                                    Likes shitty movies<br><br>
-                                    Finds milk too delicious to be vegan<br><br>
-                                    Buy more facts® for only $4.99 each<br><br>
-                                </p>
-                                <p class="lifeStory">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vero reiciendis laboriosam nam esse iure sequi illum porro laudantium nisi, harum quos repellat quasi autem quidem id nihil repellendus quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem facilis officiis magnam rem nulla vero veritatis ea quibusdam voluptatibus nesciunt suscipit, provident, sed nemo! Consequatur minus distinctio dolores sapiente! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit nobis harum voluptate quod. Maxime eius dolorum natus, facere ducimus amet odit harum a eaque perspiciatis architecto qui quia consequuntur illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet in modi, facilis velit sapiente rem rerum, tempora earum porro, sint et hic aliquam doloremque commodi impedit totam laborum ipsam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, provident dignissimos quidem cupiditate voluptates blanditiis. Pariatur ullam, excepturi hic tenetur, aut obcaecati id aliquid voluptas distinctio quasi impedit, veritatis non.
-                                </p>`).removeClass("sneaky");
-                                setTimeout(() => {
-                                    $(".menuDiv").addClass("sneaky");
-                                    $(".back").removeClass("sneaky");
-                                }, 100);
-                                break;
-                            case 2:
-                                $(".preview1, .preview2, .preview3, .timer").addClass("sneaky");
-                                $("#team .in-depth").html(`<img src="image/216901241_512.jpg" alt="" class="person">
-                                <p class="personInfo">
-                                    The palest council member<br><br>
-                                    Is possibly Queen Elizabeth II of the United Kingdom<br><br>
-                                    Dreams of owning a farm<br><br>
-                                </p>
-                                <p class="lifeStory">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vero reiciendis laboriosam nam esse iure sequi illum porro laudantium nisi, harum quos repellat quasi autem quidem id nihil repellendus quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, quidem facilis officiis magnam rem nulla vero veritatis ea quibusdam voluptatibus nesciunt suscipit, provident, sed nemo! Consequatur minus distinctio dolores sapiente! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit nobis harum voluptate quod. Maxime eius dolorum natus, facere ducimus amet odit harum a eaque perspiciatis architecto qui quia consequuntur illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet in modi, facilis velit sapiente rem rerum, tempora earum porro, sint et hic aliquam doloremque commodi impedit totam laborum ipsam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, provident dignissimos quidem cupiditate voluptates blanditiis. Pariatur ullam, excepturi hic tenetur, aut obcaecati id aliquid voluptas distinctio quasi impedit, veritatis non.
-                                </p>`).removeClass("sneaky");
-                                setTimeout(() => {
-                                    $(".menuDiv").addClass("sneaky");
-                                    $(".back").removeClass("sneaky");
-                                }, 100);
-                                break;
-                        }
-                    });
-                    $(".back").click(() => {
-                        $(".back").addClass("sneaky");
-                        $(".menuDiv").removeClass("sneaky");
-                        $(".preview1, .preview2, .preview3, .timer").removeClass("sneaky");
-                        $("#team .in-depth").html('').removeClass("sneaky");
-                        contentSlide(teamCounter);
-                    });
-
-                    contentSlide(teamCounter); // Initial call
                 }
                 break;
             case 3:
@@ -525,7 +537,7 @@ $(document).ready(() => {
                         }, 500);
                         setTimeout(() =>{
                             $("#portfolio .image").removeClass("z-index");
-                        }, 1000);
+                        }, 1050);
                         //resetting image2
                         $("#image2").css({
                             "width":"34%",
@@ -539,7 +551,7 @@ $(document).ready(() => {
                         }, 500);
                         setTimeout(() =>{
                             $("#portfolio #image2").removeClass("z-index");
-                        }, 1000);
+                        }, 1050);
                     });
                 }
                 break;
@@ -654,6 +666,12 @@ $(document).ready(() => {
                                 $("#main").removeClass("greenBorder");
                                 $("#main").addClass("redBorder");
                             }
+                        }
+                    });
+                    $("#submit").click(function(event){
+                        if(!$("#name").hasClass("greenBorder") || !$("#email").hasClass("greenBorder") || !$("#phone").hasClass("greenBorder") || !$("#main").hasClass("greenBorder")){
+                            event.preventDefault();
+                            alert("Enter data in all fields, and in valid formats! Don't be like this guy: https://imgur.com/gallery/cuCPEhw");
                         }
                     });
                 }
@@ -818,8 +836,52 @@ $(document).ready(() => {
     $(".moreInfo").mouseenter(() => {
         sneakyNormalScrolling=true; // Allow normal scrolling in the .moreInfo div
     });
+    var menuCounter = 0;
     $(".hamburger .fa-bars, .mobileDiv ul li").click(() =>{
         $(".mobileDiv").toggleClass("mobileSneaky");
     });
+    url=`https://api.github.com/search/repositories?q=language:css&sort=stars&order=desc`;
+    fetch(url,{ // Get CSS repos
+        method:'get',
+        headers:{
+            'Content-Type':'application/vnd.github.v3+json; charset=utf-8'
+        }
+    })
+    .then(response => {// response is of type responseObject
+        return response.json(); // Convert response to JSONObject
+    })
+    .then(response => { // Use the JSONObject
+        for(var i = 0; i < 5;i++){ // Loop 5 times to get the top 5 CSS repos
+            $("#trend"+i).html(parseInt(i+1)+". ★ "+response.items[i].stargazers_count+" | "+response.items[i].name+" by "+response.items[i].owner.login);
+            $("#CSSList li:nth-child("+(i+1)+")").append(`<button data-button-id = ${i} class = "showMoreButtons superSneaky">Show</button>`);
+            $("#trend"+i).attr("href",response.items[i].html_url);
+            userName[i]=response.items[i].owner.login;
+            projectName[i]=response.items[i].name;
+        }
+    })
+    .catch(error => console.error(error));
+
+    url=`https://api.github.com/search/repositories?q=language:javascript&sort=stars&order=desc`;
+    fetch(url,{ // Get JavaScript repos
+        method:'get',
+        headers:{
+            'Content-Type':'application/vnd.github.v3+json; charset=utf-8',
+        }
+    })
+    .then(response => { // response is of type responseObject
+        return response.json(); // Convert response to JSONObject
+    })
+    .then(response => { // Use the JSONObject
+        var counter=0;
+        for(var i = 5;i < 10;i++){ // Loop 5 times to get the top 5 javascript
+            $("#trend"+i).html(parseInt(i-4)+". ★ "+response.items[counter].stargazers_count+" | "+response.items[counter].name+" by "+response.items[counter].owner.login);
+            $("#JavaScriptList li:nth-child("+(i-4)+")").append(`<button data-button-id = "${i}" class = "showMoreButtons superSneaky">Show</button>`);
+            $("#trend"+i).attr("href",response.items[counter].html_url);
+            userName[i]=response.items[counter].owner.login;
+            projectName[i]=response.items[counter].name;
+            counter++;
+        }
+    })
+    .catch(error => console.error(error)); // If someone is a doofus
     // End of on-load trigger(s)
 }); // End of $(document).ready(){};

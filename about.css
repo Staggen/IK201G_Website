@@ -17,7 +17,7 @@
     color: #32292F;
 }
 .github{
-    background: #a8dadc;
+    background: #dce4d9;
     font-family: Arial, Helvetica, sans-serif;
 }
 .github h2{
@@ -30,26 +30,82 @@
 .trendClass li{
     list-style:none;
 }
-.trendClass li a{
-    text-decoration:none;
-    color: #32292F;
-    padding: 0.5em 1em;
-    display: block;
+#about img{
+    width:32px;
+    height:32px;
+    padding-right:1em;
+    vertical-align:middle;
 }
-@media (max-width: 767px){
+ul.contributorList{
+    margin:5px;
+}
+ul.contributorList li{
+    list-style:none;
+}
+ul.contributorList a{
+    padding:5px;
+    text-decoration:none;
+    display:block;
+    color:#f1faee;
+}
+ul.contributorList li a p{
+    display:inline;
+    font-size: 24px;
+    line-height:32px;
+}
+.aboutBack{
+    position:absolute;
+    line-height:35px;
+    text-align:center;
+    color: #f1faee;
+    transition: opacity 1s;
+    background: #1d3557af;
+    height: 40px;
+    width: 40px;
+    z-index: 5;
+    margin: 1em;
+    border-radius: 50%;
+}
+@media (max-width: 767px){ /* Mobile */
+    .trendClass li a{
+        text-decoration:none;
+        color: #32292F;
+        padding: 0.5em 1em;
+        display: inline;
+    }
+    .moreInfo{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 85vh;
+        width: 70vw;
+        transform: translate(-50%,-50%);
+        -moz-transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%,-50%);
+        background-color: #1d3557;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
     .blurb{
         width: 100%;
         height: 50%;
-        overflow: scroll;
+        overflow-y: scroll;
     }
     .github{
         width: 100%;
         height: 50%;
-        overflow: scroll;
+        overflow-y: scroll;
     }
 }
-@media (min-width: 768px){
+@media (min-width: 768px){ /* Non-mobile */
     /* About the group and trending on github */
+    .trendClass li a{
+        text-decoration:none;
+        color: #32292F;
+        padding: 0.5em 1em;
+        display: block;
+    }
     .blurb{
         position: absolute;
         top: 0;
@@ -79,30 +135,7 @@
         color: #f1faee;
         background-color: #1d3557;
     }
-    #about img{
-        width:32px;
-        height:32px;
-        padding-right:1em;
-        vertical-align:middle;
-    }
-    ul.contributorList{
-        margin:5px;
-    }
-    ul.contributorList li{
-        list-style:none;
-    }
-    ul.contributorList a{
-        padding:5px;
-        text-decoration:none;
-        display:block;
-        color:#f1faee;
-    }
     ul.contributorList li a:hover{
         background-color:#a8dadc;
-    }
-    ul.contributorList li a p{
-        display:inline;
-        font-size: 24px;
-        line-height:32px;
     }
 }
