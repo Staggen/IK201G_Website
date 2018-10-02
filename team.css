@@ -46,47 +46,6 @@
     -webkit-transform:translate(50%,-50%);
     -moz-transform:translate(50%,-50%);
 }
-@media (min-width: 768px){ /* Non-Mobile */
-    .lifeStory{
-        position: absolute;
-        width: calc(75% - 4em);
-        left: calc(200px + 3em);
-        top: 2em;
-        color: #1d3557;
-    }
-    .switchRight{
-        transform:translate(50%,-50%);
-        -moz-transform:translate(50%,-50%);
-        -webkit-transform:translate(50%,-50%);
-        transition:1s;
-        -moz-transition:1s;
-        -webkit-transition:1s;
-    }
-    .switchCenter{
-        transform:translate(-50%,-50%);
-        -moz-transform:translate(-50%,-50%);
-        -webkit-transform:translate(-50%,-50%);
-        transition:1s;
-        -moz-transition:1s;
-        -webkit-transition:1s;
-    }
-    .switchLeft{
-        transform:translate(-150%,-50%);
-        -moz-transform:translate(-150%,-50%);
-        -webkit-transform:translate(-150%,-50%);
-        transition:1s;
-        -moz-transition:1s;
-        -webkit-transition:1s;
-    }
-    .back{
-        transform-origin:top left 0;
-        -webkit-transform-origin:top left 0;
-        -moz-transform-origin:top left 0;
-        transform:rotate(-90deg) translate(calc(-100% + 28px), 0);
-        -webkit-transform:rotate(-90deg) translate(calc(-100% + 28px), 0);
-        -moz-transform:rotate(-90deg) translate(calc(-100% + 28px), 0);
-    }
-}
 .avatar{
     position:absolute;
     width:25%;
@@ -134,24 +93,6 @@
     color:#f1faee;
     margin-left:2em;
     transition: opacity 1s;
-}
-/* 1440p */
-@media (max-width:2560px){
-    .bar p{
-        line-height:5em;
-    }
-}
-/* 1080p */
-@media (max-width:1920px){
-    .bar p{
-        line-height:4em;
-    }
-}
-/* 720p */
-@media (max-width:1280px){
-    .bar p{
-        line-height:3em;
-    }
 }
 #bar1,#bar6,#bar11{
     top:0;
@@ -257,7 +198,6 @@
     -webkit-transform:translate(-50%,-50%);
     -moz-transform:translate(-50%,-50%);
     transition: opacity 1s;
-    /* background: #e63946; */
 }
 .person{
     position: absolute;
@@ -299,8 +239,66 @@
     font-weight: bold;
     transition: 0.3s;
 }
-@media (max-width: 767px){
-    
+/* 1440p */
+@media (max-width:2560px){
+    .bar p{
+        line-height:5em;
+    }
+}
+/* 1080p */
+@media (max-width:1920px){
+    .bar p{
+        line-height:4em;
+    }
+}
+/* 720p */
+@media (max-width:1280px){
+    .bar p{
+        line-height:3em;
+    }
+}
+@media (min-width: 768px){ /* Non-Mobile */
+    .lifeStory{
+        position: absolute;
+        width: calc(75% - 4em);
+        left: calc(200px + 3em);
+        top: 2em;
+        color: #1d3557;
+    }
+    .switchRight{
+        transform:translate(50%,-50%);
+        -moz-transform:translate(50%,-50%);
+        -webkit-transform:translate(50%,-50%);
+        transition:1s;
+        -moz-transition:1s;
+        -webkit-transition:1s;
+    }
+    .switchCenter{
+        transform:translate(-50%,-50%);
+        -moz-transform:translate(-50%,-50%);
+        -webkit-transform:translate(-50%,-50%);
+        transition:1s;
+        -moz-transition:1s;
+        -webkit-transition:1s;
+    }
+    .switchLeft{
+        transform:translate(-150%,-50%);
+        -moz-transform:translate(-150%,-50%);
+        -webkit-transform:translate(-150%,-50%);
+        transition:1s;
+        -moz-transition:1s;
+        -webkit-transition:1s;
+    }
+    .back{
+        transform-origin:top left 0;
+        -webkit-transform-origin:top left 0;
+        -moz-transform-origin:top left 0;
+        transform:rotate(-90deg) translate(calc(-100% + 28px), 0);
+        -webkit-transform:rotate(-90deg) translate(calc(-100% + 28px), 0);
+        -moz-transform:rotate(-90deg) translate(calc(-100% + 28px), 0);
+    }
+}
+@media (max-width: 767px){ /* Mobile */
     .person{
         top: 0;
         left: 50%;
@@ -325,7 +323,6 @@
         -webkit-transform: translateX(-50%);
         top:70%;
         color: #1d3557;
-        /* background: #e63946; */
         overflow-y:scroll;
     }
     .teamNameOne{
@@ -366,7 +363,6 @@
         height:33%;
         display:flex;
         justify-content:center;
-        /* background-color: #e63946; */
         left:69%;
         top:25%;
         transform:translate(-50%,-50%);

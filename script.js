@@ -805,7 +805,7 @@ $(document).ready(() => {
                             contentSlide(teamCounter); // Start the content-slide on the .preview that you were on when you pressed "indulge"
                         });
 
-                        contentSlide(teamCounter); // Initial call
+                        contentSlide(teamCounter); // Initial call at teamCounter=0
 
                     }else if(mobileMode){ // If mobileMode
                         // Code for targeting the images and doing stuff with them
@@ -1095,7 +1095,7 @@ $(document).ready(() => {
                 // function barLoad(selector,width,transitionDelay);
                 barLoad("#bar1","100",2000);
                 barLoad("#bar2","120",2200);
-                barLoad("#bar3","50",2400);
+                barLoad("#bar3","60",2400);
                 barLoad("#bar4","70",2600);
                 barLoad("#bar5","60",2800);
                 //function itemFastLoad(selector,transitionDelay);
@@ -1146,10 +1146,10 @@ $(document).ready(() => {
                 itemSlowLoad("#avatar3",1000);
                 // function barLoad(selector,width,transitionDelay);
                 barLoad("#bar11","90",2000);
-                barLoad("#bar12","110",2200);
+                barLoad("#bar12","120",2200);
                 barLoad("#bar13","80",2400);
                 barLoad("#bar14","40",2600);
-                barLoad("#bar15","70",2800);
+                barLoad("#bar15","100",2800);
                 //function itemFastLoad(selector,transitionDelay);
                 itemFastLoad("#bar11 p",4000);
                 itemFastLoad("#bar12 p",4200);
@@ -1229,11 +1229,11 @@ $(document).ready(() => {
     $(".hamburger .fa-bars, .mobileDiv ul li").click(() =>{
         $(".mobileDiv").toggleClass("mobileSneaky");
     });
-    url=`https://api.github.com/search/repositories?q=language:css&sort=stars&order=desc`;
+    url=`https://github-trending-api.now.sh/repositories?language=css&sort=stars&order=desc&since=weekly`;
     fetch(url,{ // Get CSS repos
         method:'get',
         headers:{
-            'Content-Type':'application/vnd.github.v3+json; charset=utf-8'
+            'Content-Type':'application/json; charset=utf-8'
         }
     })
     .then(response => {// response is of type responseObject
@@ -1241,20 +1241,20 @@ $(document).ready(() => {
     })
     .then(response => { // Use the JSONObject
         for(var i = 0; i < 5;i++){ // Loop 5 times to get the top 5 CSS repos
-            $("#trend"+i).html(parseInt(i+1)+". ★ "+response.items[i].stargazers_count+" | "+response.items[i].name+" by "+response.items[i].owner.login);
+            $("#trend"+i).html(parseInt(i+1)+". ★ "+response[i].currentPeriodStars+" | "+response[i].name+" by "+response[i].author);
             $("#CSSList li:nth-child("+(i+1)+")").append(`<button data-button-id = ${i} class = "showMoreButtons superSneaky">Show</button>`);
-            $("#trend"+i).attr("href",response.items[i].html_url);
-            userName[i]=response.items[i].owner.login;
-            projectName[i]=response.items[i].name;
+            $("#trend"+i).attr("href",response[i].url);
+            userName[i]=response[i].author;
+            projectName[i]=response[i].name;
         }
     })
     .catch(error => console.error(error));
 
-    url=`https://api.github.com/search/repositories?q=language:javascript&sort=stars&order=desc`;
+    url=`https://github-trending-api.now.sh/repositories?language=javascript&sort=stars&order=desc&since=weekly`;
     fetch(url,{ // Get JavaScript repos
         method:'get',
         headers:{
-            'Content-Type':'application/vnd.github.v3+json; charset=utf-8',
+            'Content-Type':'application/json; charset=utf-8',
         }
     })
     .then(response => { // response is of type responseObject
@@ -1263,11 +1263,11 @@ $(document).ready(() => {
     .then(response => { // Use the JSONObject
         var counter=0;
         for(var i = 5;i < 10;i++){ // Loop 5 times to get the top 5 javascript
-            $("#trend"+i).html(parseInt(i-4)+". ★ "+response.items[counter].stargazers_count+" | "+response.items[counter].name+" by "+response.items[counter].owner.login);
+            $("#trend"+i).html(parseInt(i-4)+". ★ "+response[counter].currentPeriodStars+" | "+response[counter].name+" by "+response[counter].author);
             $("#JavaScriptList li:nth-child("+(i-4)+")").append(`<button data-button-id = "${i}" class = "showMoreButtons superSneaky">Show</button>`);
-            $("#trend"+i).attr("href",response.items[counter].html_url);
-            userName[i]=response.items[counter].owner.login;
-            projectName[i]=response.items[counter].name;
+            $("#trend"+i).attr("href",response[counter].url);
+            userName[i]=response[counter].author;
+            projectName[i]=response[counter].name;
             counter++;
         }
     })

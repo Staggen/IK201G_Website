@@ -7,20 +7,6 @@
     width:100%;
     position:relative;
 }
-@media (min-width: 768px){
-    .sneaky{
-        visibility:hidden;
-        opacity:0;
-    }
-    .sneaky2{
-        visibility:hidden;
-        opacity:0;
-    }
-    .superSneaky{
-        display:none;
-        opacity: 0;
-    }
-}
 h1{
     line-height:100vh;
     margin:auto;
@@ -146,7 +132,21 @@ h1{
     font-size:20px;
     line-height: 20vh;
 }
-@media (max-width: 767px){
+@media (min-width: 768px){ /* Non-Mobile */
+    .sneaky{
+        visibility:hidden;
+        opacity:0;
+    }
+    .sneaky2{
+        visibility:hidden;
+        opacity:0;
+    }
+    .superSneaky{
+        display:none;
+        opacity: 0;
+    }
+}
+@media (max-width: 767px){ /* Mobile */
     .mobileSneaky{
         visibility: hidden;
         opacity: 0;
@@ -166,13 +166,12 @@ h1{
         font-size: 40px;
     }
 }
-/* 
-var colourPalettes=[];
-colourPalettes.push("baseline{
+/*
+baseline{
     desire:"#e63946",
     honeydew:"#f1faee",
     lightblue:"#a8dadc",
     queenblue:"#457b9d",
     spacecadet:"#1d3557"
-}");
+}
 */

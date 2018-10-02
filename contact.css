@@ -120,7 +120,7 @@
 .redBorder{
     border: 1px solid #e63946;
 }
-@media (max-width: 767px){
+@media (max-width: 767px){ /* Mobile */
     .mediaIcons{
         top:95%;
     }
@@ -141,7 +141,6 @@
         height: 40%;
         top: 35%;
         left: 4.5%;
-        /* background: #32cd32; */
     }
     #map{
         width: 90%;
